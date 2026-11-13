@@ -1,0 +1,10 @@
+/* Four perimeter edges replace scaling for the three previews and their title. */
+.agent-intro-layer .agent-trace-box{border:0;box-shadow:none;transform:none!important;will-change:opacity;contain:layout style}
+.agent-intro-layer .agent-trace-box::before,.agent-intro-layer .agent-trace-box::after{display:none}
+.trace-edge{position:absolute;display:block;background:#a9c8d2;pointer-events:none;will-change:transform}
+.trace-edge-0{left:0;top:0;width:100%;height:1px;transform-origin:left center}
+.trace-edge-1{right:0;top:0;width:1px;height:100%;transform-origin:center top}
+.trace-edge-2{left:0;bottom:0;width:100%;height:1px;transform-origin:right center}
+.trace-edge-3{left:0;top:0;width:1px;height:100%;transform-origin:center bottom}
+.agent-intro-layer .agent-intro-cursor span{box-shadow:none}
+.agent-intro-layer .agent-build-box{will-change:transform,opacity}

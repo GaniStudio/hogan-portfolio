@@ -1,0 +1,5 @@
+@media(min-width:900px) and (min-height:760px) and (prefers-reduced-motion:no-preference) {
+ #static-gallery .words-scroll-track { min-height:calc(var(--v136-words-stage-height,100svh) + 2100px); }
+}
+#lms[data-v136-home] .demo-window::after { display:none; }
+

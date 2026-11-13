@@ -1,0 +1,12 @@
+/* Display scale only. Agent allocation is handled by the controller, not CSS. */
+.agent-intro-layer{--intro-cursor-scale:1}
+.agent-intro-layer .agent-intro-cursor{width:calc(20px * var(--intro-cursor-scale));height:calc(21px * var(--intro-cursor-scale));filter:drop-shadow(0 calc(2px * var(--intro-cursor-scale)) calc(5px * var(--intro-cursor-scale)) #0009)}
+.agent-intro-layer .agent-intro-cursor svg{width:calc(20px * var(--intro-cursor-scale))!important;height:auto!important}
+.agent-intro-layer .agent-intro-cursor span{
+ left:calc(20px * var(--intro-cursor-scale));top:calc(-17px * var(--intro-cursor-scale));
+ max-width:calc(75px * var(--intro-cursor-scale));font-size:calc(9px * var(--intro-cursor-scale));line-height:1.2;
+ padding:calc(2px * var(--intro-cursor-scale)) calc(4px * var(--intro-cursor-scale));
+ border-radius:calc(2px * var(--intro-cursor-scale));box-shadow:0 calc(1px * var(--intro-cursor-scale)) calc(5px * var(--intro-cursor-scale)) #0006;
+}
+@media(min-width:700px) and (max-width:1099px){.agent-intro-layer{--intro-cursor-scale:.7}}
+@media(max-width:699px){.agent-intro-layer{--intro-cursor-scale:.7}}

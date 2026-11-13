@@ -1,0 +1,33 @@
+/* v141: source architecture beside one opaque code surface; no nested cards. */
+body #making.v141-appendix{display:block;width:100%;max-width:none;box-sizing:border-box}
+body #making .section-heading{display:block;max-width:none;margin-bottom:56px}
+body #making .v141-service-architecture{border-top:1px solid #303b42;padding:44px 0 64px;min-width:0}
+body #making .v141-architecture-heading{display:flex;align-items:baseline;gap:18px;margin-bottom:30px}
+body #making .v141-architecture-heading>span{color:#9eacb7;font-size:13px}
+body #making .v141-architecture-heading h3{font-size:28px;font-weight:500;line-height:1.3;margin:0}
+body #making .v141-architecture-layout{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:44px;align-items:start}
+body #making h4{font-size:15px;font-weight:500;color:#c5ced5;margin:0 0 18px}
+body #making .v141-architecture-flow{list-style:none;margin:0 0 34px;padding:0 0 0 18px;border-left:1px solid #42545f}
+body #making .v141-architecture-flow li{position:relative;padding:0 0 22px 8px;display:grid;gap:5px;min-width:0}
+body #making .v141-architecture-flow li:before{content:"";position:absolute;left:-22px;top:7px;width:7px;height:7px;border-radius:50%;background:#a8c2d4;box-shadow:0 0 0 4px #09101b}
+body #making .v141-architecture-flow strong{font-size:17px;font-weight:500;color:#edf1f4}
+body #making .v141-architecture-flow span{font-size:15px;color:#bbc7d0}
+body #making .v141-architecture-flow code{font-size:12px;color:#91a5b5;overflow-wrap:anywhere;line-height:1.7}
+body #making .v141-architecture-decision p{font-size:16px;line-height:1.85;max-width:100%;margin:0 0 24px;color:#dae1e6}
+body #making .v141-code-window{margin:0;min-width:0;max-width:100%;background:#0b111b;border:1px solid #28343f;overflow:hidden;position:relative}
+body #making .v141-code-window:after{content:"";pointer-events:none;position:absolute;inset:0;background:linear-gradient(90deg,#050a1233,transparent 8%,transparent 92%,#050a1233)}
+body #making .v141-code-window figcaption{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px;padding:20px;border-bottom:1px solid #28343f;color:#dce6ee}
+body #making .v141-code-window figcaption>span{width:100%;font-size:15px}
+body #making .v141-code-window figcaption>code{font-size:12px;line-height:1.6;overflow-wrap:anywhere;min-width:0;color:#9db1c4}
+body #making .v141-code-window figcaption>small{font-size:12px;color:#9db1c4}
+body #making .v141-code-window pre{margin:0;padding:22px 18px 28px;white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;font:12px/1.8 Consolas,'Courier New',monospace;color:#cbd8e6}
+body #making .v141-code-line{display:grid;grid-template-columns:25px minmax(0,1fr);gap:12px;min-width:0}
+body #making .v141-code-line>i{font-style:normal;color:#697c8d;text-align:right;user-select:none}
+body #making .v141-code-line>span{min-width:0;white-space:pre-wrap;overflow-wrap:anywhere}
+body #making .v141-api{border-top:1px solid #303b42;padding-top:24px}
+body #making .v141-api summary{cursor:pointer;font-size:16px;color:#dce5ed;padding:10px 0}
+body #making .v141-api table{width:100%;border-collapse:collapse;margin-top:22px;font-size:14px;line-height:1.8;table-layout:fixed}
+body #making .v141-api td,body #making .v141-api th{padding:14px 12px;text-align:left;border-top:1px solid #28343f;overflow-wrap:anywhere}
+body #making .v141-api th:first-child,body #making .v141-api td:first-child{width:16%}
+@media(min-width:700px) and (max-width:1099px){body #making .v141-architecture-layout{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:24px}body #making .v141-code-window pre{padding:16px 10px;font-size:11px}body #making .v141-code-window figcaption{padding:16px}body #making .v141-architecture-decision p{font-size:15px}}
+@media(max-width:699px){body #making .v141-architecture-layout{grid-template-columns:minmax(0,1fr);gap:22px}body #making .v141-architecture-heading h3{font-size:24px}body #making .v141-service-architecture{padding:30px 0 40px}body #making .v141-code-window pre{font-size:11px;line-height:1.7;padding:16px 10px}body #making .v141-code-window figcaption{padding:14px}body #making .v141-code-line{grid-template-columns:20px minmax(0,1fr);gap:8px}body #making .v141-architecture-decision p{font-size:15px}body #making .v141-api table{font-size:12px}body #making .v141-api td,body #making .v141-api th{padding:12px 6px}}

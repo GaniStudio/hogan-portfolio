@@ -1,0 +1,2 @@
+// Constant-distance border trace. Existing approach, draw duration and reveal timings stay unchanged.
+export function boxTrace(r,progress){const u=Math.max(0,Math.min(1,progress)),w=Math.max(1,r.width),h=Math.max(1,r.height),lengths=[w,h,w,h],total=2*(w+h),d=u*total;let before=0;const edges=lengths.map(len=>{const x=Math.max(0,Math.min(1,(d-before)/len));before+=len;return x;});let x=r.left,y=r.top,side=0;if(d<=w){x+=d;}else if(d<=w+h){x+=w;y+=d-w;side=1;}else if(d<=2*w+h){x+=2*w+h-d;y+=h;side=2;}else{y+=total-d;side=3;}return {x,y,side,edges};}

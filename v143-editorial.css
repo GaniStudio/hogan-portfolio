@@ -1,0 +1,44 @@
+:root{--v143-title:#f3f4f7;--v143-body:#d4d9e2;--v143-muted:#a9b2c1;--v143-sheet-yellow:#ffff00}
+/* Typography hierarchy is scoped to portfolio prose, never the source apps. */
+body main :is(.editorial-story,.v139-results,.v141-vision,.v141-appendix,.implementation-exhibit) :is(p,.story-beat-text){font-size:18px!important;line-height:1.65!important;color:var(--v143-body)!important}
+body main :is(.editorial-heading,.words-feature-heading,.vision-heading)>h2,body main .words-feature-heading>div>h2,body main .vision-heading h2,body main #making>header h2{font-size:48px!important;font-weight:500!important;letter-spacing:-1.056px!important;line-height:1.15!important;max-width:none!important;color:var(--v143-title)!important}
+body .words-feature-copy p{font-size:24px!important;line-height:1.5!important;color:var(--v143-body)!important}
+body :is(.editorial-body,.v139-results) :is(h3,.story-beat-label){color:var(--v143-muted)!important}
+body .implementation-date,body .implementation-exhibit time,body .v139-date,body #implementation-exhibit :is(time,small){color:#b2bac8!important}
+body main .release-log small{color:var(--v143-muted)!important;opacity:1!important}
+body :is(.v139-results,.editorial-lessons) :is(strong,b){font-weight:500}
+body #motivation h2{max-width:none!important}
+body #words-story .v143-past-present{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px;width:100%!important;max-width:none!important}
+body #words-story .v143-past-present>article{display:block!important;min-width:0;padding-top:24px!important}
+body #words-story .v143-past-present p{max-width:none!important;width:100%!important;margin-left:0!important}
+body #words-story .v143-past-present h3{margin:0 0 20px!important}
+body .v143-past-present article p+p{margin-top:20px!important}
+body .v139-preface .v140-prose{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px!important}
+body .v139-preface .v140-prose>.service-period,body .v139-preface .v140-prose>.db-story-role{grid-column:1/-1}
+body .v139-preface .v140-prose .story-beat{display:block!important;grid-template-columns:none!important;min-width:0}
+body .v139-preface .v140-prose .story-beat-text{display:block;max-width:none!important;width:100%!important;margin-top:20px}
+body .editorial-lessons>article{grid-template-columns:120px minmax(0,1fr)!important}
+body .editorial-lessons>article p{width:100%!important;max-width:none!important;margin:0!important}
+body #db-decision .editorial-body>article{grid-template-columns:120px minmax(0,1fr)!important}
+body #db-decision .editorial-body>article p,body #db-decision blockquote,body .v139-results>p,body .v139-results blockquote,body .v139-result-bridge{max-width:none!important;width:100%!important}
+body #db-decision .editorial-body>article>p+p{margin-top:16px!important}
+body .v140-source-preview{mask-image:none!important}
+body [data-comparison="db"] .v140-source-preview{cursor:ns-resize}
+body [data-comparison="db"] .v140-source-preview:focus-visible{outline:2px solid #9ac7ef;outline-offset:5px}
+body .v139-sheet td[data-sheet-value="1"]{background:transparent}
+body .v139-sheet td[data-sheet-value="1"][data-filled="true"]{background:var(--v143-sheet-yellow)}
+body .v139-sheet .v140-sheet-cursor{transition:left 90ms linear,top 90ms linear}
+body .v143-heading-word{display:inline-block;white-space:pre}
+/* Explicit section specificity replaces the older per-version !important
+   rules; source application documents live in separate frames. */
+body main :is(#motivation,#static-gallery,#student-db,#lms,#db-decision,#reading,#ai-workflow,#vision,#implementation-exhibit,#making)>:is(header,.editorial-heading,.vision-heading) h2{font-size:48px!important;font-weight:500!important;letter-spacing:-1.056px!important;line-height:1.15!important;color:var(--v143-title)!important}
+body main :is(#words-story,#db-story,#lms-story,#db-decision,#reading,#ai-workflow,#vision,#implementation-exhibit,#making) :is(p,.story-beat-text){font-size:18px!important;line-height:1.65!important;color:var(--v143-body)!important}
+body main :is(#static-gallery,#student-db,#lms) .words-feature-copy p{font-size:24px!important;line-height:1.5!important}
+body main :is(#motivation,#static-gallery,#student-db,#lms,#db-decision,#reading,#ai-workflow,#implementation-exhibit,#vision,#making) h2{font-size:48px!important;font-weight:500!important;letter-spacing:-1.056px!important;line-height:1.15!important;color:var(--v143-title)!important}
+body main #db-decision p.story-bridge{width:100%!important;max-width:none!important;font-size:18px!important;line-height:1.65!important}
+@media(min-width:1100px){body #db-decision .editorial-body>article p,body .v139-results p{max-width:none!important}body #motivation>.editorial-body>p{max-width:none!important}body #vision p{line-height:1.65!important}}
+@media(min-width:700px) and (max-width:1099px){body main :is(.editorial-story,.v139-results,.v141-vision,.v141-appendix) :is(p,.story-beat-text){font-size:18px!important;line-height:1.65!important}body #words-story .v143-past-present,body .v139-preface .v140-prose{gap:28px!important}body .editorial-lessons>article{display:block!important}body .editorial-lessons p{max-width:none!important}}
+@media(max-width:699px){body main :is(.editorial-story,.v139-results,.v141-vision,.v141-appendix) :is(p,.story-beat-text){font-size:15px!important;line-height:1.65!important}body main :is(.editorial-heading,.words-feature-heading,.vision-heading)>h2,body main .words-feature-heading>div>h2,body main .vision-heading h2,body main #making>header h2{font-size:32px!important;letter-spacing:-.7px!important}body .words-feature-copy p{font-size:19px!important}body #words-story .v143-past-present,body .v139-preface .v140-prose{grid-template-columns:1fr!important;gap:24px!important}body .editorial-lessons>article,body #db-decision .editorial-body>article{display:block!important}body #db-decision .editorial-body>article p,body .v139-results p,body .story-beat-text{max-width:none!important}}
+@media(prefers-reduced-motion:reduce){body .v140-sheet-cursor{display:none!important}.v143-heading-word{opacity:1!important;transform:none!important;filter:none!important}}
+@media(max-width:699px){body main :is(#motivation,#static-gallery,#student-db,#lms,#db-decision,#reading,#ai-workflow,#vision,#implementation-exhibit,#making)>:is(header,.editorial-heading,.vision-heading) h2{font-size:32px!important;letter-spacing:-.7px!important}body main :is(#words-story,#db-story,#lms-story,#db-decision,#reading,#ai-workflow,#vision,#implementation-exhibit,#making) :is(p,.story-beat-text){font-size:15px!important}body main :is(#static-gallery,#student-db,#lms) .words-feature-copy p{font-size:19px!important}}
+@media(max-width:699px){body main :is(#motivation,#static-gallery,#student-db,#lms,#db-decision,#reading,#ai-workflow,#implementation-exhibit,#vision,#making) h2{font-size:32px!important;letter-spacing:-.7px!important}body main #db-decision p.story-bridge{font-size:15px!important}}

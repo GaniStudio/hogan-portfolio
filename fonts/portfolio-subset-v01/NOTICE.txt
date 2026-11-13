@@ -1,0 +1,3 @@
+Derived glyph subsets of the included original fonts, licensed under SIL OFL 1.1.
+Modified font names: HoGan Portfolio Subset. Changes: glyph subsetting and metadata renaming.
+Original copyright/license records and original full fallback fonts are retained.

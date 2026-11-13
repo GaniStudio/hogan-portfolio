@@ -1,0 +1,38 @@
+/* Approved quiet UI; native controls and application behavior stay unchanged. */
+body .badge,
+body .status-chip,
+body .draft-save-status {
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--muted, #666);
+  box-shadow: none;
+}
+body .status-chip::before { display: none; }
+body .page-heading > .badge--success { display: none; }
+body .surface { box-shadow: none; }
+body #summaryLevel { color: var(--ink, #171717); font-weight: 600; }
+/* Keep actionable warning states distinguishable from neutral labels. */
+body .badge--warning { color: #9a3412; }
+body select:not([multiple]):not([size]),
+body select[size="1"] {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 44px;
+  text-align: left;
+  text-align-last: left;
+  background-image: url("./quiet-chevron-20260917.svg");
+  background-position: right 16px center;
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+}
+body select:focus-visible { outline: 2px solid var(--ink, #171717); outline-offset: 2px; }
+body .field-grid > * { min-width: 0; }
+@media (forced-colors: active) {
+  body select:not([multiple]):not([size]), body select[size="1"] {
+    appearance: auto;
+    background-image: none;
+  }
+}

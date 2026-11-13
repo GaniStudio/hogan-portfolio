@@ -1,0 +1,34 @@
+/* Standalone display adapter. The source UI lives inside a portfolio iframe. */
+@font-face{font-family:"XinChao Noto Sans KR";src:url("/hogan-portfolio/lms/NotoSansKR-VF.ttf") format("truetype");font-style:normal;font-weight:100 900;font-display:swap}
+html,body{font-family:"XinChao Noto Sans KR","Malgun Gothic",sans-serif;min-width:0}
+.lms-login-selected,.v139-course-page{min-height:100dvh;background:#fff;color:#172033}
+.lms-login-selected .lms-login-header img,.v139-course-page .brand-mark{object-fit:contain;flex:none}
+.v139-course-page .brand-name{margin:0}
+.v139-course-page .home-main .page-heading{display:block}
+.v139-course-page .course-selection{min-width:0}
+.v139-course-page .course-card__action{cursor:pointer;font:inherit;font-weight:700}
+.full-lesson-main.lesson-ui-v4>.page-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;text-align:left}
+.lesson-preference-stack{display:flex;gap:8px;flex-wrap:wrap}
+.lesson-preference-stack .button{display:inline-flex;gap:6px;align-items:center;white-space:nowrap}
+.app-main.mobile-assignment-page .page-heading{display:flex;justify-content:space-between;gap:16px;text-align:left}
+.assignment-form-fields{border:0;margin:0;padding:0;min-width:0}
+.assignment-grid{min-width:0}
+.assignment-grid>.assignment-card{min-width:0}
+.assignment-grid .sentence-fields{display:grid;gap:16px}
+.assignment-grid .audio-recorder-waveform{display:block;width:100%;height:100px}
+.submitted-assignment-summary .submission-inline-edit{border:0;background:none;color:inherit;font:inherit}
+.student-home-history .student-history-today-status{white-space:nowrap}
+.lms-video>h2{font-size:20px;margin-bottom:16px}
+.lms-video{margin-top:24px}
+html[data-auto-tour] .lms-video>[role=status],html[data-auto-tour] .lms-video>button,html[data-auto-tour] .lms-video>a{display:none}
+html[data-auto-tour]{scrollbar-width:none}
+html[data-auto-tour] ::-webkit-scrollbar{display:none}
+@media(max-width:600px){
+ .full-lesson-main.lesson-ui-v4>.page-heading{display:block}
+ .lesson-preference-stack{margin-top:16px}
+ .app-main.mobile-assignment-page .page-heading{display:block}
+ .app-main.mobile-assignment-page .page-heading>.button{margin-top:12px}
+ .assignment-grid{grid-template-columns:minmax(0,1fr)}
+}
+/* The legacy preview minimum height distorts a 16:9 player on phones. */
+.lms-video .video-shell{min-height:0;aspect-ratio:16/9}

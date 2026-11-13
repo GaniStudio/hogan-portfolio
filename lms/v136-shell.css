@@ -1,0 +1,24 @@
+@font-face{font-family:"XinChao Noto Sans KR";src:url("/hogan-portfolio/lms/NotoSansKR-VF.ttf") format("truetype");font-weight:100 900;font-display:swap}
+body:has(.v136-shell),.v136-shell button,.v136-shell select,.v136-shell textarea,.v136-shell input,.v136-shell .lms-demo-page *{font-family:"XinChao Noto Sans KR","Noto Sans KR","Malgun Gothic",sans-serif}
+body:has(.v136-shell){margin:0;overflow:auto;background:#f3f5f8}
+.v136-shell .lms-demo-page.story-lms{margin:0 auto;padding:32px 24px;max-width:1312px;width:100%;min-height:0}
+.v136-shell .shell-brand img{display:block;width:32px;height:32px;object-fit:contain}
+.v136-shell button:disabled{opacity:1;cursor:default}
+.v136-shell .student-history-sort{position:relative}
+.v136-shell .student-history-sort select{appearance:none;min-width:120px;height:44px;border:1px solid #ced9ee;border-radius:8px;background:white;color:#172033;padding:0 32px 0 12px}
+.v136-shell .student-history-sort>svg{position:absolute;pointer-events:none;right:12px;top:50%;width:14px;transform:translateY(-50%)}
+.v136-shell .v136-menu-toggle{display:none}
+@media(max-width:760px){
+ .v136-shell .v136-menu-toggle{display:inline-flex}
+ .v136-shell .shell-sidebar.v136-sidebar-open{display:block;position:fixed;z-index:100;inset:58px auto 0 0;width:min(270px,85vw);height:auto;overflow:auto;background:white}
+ .v136-shell .student-history-sort select{min-width:0}
+}
+
+body:has(.v136-shell){padding-top:0}
+@media(min-width:1200px) and (min-height:1000px){
+ .v136-shell .shell-sidebar,.v136-shell .shell-sidebar-inner{height:min(945px,100dvh);min-height:0}
+}
+.v136-shell.app-shell-approved.app-shell-v2 .shell-sidebar .shell-nav a.active{background:#ebf1fe}
+html:has(#root[inert] .student-record-home){scrollbar-width:none}
+.v136-shell .student-history-sort select{width:120px;height:44px}
+@media(max-width:760px){.v136-shell .student-history-sort select{width:auto}}

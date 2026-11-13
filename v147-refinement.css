@@ -1,0 +1,34 @@
+/* v147 stationary chrome: no translated rail, neighboring mock panes or stage-name overlays. */
+body :is(.words-scroll-stage,.service-scroll-stage){transform:none!important;translate:none!important;scale:1!important;opacity:1!important;filter:none!important}
+body :is(.words-scroll-stage,.service-scroll-stage) .demo-window{transform:none!important;translate:none!important;scale:1!important;transition:none!important;margin-block:0!important}
+body .v140-stage-rail{transform:none!important;translate:none!important}
+.v140-rail-neighbor,.v140-stage-title{display:none!important}
+.v147-departing-screen{position:absolute;z-index:12;left:0;right:0;top:36px;bottom:0;overflow:hidden;pointer-events:none;background:#fff;contain:paint;isolation:isolate}
+body .site-header{background:#080b14!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+body .service-step-copy{min-height:24px;font-size:13px!important;line-height:24px}
+body :is(.v140-diff,.v141-code-window,.code-workbench){min-width:0;max-width:100%;mask-image:none!important}
+body .v140-diff pre,body #making .v141-code-window pre,body .code-workbench pre{white-space:pre-wrap!important;overflow-wrap:anywhere!important;word-break:break-word;overflow-x:hidden!important;font-size:13px!important}
+body .v140-diff code>span{min-width:0!important;white-space:pre-wrap!important;overflow-wrap:anywhere!important}
+body :is(.v140-commit,.v141-code-window) code{font-size:13px!important}
+body #making .v141-code-window :is(figcaption>code,figcaption>small),body #making .v141-architecture-flow code{font-size:13px!important}
+.v147-token.keyword{color:#ff8fc4}.v147-token.string{color:#a6e3a1}.v147-token.number{color:#f9c77d}.v147-token.literal{color:#c7a5ff}.v147-token.function{color:#82ceff}.v147-token.comment{color:#99acba;font-style:italic}
+@media(min-width:1100px) and (min-height:480px){body :is(.words-scroll-stage,.service-scroll-stage){top:84px!important}}
+@media(min-width:700px) and (max-width:1099px) and (min-height:480px){body :is(.words-scroll-stage,.service-scroll-stage){top:72px!important}}
+@media(max-width:699px){.v147-departing-screen{top:0}body .service-step-copy{font-size:13px!important}body :is(.words-scroll-stage,.service-scroll-stage){top:64px!important}}
+@media(prefers-reduced-motion:reduce){.v147-departing-screen{display:none!important}}
+/* E2: editorial body / lead / supporting roles, source-app iframes remain independent. */
+body main :is(.editorial-story,.v139-results,.v141-vision,.v141-appendix,#ai-workflow,#reading) p{font-size:18px!important;line-height:1.65!important}
+body main :is(.eyebrow,.disclosure,.service-period>span,.db-story-role,.words-feature-state,.reader-quotes cite){font-size:13px!important;line-height:1.65!important}
+body :is(.words-feature-copy,.v140-lms-heading-copy .words-feature-copy)>p:not(.disclosure){font-size:24px!important;line-height:1.5!important}
+@media(max-width:699px){body main :is(.editorial-story,.v139-results,.v141-vision,.v141-appendix,#ai-workflow,#reading) p{font-size:15px!important}body :is(.words-feature-copy,.v140-lms-heading-copy .words-feature-copy)>p:not(.disclosure){font-size:19px!important}}
+/* Remaining E2 source labels and service summaries, three editorial text roles. */
+body #intro .intro-label{font-size:18px!important}
+body #intro .v134-career dt,body #intro .application-track{font-size:13px!important}
+body main p.v139-subtitle{font-size:24px!important;line-height:1.5!important}
+body main :is(.editorial-story,.v139-results,.v141-vision,.v141-appendix,#ai-workflow,#reading) p:is(.eyebrow,.disclosure,.db-story-role){font-size:13px!important}
+@media(max-width:699px){body #intro .intro-label{font-size:13px!important}body main p.v139-subtitle{font-size:19px!important}}
+@media(max-width:699px){body #lms .service-static.linear-service>p{font-size:15px!important;line-height:1.65!important}}
+@media(prefers-reduced-motion:reduce){
+ body #static-gallery .words-scroll-track,body [data-v139-chapter] .service-scroll-track,body .service-scroll-track{height:auto!important;min-height:0!important;padding-bottom:0!important}
+ body :is(.words-scroll-stage,.service-scroll-stage){position:static!important;top:auto!important;min-height:0!important}
+}

@@ -1,0 +1,26 @@
+#intro .hero-declaration dl {display:block;margin-top:18px}
+#intro .hero-declaration dl > div {
+ display:grid;grid-template-columns:160px minmax(0,1fr);gap:16px;align-items:center;
+ min-height:56px;padding:10px 0;border:0;border-top:1px solid #23252a;border-radius:0;background:none
+}
+#intro .hero-declaration dt {font-size:14px;color:#8a8f98}
+#intro .hero-declaration dd {font-size:17px;color:#d0d6e0;margin:0}
+.workflow-intro {width:min(100%,1440px);margin:0 auto;padding:128px clamp(20px,5.3vw,76px) 0}
+.workflow-intro .words-feature-heading {display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,6vw,86px);align-items:start}
+.workflow-intro .words-feature-heading h2 {font-size:clamp(32px,3.34vw,48px);font-weight:500;letter-spacing:-.022em;line-height:1.1;margin:0}
+.workflow-intro .words-feature-copy {padding-top:calc(1em + 12px)}
+#implementation-exhibit {padding-top:44px}
+.workflow-privacy {color:#8a8f98;font-size:15px;margin-top:24px}
+.workflow-privacy h3 {font-size:15px;font-weight:500}
+.workflow-privacy p {margin:0}
+.code-workbench .excerpt-line {display:grid;grid-template-columns:3ch minmax(0,1fr);gap:12px}
+.code-workbench .excerpt-line > :first-child {color:#8a8f98;text-align:right;user-select:none}
+.release-log h3 {font-size:16px;font-weight:500}
+.release-log article > p {font-size:15px;color:#8a8f98}
+.release-log small {font-size:13px;color:#62666d}
+.reader-quote-foot cite {font-style:normal;color:#8a8f98;font-size:14px}
+@media(max-width:720px){
+ .workflow-intro .words-feature-heading {grid-template-columns:1fr;gap:16px}
+ .workflow-intro .words-feature-copy {padding-top:0}
+ #intro .hero-declaration dl > div {grid-template-columns:minmax(100px,1fr) minmax(0,2fr)}
+}

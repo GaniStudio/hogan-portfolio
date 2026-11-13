@@ -1,0 +1,20 @@
+/* v154 common rails and typography retained. These rules target editorial text only. */
+#motivation .editorial-body {display:grid!important;grid-template-columns:1fr 1fr!important;gap:24px 64px!important}
+#motivation .editorial-body>p:first-child {grid-column:1/-1;max-width:900px}
+#motivation .editorial-body>p {margin:0!important}
+#db-decision .editorial-body,#reading .editorial-body {display:grid!important;grid-template-columns:1fr 1fr!important;gap:48px!important}
+#db-decision blockquote,#reading blockquote {margin:20px 0;font-size:22px;line-height:1.7;color:var(--hg-body,#c9ced9)}
+#db-decision .v155-source,#reading .v155-source {font-size:14px;color:#9eabbc}
+#reading {min-height:0!important;padding-block:80px!important}
+#ai-workflow {min-height:0!important;padding-bottom:24px!important}
+#ai-system {padding-top:32px!important}
+#vision.v155-vision {display:block!important;min-height:0!important;padding-block:100px!important}
+#vision.v155-vision .vision-heading {display:block!important;width:100%;max-width:none}
+#vision.v155-vision .v155-goal-lead {max-width:960px;margin:32px 0 48px}
+#vision.v155-vision .v155-goal-lead p {font-size:24px;line-height:1.65}
+#vision.v155-vision .v155-goal-grid {display:grid;grid-template-columns:1fr 1fr;gap:40px 64px}
+#vision.v155-vision article {display:block!important;min-height:0!important;padding:24px 0!important;border-top:1px solid #ffffff22}
+#vision.v155-vision article h3 {margin:0 0 16px!important}
+#vision.v155-vision article p {max-width:none!important;margin:0!important}
+#vision.v155-vision .vision-status {margin-top:32px;font-size:14px;line-height:1.7}
+@media(max-width:699px){#motivation .editorial-body,#db-decision .editorial-body,#reading .editorial-body,#vision.v155-vision .v155-goal-grid{grid-template-columns:1fr!important;gap:24px!important}#vision.v155-vision .v155-goal-lead p{font-size:18px}#db-decision blockquote,#reading blockquote{font-size:18px}#reading,#vision.v155-vision{padding-block:56px!important}}

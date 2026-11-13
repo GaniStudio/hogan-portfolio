@@ -1,0 +1,4 @@
+/* Keep the agent cursor at a pointer-like size; an older later rule enlarged it. */
+@media (min-width: 901px) and (prefers-reduced-motion: no-preference) {
+  .agent-intro-cursor svg { width: 20px; height: auto; }
+}

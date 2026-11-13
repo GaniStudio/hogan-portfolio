@@ -1,0 +1,29 @@
+/* Same document flows and native media queries, with embedded-scroll chrome removed. */
+html[data-auto-tour],html[data-auto-tour] *{scrollbar-width:none}
+/* A scroll-driven tour already interpolates positions in its parent RAF.
+   Native smooth scrolling would chase each target and miss the last line. */
+html[data-auto-tour],html[data-auto-tour] *{scroll-behavior:auto!important}
+html[data-auto-tour] ::-webkit-scrollbar{display:none}
+html:not([data-auto-tour]) ::-webkit-scrollbar{width:6px;height:6px}
+html:not([data-auto-tour]) ::-webkit-scrollbar-thumb{background:#99a2b0;border-radius:3px}
+html:not([data-auto-tour]) ::-webkit-scrollbar-button{display:none}
+html:has(.v136-shell) .shell-sidebar{scrollbar-width:none}
+html:has(.v136-shell) .shell-sidebar-inner{min-height:0}
+@media(max-width:900px){
+ html[data-inline-practice] .mobile-shell{max-width:100%!important;width:100%!important;margin-inline:0!important}
+ html[data-auto-tour][data-inline-practice] .mobile-shell--test .test-screen{box-sizing:border-box;min-height:0!important;height:100dvh!important;grid-template-rows:32px 22px 65px minmax(0,1fr) 42px!important;padding:8px 10px!important;gap:4px!important}
+ html[data-auto-tour][data-inline-practice] .test-screen .card-grid{height:100%!important;min-height:0!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;grid-template-rows:repeat(4,minmax(0,1fr));gap:6px}
+ html[data-auto-tour][data-inline-practice] .test-screen .status-bar{height:42px!important;min-height:0!important}
+ html[data-auto-tour][data-inline-practice] .test-screen .test-heading{margin:0!important;padding:0!important}
+}
+
+@media(max-width:900px){
+ html[data-auto-tour][data-inline-practice] .mobile-shell--test .test-screen{grid-template-rows:32px 22px 106px minmax(0,1fr) 48px!important}
+ html[data-auto-tour][data-inline-practice] .test-screen .test-heading h1{margin-block:5px}
+ html[data-auto-tour][data-inline-practice] .test-screen .status-bar{height:48px!important}
+}
+@media(min-width:761px) and (max-height:720px){
+ .v136-shell.app-shell-approved.app-shell-v2 .shell-nav a{min-height:44px}
+ .v136-shell.app-shell-approved.app-shell-v2 .shell-sidebar-footer{padding-block:6px}
+}
+html .student-home-history .student-history-today-status{white-space:nowrap}

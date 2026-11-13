@@ -1,0 +1,8 @@
+main.story-lms:has(.v135-lms-entry){display:grid;place-items:center;min-height:100dvh;background:#f3f6fa;padding:24px}
+.story-lms .v135-lms-entry{box-sizing:border-box;width:min(100%,460px);padding:clamp(20px,4vw,42px);margin:auto;border:1px solid #dce3eb;border-radius:18px;background:white}
+.v135-lms-entry h1,.v135-lms-entry>p,.v135-lms-entry>img{text-align:center;margin-inline:auto;display:block}
+.v135-lms-entry label{display:block;margin-block:12px}
+.v135-lms-entry input:not([type=checkbox]){display:block;width:100%;box-sizing:border-box}
+.v135-lms-entry button{width:100%;margin-top:14px;min-height:44px}
+body:has(.home-dashboard):has(#root[inert]){overflow:hidden}
+

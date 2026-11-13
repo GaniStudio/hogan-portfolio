@@ -1,0 +1,7 @@
+/* Match the service tours: the page owns wheel and touch input during playback. */
+#static-gallery .words-scroll-stage:not([data-tour-mode="manual"]) iframe.inline-service {
+ pointer-events:none;
+}
+#static-gallery .words-scroll-stage:not([data-tour-mode="manual"]) .demo-window-scroll {
+ visibility:hidden;
+}

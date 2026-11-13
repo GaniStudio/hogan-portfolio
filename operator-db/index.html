@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <title>6개월 밀착과정 학생 통합 DB | 신짜오율쌤</title>
+  <link rel="stylesheet" href="/hogan-portfolio/student-db/assets/styles.css">
+  <link rel="stylesheet" href="/hogan-portfolio/student-db/assets/maintenance.css">
+  <link rel="stylesheet" href="/hogan-portfolio/student-db/assets/company.css">
+  <link rel="stylesheet" href="/hogan-portfolio/student-db/assets/quiet-ui-20260917.css">
+  <link rel="stylesheet" href="/hogan-portfolio/student-db/assets/company-period-20261008.css">
+<link rel="stylesheet" href="/hogan-portfolio/v138-frame.css"><style>html{scrollbar-width:none}html::-webkit-scrollbar{display:none}</style><style>dialog::backdrop{background:#f5f7f8}dialog[open]{position:fixed;inset:0;margin:0;width:100%;max-width:none;height:100dvh;max-height:100dvh;border:0;border-radius:0;background:#f5f7f8;overflow:auto}#dialogBody{overflow:visible;max-height:none}</style></head>
+<body>
+  <header class="app-header">
+    <div class="app-header__inner">
+      <a class="brand" href="#" aria-label="신짜오율쌤 학생 운영 시스템 홈">
+        <img class="brand__mark" src="/hogan-portfolio/student-db/assets/brand-mark.png" alt="">
+        <span class="brand__copy">
+          <strong class="brand__name">신짜오율쌤</strong>
+          <span class="brand__section">6개월 밀착과정 학생 통합 DB</span>
+        </span>
+      </a>
+      <div class="header-actions">
+        <span class="status-chip">하반기 Ver.3 데이터 연결</span>
+        <a class="badge badge--accent" href="#" target="_blank" rel="noopener">xinchaocoyul</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="page-heading">
+      <div>
+        <p class="eyebrow">OPERATIONS DASHBOARD</p>
+        <h1>학생 통합 DB</h1>
+        <p class="page-description">과제 제출, 발음코칭, 글쓰기 첨삭, 전화수업 평가를 개인별로 확인합니다.</p>
+        <nav class="dashboard-source-links" aria-label="학생 DB 연결 자료">
+          <a class="dashboard-source-link" href="#" target="_blank" rel="noopener noreferrer">하반기 원본 운영 시트</a>
+          <a class="dashboard-source-link" href="#" target="_blank" rel="noopener noreferrer">Ver.3 백엔드 시트</a>
+        </nav>
+      </div>
+      <div class="course-progress" aria-label="현재 과정 진행률">
+        <div><div class="course-progress__meta"><span id="progressCourse">기초완성</span><span id="courseProgressPeriod">2026.07.13 ~ 2026.12.18</span></div><div class="progress"><span id="courseProgressBar" style="width:0%"></span></div></div>
+        <div class="course-progress__value" id="courseProgressValue">0%</div>
+      </div>
+    </section>
+
+    <section class="dashboard-toolbar">
+      <div class="segmented" aria-label="과정 선택">
+        <button type="button" data-course="기초완성" aria-pressed="true">기초완성</button>
+        <button type="button" data-course="중고급" aria-pressed="false">중고급</button>
+      </div>
+      <div class="toolbar-filters">
+        <label class="search-field"><span class="sr-only">학생 검색</span><input class="input" id="studentSearch" placeholder="학생 이름 또는 아이디 검색"></label>
+        <select class="select" id="submissionSort" aria-label="과제 제출률 정렬">
+          <option value="high">과제 제출률 높은순</option>
+          <option value="low">과제 제출률 낮은순</option>
+        </select>
+        <select class="select" id="statusFilter" aria-label="관리 상태 선택"><option value="all">전체 상태</option><option value="average">평균</option><option value="attention">주의</option><option value="manage">관리필요</option></select>
+      </div>
+    </section>
+
+    <section class="contact-filter-banner" id="contactFilterBanner" hidden>
+      <div>
+        <strong id="contactFilterTitle">학생 연락 대상</strong>
+        <span id="contactFilterMeta"></span>
+      </div>
+      <a href="#">전체 학생 보기</a>
+    </section>
+
+    <section class="metric-grid" id="metricGrid" aria-label="운영 요약"></section>
+
+    <section class="surface surface--flat" style="margin-top:16px">
+      <div class="surface__header list-surface-header">
+        <div><h2 class="section-title" id="listTitle">기초완성 운영 현황</h2><span class="section-subtitle" id="listSubtitle">이름을 선택하면 상세 운영 정보가 열립니다.</span></div>
+        <div class="list-header-actions">
+          <label class="mobile-teacher-filter">
+            <span class="sr-only">전화수업 선생님 필터</span>
+            <select id="teacherFilterMobile" aria-label="전화수업 선생님 필터">
+              <option value="all">전화수업: 전체</option>
+            </select>
+          </label>
+          <span class="badge" id="listCount">0명</span>
+        </div>
+      </div>
+      <div class="student-table-wrap">
+        <table class="student-table">
+          <colgroup><col style="width:20%"><col style="width:12%"><col style="width:25%"><col style="width:11%"><col style="width:16%"><col style="width:16%"></colgroup>
+          <thead><tr><th>학생</th><th>과정</th><th>과제 제출률</th><th>미제출</th><th>발음코칭</th><th><label class="teacher-column-filter"><span class="sr-only">전화수업 선생님 필터</span><select id="teacherFilterDesktop" aria-label="전화수업 선생님 필터"><option value="all">전화수업</option></select></label></th></tr></thead>
+          <tbody id="studentTableBody"></tbody>
+        </table>
+      </div>
+      <div class="student-cards" id="studentCards"></div>
+      <div class="pagination-note" id="dataNote">2026년 하반기 자료를 기반으로 제작</div>
+    </section>
+  </main>
+
+  <dialog class="student-dialog" id="studentDialog" aria-labelledby="dialogStudentName">
+    <div class="dialog-header">
+      <div><h2 class="dialog-title" id="dialogStudentName">학생 상세</h2><div class="dialog-meta" id="dialogStudentMeta"></div></div>
+      <button class="dialog-close" id="dialogCloseButton" type="button" aria-label="학생 상세 닫기">×</button>
+    </div>
+    <div class="dialog-body" id="dialogBody"></div>
+  </dialog>
+
+  
+  
+  
+  
+  
+  
+<script type="module" src="./adapter.js"></script></body>
+</html>

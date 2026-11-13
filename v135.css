@@ -1,0 +1,29 @@
+html,body{background:#060918}
+#continuous-backdrop.v135-sky{position:fixed;inset:0;overflow:hidden;pointer-events:none;background:linear-gradient(#070a1c,#060918 50%,#04060f);opacity:1}
+.v135-nebula,.v135-stars,.v135-sky-finish{position:absolute;pointer-events:none}
+.v135-stars,.v135-sky-finish{inset:0;width:100%;height:100%}
+.v135-nebula{border-radius:50%;background:radial-gradient(circle,var(--sky-color),transparent 68%);transform:translate(-50%,-50%);transition:opacity .8s}
+@property --sky-color{syntax:'<color>';inherits:false;initial-value:transparent}
+.v135-nebula{transition:--sky-color .8s}
+.v135-nebula:nth-child(1){--sky-color:rgba(88,80,236,.26);width:900px;height:900px;left:72%;top:12%}
+.v135-nebula:nth-child(2){--sky-color:rgba(190,70,160,.13);width:700px;height:700px;left:14%;top:78%}
+.v135-nebula:nth-child(3){--sky-color:rgba(30,120,210,.18);width:800px;height:800px;left:60%;top:88%}
+.v135-sky:is([data-sky="words"],[data-sky="words-story"]) .v135-nebula:nth-child(2){--sky-color:rgba(220,120,70,.12)}
+.v135-sky:is([data-sky="student-db"],[data-sky="db-story"],[data-sky="db-decision"]) .v135-nebula:nth-child(1){--sky-color:rgba(40,170,170,.20)}
+.v135-sky:is([data-sky="lms"],[data-sky="lms-story"]) .v135-nebula:nth-child(2){--sky-color:rgba(210,70,90,.12)}
+.v135-sky-finish{background:radial-gradient(ellipse at center,transparent 38%,rgba(0,0,0,.35) 100%);background-image:radial-gradient(ellipse at center,transparent 38%,rgba(0,0,0,.35) 100%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23000' opacity='.07' filter='url(%23n)' d='M0 0h64v64H0z'/%3E%3C/svg%3E")}
+body::after{content:"";pointer-events:none;position:fixed;z-index:1000;top:0;left:0;height:1px;width:100%;background:#b8bbff;transform:scaleX(var(--v135-progress,0));transform-origin:left}
+[data-scroll-service] iframe,[data-scroll-words] iframe{background:#f6f7fb}
+[data-scroll-service][data-tour-mode="scroll"] iframe,.words-scroll-stage iframe[tabindex="-1"]{pointer-events:none}
+@media(prefers-reduced-motion:reduce){.v135-nebula{transition:none}body::after{display:none}}
+@media print{.v135-stars{display:none}}
+
+#continuous-backdrop.v135-sky > *{filter:none}
+#intro .hero-previews a[href="#lms"] img{object-fit:contain;background:#f2f5fa}
+@media(min-width:900px) and (min-height:760px){.service-scroll-track[data-scroll-service="student-db"]{min-height:calc(100svh + 7000px)}}
+
+@media(prefers-reduced-motion:no-preference){
+ :is(.words-scroll-stage,.service-scroll-stage) .words-feature-steps{position:relative}
+ :is(.words-scroll-stage,.service-scroll-stage) .words-feature-steps::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:#a1acfa;transform:scaleX(var(--stage-progress,0));transform-origin:left;pointer-events:none}
+}
+@media(prefers-reduced-motion:no-preference){:is(.words-scroll-stage,.service-scroll-stage) .demo-window:not(:popover-open){transform:perspective(1800px) rotateX(var(--tour-tilt,0deg));transform-origin:center bottom}}

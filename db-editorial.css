@@ -1,0 +1,47 @@
+/* DB-only treatment. Existing copy and original app UI are retained. */
+#db-story,#student-db,#db-decision{word-break:keep-all;overflow-wrap:break-word}
+#db-story{padding:110px 5.5vw 70px;gap:7vw;background:#0a1318}
+#db-story h2{font-size:clamp(40px,4.1vw,64px);line-height:1.16;letter-spacing:-.045em;max-width:750px}
+#db-story .db-story-copy{max-width:780px}
+#db-story .story-beat{font-size:18px;line-height:1.85;grid-template-columns:100px 1fr;padding:24px 0}
+#db-story .story-beat-label,#db-story .service-period small{font-size:14px}
+#db-story .db-story-visual{align-self:center;padding:30px 0 30px 35px;border-left:1px solid #bfd8d52a}
+#db-story .editorial-process h3{font-size:20px;font-weight:400;margin-bottom:36px}
+#db-story .editorial-process p{font-size:17px;padding:18px 0;border-top:1px solid #bfd8d51f}
+#student-db .service-stage{background:#0a1318;isolation:isolate;overflow:hidden}
+#student-db .project-copy{width:27%;left:5.5vw;max-width:390px;top:19vh}
+#student-db .project-copy h2{font-size:clamp(40px,4vw,60px);line-height:1.15;margin:24px 0 28px}
+#student-db .project-copy .lead{font-size:19px;line-height:1.8;max-width:310px}
+#student-db .project-copy .eyebrow,#student-db .scene-note>span,#student-db .project-copy .disclosure{font-size:14px;line-height:1.7}
+#student-db .scene-note{margin-top:35px;border-top:1px solid #bfd8d530;padding-top:22px;min-height:96px}
+#student-db .service-note{font-size:17px;line-height:1.8;max-width:320px}
+#student-db .app-object{border-radius:14px;overflow:hidden;background:#f5f7f8;box-shadow:0 30px 90px #0007,0 0 0 1px #cbe7df3a}
+#student-db .app-object iframe{background:#f5f7f8;display:block;border:0}
+#student-db .service-space{overflow:hidden}
+#student-db .service-controls{z-index:8}
+#db-decision{background:#0a1318;padding-top:80px;border-top:1px solid #bfd8d525}
+#db-decision .editorial-body{max-width:740px}
+#db-decision .editorial-body p{font-size:18px;line-height:1.9}
+#db-decision .editorial-lessons{gap:26px}
+@media(min-width:901px) and (min-height:701px) and (prefers-reduced-motion:no-preference){#student-db.service-journey:not([data-mode=static]){height:420vh}}
+@media(max-width:900px),(max-height:700px){#db-story{padding:60px 24px;display:block}#db-story .db-story-visual{margin-top:30px;padding-left:20px}#db-story .story-beat{grid-template-columns:1fr}#student-db .project-copy{width:auto;max-width:none}}
+@media(min-width:901px) and (min-height:701px) and (prefers-reduced-motion:no-preference){
+#db-story[data-reading-rail=true]{padding-bottom:30px;min-height:0}
+#student-db[data-reading-rail=true] .project-copy{top:14vh}
+#student-db[data-reading-rail=true] .project-copy>.lead{display:none}
+#student-db .db-reading-rail{display:grid;min-height:290px;margin:25px 0 0}
+#student-db .db-reading-rail .story-beat{grid-area:1/1;margin:0;line-height:1.85;font-size:17px;will-change:opacity,transform}
+#student-db .db-reading-rail .story-beat-label{display:block;font-size:14px;color:#aac9c6;margin-bottom:14px}
+#student-db .db-reading-rail .story-beat-text{color:#d2dfde;display:block}
+#student-db[data-reading-rail=true] .scene-note{margin-top:16px;padding-top:15px;min-height:70px}
+#student-db[data-reading-rail=true] .scene-note>span{display:none}
+#student-db[data-reading-rail=true] .practice{margin-top:10px}
+}
+
+@media(min-width:901px) and (min-height:701px) and (prefers-reduced-motion:no-preference){
+#student-db[data-reading-rail=true] .project-copy{top:12vh}
+#student-db[data-reading-rail=true] .project-copy h2{margin:20px 0}
+#student-db .db-reading-rail{min-height:260px;margin-top:20px}
+#student-db .stage-bottom>.scroll-hint{position:absolute;left:36vw;bottom:0;white-space:nowrap}
+}
+#student-db .stage-bottom>.steps{margin-left:auto}

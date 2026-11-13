@@ -1,0 +1,112 @@
+/* v151 intro: every target gets the same exact four-edge box; small corner marks show where the cursor started. */
+.agent-intro-layer .agent-trace-box{border-radius:0}
+.trace-edge{background:#b6d3dc}
+.agent-intro-cursor[data-phase="hold"]{transition:none}
+
+/* v151 AI 업무 시스템: 문구와 구조는 그대로 두고 표현만 정리 */
+.v149-system{--sys-line:#a9c8d2;--sys-dim:#93a0b5;--sys-amber:#d5be92;--sys-panel:#ffffff0a;--sys-edge:#ffffff1f;padding:120px 0 120px;counter-reset:sys-scene}
+.ai-system-scene{padding:76px 0;border-top:1px solid #ffffff14;counter-increment:sys-scene}
+.ai-system-open{border-top:1px solid #ffffff24}
+.ai-system-scene h3{display:flex;align-items:baseline;gap:16px;font-size:28px;line-height:1.35;font-weight:450;letter-spacing:-.02em;margin:0 0 36px}
+.ai-system-scene h3::before{content:counter(sys-scene,decimal-leading-zero);font-size:13px;letter-spacing:.06em;color:var(--sys-line);font-variant-numeric:tabular-nums;transform:translateY(-4px)}
+.ai-system-open header{align-items:start;gap:64px}
+.ai-system-open h2{font-size:52px;line-height:1.24}
+.ai-system-open header p{color:#cfd6e2}
+
+/* 01 흩어진 창이 업무판으로 모이는 그림 */
+.ai-system-map{height:270px;margin-top:56px;overflow:visible}
+.ai-system-map path{stroke:var(--sys-line);stroke-width:1;opacity:calc(.12 + .5*var(--sys-p,1));vector-effect:non-scaling-stroke}
+.ai-system-name{top:14px;min-width:118px;padding:26px 14px 11px;border:1px solid var(--sys-edge);border-radius:9px;background:#0d1219;font-size:15px;line-height:1.3;color:#e8ecf3;box-shadow:0 10px 30px #00000055}
+.ai-system-name::before{content:'';position:absolute;left:10px;top:9px;width:28px;height:6px;background:radial-gradient(circle at 3px 3px,#ffffff40 2.6px,transparent 3px) 0 0/11px 6px repeat-x}
+.ai-system-name::after{content:'';position:absolute;left:0;right:0;top:20px;height:1px;background:#ffffff12}
+.ai-system-hub{top:188px;padding:17px 34px;border:1px solid #b9cadcb0;border-radius:12px;background:linear-gradient(180deg,#141c27,#0e141c);font-size:21px;box-shadow:0 0 0 6px #a9c8d20d,0 18px 44px #00000066}
+
+/* 02 비교 */
+.ai-system-compare-head{padding-bottom:16px;font-size:13px;letter-spacing:.04em;color:var(--sys-dim)}
+.ai-system-compare-head span:last-child{color:var(--sys-line);padding-left:22px}
+.ai-system-compare-row{align-items:stretch;padding:0;border-top:1px solid #ffffff14}
+.ai-system-compare-row p{padding:20px 0;font-size:19px;line-height:1.6}
+.ai-system-compare-row p:first-child{color:var(--sys-dim)}
+.ai-system-compare-row p:last-child{position:relative;padding-left:22px;color:#f1f4f8}
+.ai-system-compare-row p:last-child::before{content:'';position:absolute;left:0;top:20px;bottom:20px;width:2px;background:var(--sys-line);opacity:.75}
+
+/* 03 흐름 */
+.ai-system-flow-layout{gap:56px}
+.ai-system-flow ol{position:relative}
+.ai-system-flow ol::before{content:'';position:absolute;left:17px;top:34px;bottom:34px;width:1px;background:#ffffff1c}
+.ai-system-flow li{position:relative;gap:22px;min-height:72px;border-top:0;color:var(--sys-dim)}
+.ai-system-flow li>span{position:relative;z-index:1;flex:0 0 35px;height:35px;display:grid;place-items:center;border:1px solid #ffffff2e;border-radius:50%;background:#0b0f15;font-size:12px;letter-spacing:.02em;font-variant-numeric:tabular-nums;color:var(--sys-dim)}
+.ai-system-flow li p{font-size:19px}
+.ai-system-flow li[data-done]{color:#cdd5e1}
+.ai-system-flow li[data-done]>span{border-color:#a9c8d266;color:var(--sys-line)}
+.ai-system-flow li[data-active]{color:#fff}
+.ai-system-flow li[data-active]>span{background:var(--sys-line);border-color:var(--sys-line);color:#0b0f15;font-weight:600}
+.ai-system-flow small,.ai-system-goal>small{display:inline-block;margin-left:12px;padding:2px 9px;border:1px dashed #d5be9280;border-radius:999px;font-size:12px;line-height:1.5;color:var(--sys-amber);vertical-align:middle;white-space:nowrap}
+.ai-system-goal>small{margin-left:0}
+.ai-system-task-lane{border-left:0}
+.ai-system-task-lane::before{content:'';position:absolute;left:0;top:34px;bottom:34px;width:1px;background:linear-gradient(#a9c8d200,#a9c8d255 12%,#a9c8d255 88%,#a9c8d200)}
+.ai-system-task{left:30px;top:0;padding:17px 22px;border:1px solid #b2c7dc8c;border-radius:10px;background:#111822;font-size:18px;box-shadow:0 14px 34px #0000005c}
+.ai-system-task::before{content:'';position:absolute;left:-30px;top:50%;width:30px;height:1px;background:#a9c8d270}
+.ai-system-task::after{content:'';position:absolute;left:-34px;top:calc(50% - 4px);width:8px;height:8px;border-radius:50%;background:var(--sys-line)}
+
+/* 04 확인한 내용 */
+.ai-system-proof ul{gap:0 56px}
+.ai-system-proof li{position:relative;padding:17px 0 17px 38px;font-size:19px}
+.ai-system-proof li::before{content:'';position:absolute;left:2px;top:22px;width:18px;height:18px;border:1px solid #a9c8d280;border-radius:50%}
+.ai-system-proof li::after{content:'';position:absolute;left:8px;top:27px;width:6px;height:9px;border:solid var(--sys-line);border-width:0 1.5px 1.5px 0;transform:rotate(42deg) translate(-1px,-2px)}
+.ai-system-status{display:inline-block;margin-top:30px;padding:10px 16px;border:1px dashed #d5be9266;border-radius:10px;font-size:15px;color:var(--sys-amber)}
+
+/* 05 목표 */
+.ai-system-goal>p:first-of-type{font-size:30px;line-height:1.62;letter-spacing:-.015em;max-width:1080px;color:#f3f5f8}
+.ai-system-future{display:flex;flex-wrap:wrap;align-items:center;gap:10px 0;margin:44px 0 16px;font-size:17px;color:#dfe5ee}
+.ai-system-future span{flex:0 0 38px;height:1px;margin:0 14px;background:var(--sys-line);font-size:0;opacity:.7}
+
+@media(max-width:1099px){
+ .v149-system{padding:88px 0 96px}.ai-system-scene{padding:56px 0}
+ .ai-system-open h2{font-size:42px}.ai-system-open header{gap:26px}
+ .ai-system-scene h3{font-size:25px;margin-bottom:28px}
+ .ai-system-name{min-width:96px;font-size:14px;padding:25px 8px 10px}
+ .ai-system-flow-layout{gap:36px}.ai-system-proof ul{gap:0}
+ .ai-system-goal>p:first-of-type{font-size:25px}
+}
+@media(max-width:699px){
+ .v149-system{padding:56px 0 72px}.ai-system-scene{padding:40px 0}
+ .ai-system-open h2{font-size:31px}.ai-system-scene h3{font-size:22px;gap:12px;margin-bottom:22px}
+ .ai-system-map{height:262px;margin-top:34px}
+ .ai-system-name{min-width:96px;padding:22px 8px 8px;font-size:13px;top:0}.ai-system-name::after{top:17px}.ai-system-name::before{top:7px}
+ .ai-system-hub{top:196px;padding:13px 20px;font-size:17px}
+ .ai-system-compare-row p{padding:15px 0;font-size:16px}.ai-system-compare-row p:last-child{padding-left:14px}.ai-system-compare-row p:last-child::before{top:15px;bottom:15px}
+ .ai-system-compare-head span:last-child{padding-left:14px}
+ .ai-system-flow-layout{grid-template-columns:minmax(0,1fr) 34%;gap:10px}
+ .ai-system-flow li{gap:12px;min-height:88px}.ai-system-flow li p{font-size:16px}
+ .ai-system-flow li>span{flex-basis:30px;height:30px;font-size:11px}.ai-system-flow ol::before{left:14px;top:44px;bottom:44px}
+ .ai-system-flow small{display:table;margin:6px 0 0}
+ .ai-system-task{left:12px;top:0;padding:12px 10px;font-size:14px;max-width:calc(100% - 12px)}.ai-system-task::before{left:-12px;width:12px}.ai-system-task::after{left:-15px;width:6px;height:6px;top:calc(50% - 3px)}
+ .ai-system-task-lane::before{top:44px;bottom:44px}
+ .ai-system-proof li{padding:13px 0 13px 32px;font-size:16px}.ai-system-proof li::before{top:16px;width:16px;height:16px}.ai-system-proof li::after{left:7px;top:20px;width:5px;height:8px}
+ .ai-system-status{font-size:14px;margin-top:22px}
+ .ai-system-goal>p:first-of-type{font-size:20px}
+ .ai-system-future{font-size:15px;margin-top:30px}.ai-system-future span{flex-basis:20px;margin:0 9px}
+}
+
+/* connector lines stay behind the name windows and fade in as the windows settle */
+.ai-system-map svg{z-index:0}.ai-system-name,.ai-system-hub{z-index:1}
+.ai-system-map path{opacity:calc(var(--sys-p,1)*var(--sys-p,1)*.55)}
+
+
+/* v151 흐름 장면 완성본: 여섯 단계를 카드가 따라가며 현재 단계를 보여 준다 */
+.ai-system-flow ol::after{content:'';position:absolute;left:17px;top:34px;width:1px;height:calc((100% - 68px)*var(--flow-p,0));background:var(--sys-line)}
+.ai-system-flow li[data-done]>span{background:#a9c8d21f}
+.ai-system-task{padding-top:13px}
+.ai-system-task-stage{display:table;margin:0 0 9px;padding:2px 10px;border-radius:999px;background:var(--sys-line);color:#0b0f15;font-size:12px;line-height:1.5;font-weight:600;white-space:nowrap}
+@media(max-width:699px){.ai-system-flow ol::after{left:14px;top:44px;height:calc((100% - 88px)*var(--flow-p,0))}.ai-system-task-stage{font-size:11px;padding:1px 8px;margin-bottom:7px}}
+
+.ai-system-flow ol::after{z-index:0}.ai-system-flow li[data-done]>span{background:#16232c}
+
+
+/* User-requested AI names remain visible instead of disappearing below 1100px. */
+.ai-system-map .ai-system-name{display:block!important;white-space:nowrap}
+@media(max-width:699px){.ai-system-map{height:470px}.ai-system-hub{top:390px}}
+
+.ai-system-map:not([data-motion]) .ai-system-name[data-agent]{left:calc((var(--agent-slot) + .5)*100%/6 - 59px)}
+@media(max-width:699px){.ai-system-map:not([data-motion]) .ai-system-name[data-agent]{left:calc(50% - 48px);top:calc(var(--agent-slot)*60px)}}

@@ -1,0 +1,52 @@
+/* v90: keep each case readable as one continuous scroll narrative. */
+#making.implementation-notes{margin:0;padding:52px 5.5vw 100px;background:#131d20;border-top:1px solid #a1b8bc22;scroll-margin-top:80px}
+#ai-workflow>.vision-heading{position:static;grid-column:1;grid-row:1;align-self:start}
+#ai-workflow>.vision-body{grid-column:2;grid-row:1;min-width:0}
+#making.implementation-notes .section-heading{grid-template-columns:.7fr 1fr 1.2fr;gap:4vw;margin-bottom:30px}
+#making.implementation-notes .section-heading h2{font-size:clamp(26px,2.5vw,36px);max-width:none}
+#making.implementation-notes .case-grid{margin:20px 0 42px;gap:30px}
+#making.implementation-notes .implementation-card{min-width:0;border-top:1px solid #a7bdb826;padding-top:16px}
+#making.implementation-notes .implementation-summary{font-size:14px;line-height:1.8;color:#d2dcd8;word-break:keep-all;overflow-wrap:anywhere}
+#making.implementation-notes .implementation-card details{margin-top:18px}
+#making.implementation-notes .implementation-card summary{font-size:12px;letter-spacing:.01em;color:#d4e2df}
+#making.implementation-notes .implementation-card h3,#making.implementation-notes .implementation-api h3{font-size:19px;font-weight:400;line-height:1.5;margin:12px 0}
+#making.implementation-notes .implementation-detail{font-size:13px;line-height:1.8;color:#afbfbc;overflow-wrap:anywhere}
+#making.implementation-notes .implementation-detail p{font-size:13px;line-height:1.8}
+#making.implementation-notes .implementation-api{border-top:1px solid #a7bdb826;padding-top:24px}
+#making.implementation-notes .implementation-api summary{font-size:15px;color:#e4ebe7}
+#making.implementation-notes .api-table{overflow-x:auto}
+#making.implementation-notes .api-table table{min-width:720px}
+#making.implementation-notes .api-table td,#making.implementation-notes .api-table th{padding:12px}
+.story-scope{border-top:1px solid #a7bdb826;margin-top:28px;padding-top:18px;color:#b6c5c2}
+.story-scope h3{font-size:14px;font-weight:400;margin:0 0 10px;color:#e3eae4}
+.story-scope p{font-size:13px;line-height:1.8}
+.service-period{display:grid;gap:4px;margin:18px 0 24px;font-size:12px;line-height:1.7;color:#aebfbc}
+.service-period strong{font-weight:500;color:#e8ece8;font-variant-numeric:tabular-nums}
+.service-period small{font-size:11px;color:#9baaa7}
+#words>.service-period{margin-top:24px}
+@media(max-width:900px){#ai-workflow>.vision-heading,#ai-workflow>.vision-body{grid-column:auto;grid-row:auto}#making.implementation-notes{padding:42px 24px 70px}#making.implementation-notes .section-heading{display:block}#making.implementation-notes .case-grid{grid-template-columns:1fr;gap:28px}#making.implementation-notes .api-table table{min-width:680px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}}
+/* Story sections now sit between the 3D journeys. Keep each in document flow. */
+body[data-mode="3d-dom"] .service-journey:not([data-mode="static"]){margin-top:0}
+body[data-mode="3d-dom"] .service-journey:not([data-mode="static"]):not([data-front="true"]) .service-stage{visibility:visible}
+body[data-mode="3d-dom"] .service-journey:not([data-mode="static"]):not([data-front="true"]){pointer-events:auto}
+body[data-mode="3d-dom"] #db-story + #student-db:not([data-mode="static"]){margin-top:0}
+/* Carry the word scene's cool light into the first DB frame so the chapter edge does not flash flat. */
+#db-story{background:radial-gradient(ellipse 82% 68% at 73% 0%,#233235 0%,transparent 70%),#101a1c}
+#words .stage{background-color:#101a1c}
+body[data-handoff="true"] #words .progress,
+body[data-handoff="true"] #words .scroll-hint{opacity:0;pointer-events:none}
+.db-story-copy>.story-beat{display:grid;grid-template-columns:105px minmax(0,1fr);gap:18px;margin:0;padding:17px 0;border-top:1px solid #b5c8c226;font-size:15px;line-height:1.75;color:#c4d1d0}
+.db-story-copy>.story-beat+.story-beat{margin-top:0}
+.story-beat-label{font-size:11px;letter-spacing:.08em;color:#a9c7c1;white-space:nowrap;padding-top:5px}
+.story-beat-text{display:block}
+@media(max-width:900px){.db-story-copy>.story-beat{grid-template-columns:1fr;gap:3px}.story-beat-label{padding-top:0}}
+@media (min-width:901px) and (min-height:701px) and (prefers-reduced-motion:no-preference){
+  #words.journey{height:300vh}
+  #student-db.service-journey{height:500vh}
+  #lms.service-journey{height:550vh}
+  .service-stage .steps{gap:clamp(12px,1.5vw,24px)}
+}
+
+
+@media(min-width:901px){.project-copy .eyebrow,.project-copy .scene-note span,.project-copy .disclosure{font-size:13px;letter-spacing:.04em;color:#c7d4d1}.project-copy .scene-note span{color:#e3c5b2}}

@@ -1,0 +1,33 @@
+/* v143: native app viewports use the available screen height, never a scale. */
+body :is(.words-scroll-stage,.service-scroll-stage) .demo-window::after,
+body .v140-stage-rail::after{display:none!important}
+body .v140-stage-rail>.demo-window{mask-image:none!important;-webkit-mask-image:none!important}
+.v140-stage-title{position:absolute;z-index:15;inset:0;display:grid;place-items:center;pointer-events:none;color:#fff;font:500 clamp(23px,3.1vw,44px)/1.2 system-ui,sans-serif;letter-spacing:-.035em;text-shadow:0 1px 3px #000,0 3px 18px #000,0 3px 35px #000;isolation:isolate}
+.v140-stage-title[hidden]{display:none}
+@media(min-height:480px) and (prefers-reduced-motion:no-preference){
+ body :is(.service-scroll-stage,.words-scroll-stage){opacity:var(--v143-stage-visibility,1);filter:blur(var(--v143-stage-blur,0px))}
+ body #static-gallery .words-scroll-track{min-height:calc(var(--v136-words-stage-height,100svh) + 3000px)!important}
+ body .service-scroll-track[data-scroll-service="student-db"]{min-height:calc(100svh + 4700px)!important}
+ body .service-scroll-track[data-scroll-service="lms"]{min-height:calc(100svh + 5100px)!important}
+}
+@media(min-width:1100px) and (min-height:480px){
+ body #student-db .service-scroll-stage .demo-window,
+ body #lms .service-scroll-stage .demo-window{height:calc(100svh - 172px)!important;min-height:280px}
+}
+@media(min-width:700px) and (max-width:1099px) and (min-height:480px){
+ body #student-db .service-scroll-stage .demo-window,
+ body #lms .service-scroll-stage .demo-window{height:calc(100svh - 168px)!important;min-height:280px}
+ body .service-scroll-track[data-scroll-service="student-db"]{min-height:calc(100svh + 4200px)!important}
+ body .service-scroll-track[data-scroll-service="lms"]{min-height:calc(100svh + 4700px)!important}
+}
+@media(max-width:699px) and (min-height:480px){
+ body #student-db .service-scroll-stage .demo-window,
+ body #lms .service-scroll-stage .demo-window{height:calc(100svh - 176px)!important;min-height:280px}
+ body .service-scroll-track[data-scroll-service="student-db"]{min-height:calc(100svh + 4700px)!important}
+ body .service-scroll-track[data-scroll-service="lms"]{min-height:calc(100svh + 5100px)!important}
+}
+@media(prefers-reduced-motion:reduce){
+ body .v140-stage-rail{display:block!important;transform:none!important}
+ body :is(.service-scroll-stage,.words-scroll-stage){opacity:1!important;filter:none!important}
+ .v140-stage-title{display:none!important}
+}

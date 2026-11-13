@@ -1,0 +1,20 @@
+/* Preserve v143 typography; shorten only the empty introduction space. */
+body #intro.person-intro{min-height:calc(82svh - 64px)!important;padding-bottom:28px!important}
+body #intro .v144-operating-summary{font-size:13px!important;line-height:1.65!important;color:#aeb8c6!important;margin:14px 0 0!important;max-width:none!important;text-wrap:pretty}
+body #lms>.service-static.linear-service>p{font-size:18px!important;line-height:1.65!important}
+.video-parking{position:fixed;left:-20000px;top:0;width:960px;height:540px;visibility:hidden;pointer-events:none;overflow:hidden}
+@media(min-width:700px) and (max-width:1099px){
+ body #intro.person-intro{min-height:calc(90svh - 54px)!important;padding-top:112px!important;padding-bottom:24px!important}
+ body #intro .v134-career .application-track{margin-top:28px!important}
+}
+@media(max-width:699px){
+ body #intro.person-intro{min-height:0!important;padding-top:90px!important;padding-bottom:16px!important}
+ body #intro .v134-intro-top{gap:20px!important}
+ body #intro .intro-copy #intro-title{margin:20px 0!important}
+ body #intro .intro-next{margin-top:20px!important}
+ body #intro .v134-career h2{margin-bottom:16px!important}
+ body #intro .v134-career dl>div{min-height:48px!important}
+ body #intro .v134-career .application-track{margin-top:20px!important}
+ body #intro .v144-operating-summary{font-size:13px!important;margin-top:10px!important}
+ body #services-overview h2{margin-bottom:16px!important}
+}

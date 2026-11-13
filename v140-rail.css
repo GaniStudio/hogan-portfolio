@@ -1,0 +1,40 @@
+/* The original live frame keeps its existing width/device viewport. */
+.v140-stage-rail{position:relative;isolation:isolate;width:100%;min-width:0;overflow:visible}
+.v140-stage-rail > .demo-window{position:relative;z-index:2;width:100%}
+body [data-v139-chapter] .v140-stage-rail > .demo-window{border-color:transparent;box-shadow:none}
+.v140-stage-rail::before{content:"";position:absolute;z-index:4;pointer-events:none;top:-75px;left:-70px;width:200px;height:200px;background:radial-gradient(circle,#ffffff14,transparent 70%)}
+.v140-stage-rail::after{content:"";position:absolute;z-index:3;pointer-events:none;inset:0;mask-image:linear-gradient(transparent,black);background:linear-gradient(transparent 65%,#06091899);border-radius:inherit}
+.v140-rail-neighbor{position:absolute;top:0;bottom:0;width:100%;z-index:0;overflow:hidden;opacity:.3;pointer-events:none;background:#060918}
+.v140-rail-neighbor::after{content:"";position:absolute;inset:0;pointer-events:none;background:#06091855}
+.v140-rail-previous{right:calc(100% + 32px);mask-image:linear-gradient(to right,transparent 60%,#000 100%)}
+.v140-rail-next{left:calc(100% + 32px);mask-image:linear-gradient(to left,transparent 60%,#000 100%)}
+/* Prevent a decorative side copy from becoming page-wide horizontal overflow. */
+body:has(.v140-stage-rail){overflow-x:clip}
+/* Clip the decorated rail's own scrollable overflow, rather than only body.
+   The gutter margin preserves the visible side slivers up to the viewport.
+   overflow:clip does not create a scroll container, so stage stickiness stays. */
+body [data-v139-chapter] .service-scroll-track{overflow-x:clip!important;overflow-y:visible!important;width:calc(100% + var(--v139-gutter) + var(--v139-gutter))!important;max-width:none!important;margin-inline:calc(0px - var(--v139-gutter))!important;padding-inline:var(--v139-gutter)!important;box-sizing:border-box}
+@media(min-width:1100px){
+ .v140-stage-rail{width:100%}
+ .v140-stage-rail > .demo-window{mask-image:linear-gradient(to bottom,transparent 0,#000 var(--v140-top-edge,0px),#000 calc(100% - var(--v140-bottom-edge,90px)),#000b3 calc(100% - 30px),#0008 100%)}
+}
+@media(min-width:700px) and (max-width:1099px){
+ .v140-rail-neighbor{display:none}
+ 
+}
+@media(max-width:699px){
+ .v140-rail-neighbor{display:none}
+ 
+ 
+ 
+ .v140-stage-rail::before{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+ .v140-stage-rail,
+ .v140-stage-rail::before{display:none}
+}
+
+/* DB transitions vertically; no sideways decorative copies. */
+[data-scroll-service="student-db"] .v140-rail-neighbor{display:none!important}
+
+.v140-rail-neighbor[hidden]{display:none}

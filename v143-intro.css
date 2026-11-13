@@ -1,0 +1,49 @@
+/* v143: one introduction and one cursor lifecycle, with preview frames at the fold. */
+body #intro.person-intro{min-height:calc(100svh - 132px)!important;height:auto!important;padding-bottom:36px!important}
+body #intro .intro-label{font-size:19px!important;line-height:1.65!important}
+body #intro #intro-title{font-size:clamp(72px,6vw,88px)!important;font-weight:300!important;letter-spacing:-.065em!important}
+body #intro #intro-title small{font-size:22px!important;letter-spacing:-.02em!important}
+body #intro .intro-copy h2{font-size:27px!important;line-height:1.65!important;font-weight:400!important}
+body #intro .intro-experience h2{font-size:16px!important;line-height:1.5!important}
+body #intro .v134-career dt,body #intro .application-track{font-size:14.5px!important;line-height:1.65!important}
+body #intro .v134-career dd{font-size:18.5px!important;line-height:1.65!important}
+body #intro .intro-next{font-size:16px!important;line-height:1.5!important;padding:13px 22px!important;border:1px solid #c4d0e04d!important;border-radius:999px!important;text-decoration:none!important;min-height:48px;display:inline-flex!important;align-items:center;gap:18px}
+body .v141-service-bridge{padding-top:8px!important;padding-bottom:76px!important}
+body .v141-service-bridge h2{font-size:28px!important;line-height:1.2!important;letter-spacing:-.035em!important;margin:0 0 22px!important;font-weight:400!important}
+.agent-intro-cursor svg{width:20px!important;height:auto!important}
+.agent-typed-word{opacity:1}
+@media(min-width:1100px){
+body #intro .v134-intro-top{grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr)!important;gap:clamp(44px,4.5vw,72px)!important}
+body #intro .v134-career dl>div{grid-template-columns:130px minmax(0,1fr)!important;gap:18px!important;min-height:86px!important}
+body #intro .v134-career dd{white-space:nowrap}
+body #intro.person-intro{padding-top:clamp(130px,15vh,160px)!important}
+body #intro .intro-copy #intro-title{margin:36px 0 48px!important}
+body #intro .intro-next{margin-top:54px!important}
+}
+@media(min-width:700px) and (max-width:1099px){
+body #intro.person-intro{min-height:calc(100svh - 156px)!important;padding-top:125px!important;padding-bottom:40px!important}
+body #intro .v134-intro-top{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:28px!important}
+body #intro #intro-title{font-size:66px!important}
+body #intro .intro-label{font-size:16px!important}
+body #intro .intro-copy h2{font-size:23px!important}
+body #intro .v134-career dd{font-size:16px!important}
+body #intro .v134-career dt,body #intro .application-track{font-size:14px!important}
+body #intro .v134-career dl>div{grid-template-columns:85px minmax(0,1fr)!important;gap:12px!important}
+body .v141-service-bridge h2{font-size:26px!important}
+}
+@media(max-width:699px){
+body #intro.person-intro{min-height:0!important;padding-top:116px!important;padding-bottom:40px!important}
+body #intro .v134-intro-top{grid-template-columns:minmax(0,1fr)!important;gap:40px!important}
+body #intro .intro-label{font-size:14px!important}
+body #intro #intro-title{font-size:64px!important}
+body #intro #intro-title small{font-size:18px!important}
+body #intro .intro-copy h2{font-size:23px!important}
+body #intro .intro-copy #intro-title{margin:28px 0!important}
+body #intro .intro-next{font-size:14px!important;margin-top:28px!important;padding:11px 18px!important}
+body #intro .v134-career dd{font-size:15px!important}
+body #intro .v134-career dt,body #intro .application-track{font-size:13px!important}
+body #intro .v134-career dl>div{grid-template-columns:78px minmax(0,1fr)!important;gap:12px!important}
+body .v141-service-bridge{padding-top:8px!important;padding-bottom:56px!important}
+body .v141-service-bridge h2{font-size:23px!important;margin-bottom:22px!important}
+}
+@media(prefers-reduced-motion:reduce){.agent-typed-word{opacity:1!important}.agent-intro-layer{display:none!important}}

@@ -1,0 +1,49 @@
+.company-period { grid-column: 1 / -1; min-width: 0; }
+.company-period__heading, .company-period__comparison-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.company-period__heading h3 { margin: 0; }
+.company-period__heading > span { font-size: 11px; color: var(--muted); text-align: right; }
+.company-period__basis, .company-period__status { color: var(--muted); font-size: 12px; line-height: 1.7; margin: 8px 0 18px; }
+.company-period__form { display: grid; grid-template-columns: 90px minmax(0, 1fr) minmax(0, 1fr) 92px; gap: 12px; align-items: end; }
+.company-period__form label { display: grid; min-width: 0; gap: 7px; font-size: 12px; font-weight: 600; }
+.company-period__form input, .company-period__form select, .company-period__form button { width: 100%; min-width: 0; height: 46px; box-sizing: border-box; }
+.company-period__form input { padding: 0 10px; font-size: 13px; }
+.company-period__form select { padding-left: 10px; padding-right: 32px; font-size: 13px; }
+.company-period__form input::-webkit-date-and-time-value { text-align: left; }
+.company-period__error { grid-column: 1 / -1; color: var(--accent); font-size: 12px; line-height: 1.6; margin: 8px 0; }
+.company-period [hidden] { display: none !important; }
+.company-period__shortcuts { display: flex; flex-wrap: wrap; gap: 0 8px; border-bottom: 1px solid var(--line); margin: 14px 0 22px; }
+.company-period__shortcuts button { position: relative; color: var(--muted); background: transparent; min-height: 44px; padding: 8px; font-size: 12px; cursor: pointer; }
+.company-period__shortcuts button[aria-pressed="true"] { color: var(--accent); font-weight: 700; }
+.company-period__shortcuts button[aria-pressed="true"]::after { content: ""; position: absolute; bottom: -1px; right: 8px; left: 8px; height: 2px; background: var(--accent); }
+.company-period__layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, .85fr); gap: 24px; }
+.company-period__result, .company-period__comparison { min-width: 0; }
+.company-period__result > p { font-size: 12px; color: var(--muted); line-height: 1.7; overflow-wrap: anywhere; margin: 0 0 10px; }
+.company-period__rate { display: block; font-size: 38px; line-height: 1.3; margin-bottom: 8px; }
+.company-period__rate.is-text { font-size: 22px; }
+.company-period__result dl { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; margin: 18px 0 10px; }
+.company-period__result dl > div { display: flex; gap: 8px; justify-content: space-between; padding: 10px 0; border-top: 1px solid var(--line); min-width: 0; }
+.company-period__result dt { color: var(--muted); font-size: 12px; }
+.company-period__result dd { margin: 0; font-size: 13px; font-weight: 600; white-space: nowrap; }
+.company-period__coverage { margin: 0 0 18px; font-size: 13px; line-height: 1.7; font-weight: 600; color: var(--ink); overflow-wrap: anywhere; }
+.company-period__comparison-heading { margin-bottom: 12px; }
+.company-period__comparison-heading h4 { font-size: 13px; margin: 0; }
+.company-period__comparison-heading span { font-size: 11px; color: var(--muted); }
+.company-period__month, .company-period__month-head { display: grid; grid-template-columns: .7fr 1fr 1fr; gap: 8px; align-items: center; width: 100%; box-sizing: border-box; text-align: left; }
+.company-period__month { padding: 13px 8px; min-height: 44px; background: transparent; border-top: 1px solid var(--line); cursor: pointer; font-size: 12px; color: var(--ink); }
+.company-period__month-head { padding: 0 8px 10px; font-size: 10px; color: var(--muted); }
+.company-period__month > :nth-child(2), .company-period__month-head > :nth-child(2) { text-align: center; color: var(--muted); }
+.company-period__month > :last-child, .company-period__month-head > :last-child { text-align: right; }
+.company-period__month[aria-pressed="true"], .company-period__month:hover { background: var(--surface-2); }
+.company-period button:focus-visible, .company-period input:focus-visible, .company-period select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.company-period__footer { display: flex; justify-content: flex-end; margin-top: 16px; }
+.company-period__footer .button { min-height: 44px; }
+@media (max-width: 680px) {
+  .company-period__heading { align-items: flex-start; flex-direction: column; gap: 4px; }
+  .company-period__heading > span { text-align: left; }
+  .company-period__form { grid-template-columns: 1fr 1fr; gap: 12px 10px; }
+  .company-period__form > label:first-child { grid-column: 1 / -1; }
+  .company-period__form > button { grid-column: 1 / -1; }
+  .company-period__layout { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .company-period__shortcuts { gap: 0 4px; }
+  .company-period__shortcuts button { min-width: 40px; }
+}

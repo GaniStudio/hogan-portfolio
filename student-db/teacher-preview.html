@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <title>Nhập đánh giá giáo viên - Lớp trung cao cấp | 신짜오율쌤</title>
+  <link rel="stylesheet" href="/hogan-portfolio/student-db/assets/styles.css">
+  <link rel="stylesheet" href="/hogan-portfolio/student-db/assets/maintenance.css">
+  <link rel="stylesheet" href="/hogan-portfolio/student-db/assets/teacher.css">
+  <link rel="stylesheet" href="/hogan-portfolio/student-db/assets/quiet-ui-20260917.css">
+<link rel="stylesheet" href="/hogan-portfolio/v138-frame.css"><style>html{scrollbar-width:none}html::-webkit-scrollbar{display:none}</style></head>
+<body data-course="중고급">
+  <header class="app-header">
+    <div class="app-header__inner">
+      <a class="brand" href="#" aria-label="신짜오율쌤 학생 운영 시스템 홈">
+        <img class="brand__mark" src="/hogan-portfolio/student-db/assets/brand-mark.png" alt="">
+        <span class="brand__copy">
+          <strong class="brand__name">신짜오율쌤</strong>
+          <span class="brand__section">Nhập đánh giá giáo viên · 선생님 평가 입력</span>
+        </span>
+      </a>
+      <div class="header-actions">
+        <span class="badge badge--dark">Lớp trung cao cấp · 중고급</span>
+        <span class="status-chip">Đồng bộ hệ thống · 시스템 연동</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="page-heading">
+      <div>
+        <p class="eyebrow">TEACHER EVALUATION</p>
+        <h1>Nhập đánh giá của giáo viên</h1>
+        <p class="page-heading__ko">선생님 평가 입력 (피드백)</p>
+        <p class="page-description">Vui lòng nhập thông tin sau mỗi buổi học. <span class="muted">전화수업이 끝난 뒤 출석, 점수, 피드백을 입력해주세요.</span></p>
+      </div>
+      <span class="badge badge--success">Hệ thống đánh giá · 평가 시스템</span>
+    </section>
+
+    <section class="surface draft-manager" id="draftManager" aria-labelledby="draftManagerTitle">
+      <div class="surface__header draft-manager__header">
+        <div>
+          <h2 class="section-title" id="draftManagerTitle">Bản nháp trên thiết bị</h2>
+          <span class="section-subtitle">이 기기 임시저장 · 14일 보관</span>
+        </div>
+        <span class="draft-save-status" id="draftSaveStatus">Chưa có bản nháp · 임시저장 없음</span>
+      </div>
+      <div class="surface__body draft-manager__body">
+        <p class="draft-manager__guide">Chọn giáo viên để xem bản nháp đã lưu trên trình duyệt này. · 선생님을 선택하면 이 브라우저에 저장된 임시저장 목록이 표시됩니다.</p>
+        <div class="draft-list" id="draftList"><div class="draft-list__empty">Chọn giáo viên trước · 선생님을 먼저 선택해주세요.</div></div>
+      </div>
+    </section>
+
+    <form id="teacherForm" novalidate>
+      <div class="teacher-layout">
+        <div class="form-stack">
+          <section class="form-section">
+            <div class="form-section__header">
+              <div class="form-section__title-wrap"><span class="form-section__number">1</span><div><h2 class="form-section__title">Thông tin buổi học</h2><span class="form-section__ko">수업 정보</span></div></div>
+            </div>
+            <div class="form-section__body field-grid">
+              <div class="field">
+                <label for="teacherName">Tên giáo viên <small>선생님 이름</small></label>
+                <select class="select" id="teacherName" name="teacherName" required><option value="">Chọn giáo viên</option></select>
+              </div>
+              <div class="field">
+                <label for="studentName">Học viên <small>학생</small></label>
+                <select class="select" id="studentName" name="studentName" required><option value="">Chọn học viên</option></select>
+              </div>
+              <div class="field">
+                <label for="lessonWeek">Tuần học <small>수업 주차</small></label>
+                <select class="select" id="lessonWeek" name="lessonWeek" required><option value="">Chọn tuần</option></select>
+              </div>
+              <div class="field">
+                <label for="lessonDate">Ngày học <small>수업일</small></label>
+                <input class="input" id="lessonDate" name="lessonDate" type="date" required>
+              </div>
+              <div class="field field--full">
+                <span class="field-label">Điểm danh học viên <small>학생 출석 여부</small></span>
+                <div class="attendance-options">
+                  <div class="attendance-option"><input id="present" type="radio" name="attendance" value="Có mặt" checked><label for="present"><strong>Có mặt</strong><span>출석</span></label></div>
+                  <div class="attendance-option"><input id="absentNotice" type="radio" name="attendance" value="Vắng có phép"><label for="absentNotice"><strong>Vắng có phép</strong><span>1시간 전 사전 연락</span></label></div>
+                  <div class="attendance-option"><input id="absentNoNotice" type="radio" name="attendance" value="Vắng không phép"><label for="absentNoNotice"><strong>Vắng không phép</strong><span>1시간 이내·이후 연락</span></label></div>
+                </div>
+              </div>
+            </div>
+            <div class="evaluation-edit-banner" id="evaluationEditBanner" hidden>
+              <div><strong>Đang chỉnh sửa phản hồi</strong><span id="evaluationEditLabel">평가 수정 중</span></div>
+              <button class="button button--secondary" type="button" id="cancelEvaluationEdit">Hủy chỉnh sửa · 수정 취소</button>
+            </div>
+            <details class="teacher-evaluation-history" id="teacherEvaluationHistory" hidden>
+              <summary class="teacher-evaluation-history__header">
+                <div><h3>Phản hồi đã viết</h3><span>작성한 전화수업 피드백</span></div>
+                <span class="teacher-evaluation-history__count" id="teacherEvaluationCount">0</span>
+              </summary>
+              <div class="teacher-evaluation-history__list" id="teacherEvaluationList"></div>
+            </details>
+          </section>
+
+          <section class="form-section">
+            <div class="form-section__header">
+              <div class="form-section__title-wrap"><span class="form-section__number">2</span><div><h2 class="form-section__title">Ảnh xác nhận buổi học</h2><span class="form-section__ko">수업 증빙 캡처</span></div></div>
+            </div>
+            <div class="form-section__body">
+              <label class="upload-zone" id="uploadZone" for="evidenceFile">
+                <input id="evidenceFile" type="file" accept="image/png,image/jpeg,image/webp">
+                <strong>Chọn hoặc kéo ảnh vào đây</strong>
+                <span>Ảnh cần hiển thị thời gian để xác nhận buổi học hoặc thời điểm báo vắng.</span>
+              </label>
+              <div class="upload-preview" id="uploadPreview" hidden><img id="previewImage" alt="Ảnh xác nhận"><div><div class="upload-preview__name" id="previewName"></div><div class="helper">Ảnh sẽ được tải lên sau khi đánh giá được lưu. · 평가 저장 후 사진이 업로드됩니다.</div></div></div>
+            </div>
+          </section>
+
+          <section class="form-section">
+            <div class="form-section__header">
+              <div class="form-section__title-wrap"><span class="form-section__number">3</span><div><h2 class="form-section__title">Nhập điểm</h2><span class="form-section__ko">점수 입력 · 각 항목 10점</span></div></div>
+            </div>
+            <div class="form-section__body">
+              <div class="score-list" id="scoreList"></div>
+            </div>
+          </section>
+
+          <section class="form-section">
+            <div class="form-section__header">
+              <div class="form-section__title-wrap"><span class="form-section__number">4</span><div><h2 class="form-section__title">Phản hồi</h2><span class="form-section__ko">피드백</span></div></div>
+            </div>
+            <div class="form-section__body field-grid">
+              <div class="field"><label for="goodFeedback"><span class="feedback-title">Điểm học viên làm tốt <span class="feedback-length-marker" aria-hidden="true"></span></span><small>잘한 점</small></label><textarea class="textarea" id="goodFeedback" placeholder="Nhập điểm học viên đã làm tốt"></textarea></div>
+              <div class="field"><label for="improveFeedback"><span class="feedback-title">Điểm cần cải thiện <span class="feedback-length-marker" aria-hidden="true"></span></span><small>개선할 점</small></label><textarea class="textarea" id="improveFeedback" placeholder="Nhập nội dung cần luyện tập thêm"></textarea></div>
+              <div class="field field--full">
+                <label>Ghi chú sửa lỗi phát âm / cách diễn đạt <small>발음·표현 교정 · 선택 입력</small></label>
+                <p class="helper" style="margin-bottom:10px">Không bắt buộc. Nếu có nội dung cần sửa, nhập phần nói sai ở bên trái và cách nói đúng ở bên phải.</p>
+                <div class="correction-list" id="correctionList"></div>
+                <button class="button button--secondary" type="button" id="addCorrectionButton" style="margin-top:10px">Thêm nội dung sửa lỗi</button>
+              </div>
+              <div class="field field--full"><label for="companyIssue">Ghi chú cho công ty <small>학생 이슈 · 회사 내부용</small></label><textarea class="textarea" id="companyIssue" placeholder="Chỉ nhập khi có vấn đề cần công ty xác nhận"></textarea><p class="helper">Nội dung này không hiển thị cho học viên. 학생 화면에는 표시되지 않습니다.</p></div>
+            </div>
+          </section>
+        </div>
+
+        <aside class="surface summary-panel">
+          <div class="surface__header"><div><h2 class="section-title">Kết quả đánh giá</h2><span class="section-subtitle">평가 결과</span></div><span class="badge badge--accent" id="summaryLevel">Chưa đánh giá</span></div>
+          <div class="surface__body">
+            <div class="summary-total"><strong id="summaryTotal">0</strong><span>/100</span></div>
+            <div class="summary-meta">
+              <div><span>Học viên</span><strong id="summaryStudent">Chưa chọn</strong></div>
+              <div><span>Tuần học</span><strong id="summaryWeek">Chưa chọn</strong></div>
+              <div><span>Điểm danh</span><strong id="summaryAttendance">Có mặt</strong></div>
+            </div>
+            <div class="summary-copy" id="summaryCopy">Chọn học viên và nhập điểm để xem kết quả.</div>
+            <div class="summary-actions">
+              <button class="button button--secondary button--block" type="button" data-draft-save>Lưu tạm · 임시저장</button>
+              <button class="button button--accent button--block" type="submit">Hoàn tất · 완료</button>
+            </div>
+          </div>
+        </aside>
+      </div>
+      <div class="mobile-complete-bar"><div class="mobile-complete-bar__actions"><button class="button button--secondary button--block" type="button" data-draft-save>Lưu tạm · 임시저장</button><button class="button button--accent button--block" type="submit">Hoàn tất · 완료</button></div></div>
+    </form>
+  </main>
+  <dialog class="teacher-evaluation-dialog" id="teacherEvaluationDialog" aria-labelledby="teacherEvaluationDialogTitle">
+    <div class="teacher-evaluation-dialog__panel">
+      <header class="teacher-evaluation-dialog__header">
+        <div><span class="eyebrow">FEEDBACK DETAIL</span><h2 id="teacherEvaluationDialogTitle">Chi tiết phản hồi</h2><p id="teacherEvaluationDialogMeta"></p></div>
+        <button class="teacher-evaluation-dialog__close" type="button" id="closeTeacherEvaluationDialog" aria-label="상세 팝업 닫기">×</button>
+      </header>
+      <div class="teacher-evaluation-dialog__body" id="teacherEvaluationDialogBody"></div>
+      <footer class="teacher-evaluation-dialog__footer">
+        <button class="button button--danger" type="button" id="deleteTeacherEvaluation">Xóa · 삭제</button>
+        <button class="button button--secondary" type="button" id="editTeacherEvaluation">Chỉnh sửa · 수정</button>
+        <button class="button button--accent" type="button" id="dismissTeacherEvaluationDialog">Đóng · 닫기</button>
+      </footer>
+    </div>
+  </dialog>
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/hogan-portfolio/student-db/assets/teacher-outbox.css">
+  
+  
+  
+  
+<script type="module" src="./teacher-adapter.mjs"></script></body>
+</html>

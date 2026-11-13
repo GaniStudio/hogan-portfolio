@@ -1,0 +1,968 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <title>과제 제출률 및 전화수업 피드백/평가 | 신짜오율쌤</title>
+  <link rel="stylesheet" href="/hogan-portfolio/student-db/assets/styles.css">
+  <link rel="stylesheet" href="/hogan-portfolio/student-db/assets/maintenance.css">
+  <style>
+    .lookup {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .lookup-form {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: end;
+    }
+
+    .lookup-form > .button {
+      width: 132px;
+      min-width: 132px;
+      height: 46px;
+      padding-inline: 14px;
+      justify-content: center;
+      white-space: nowrap;
+    }
+
+    .privacy-note {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 16px 0 0;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .privacy-dot {
+      width: 7px;
+      height: 7px;
+      flex: 0 0 auto;
+      margin-top: 6px;
+      border-radius: 50%;
+      background: var(--success);
+    }
+
+    .student-dashboard[hidden],
+    .lookup[hidden] {
+      display: none;
+    }
+
+    .student-identity {
+      display: grid;
+      grid-template-columns:minmax(0, 1fr) auto;
+      gap: 22px;
+      align-items: center;
+      padding: 22px 24px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    .student-account-label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .student-identity h1 {
+      margin-bottom: 4px;
+      font-size: 26px;
+    }
+
+    .identity-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .identity-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .task-overview {
+      margin-top: 18px;
+    }
+
+    .task-overview__body {
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr);
+      gap: 30px;
+      align-items: center;
+    }
+
+    .task-rate {
+      display: flex;
+      align-items: baseline;
+      gap: 5px;
+    }
+
+    .task-rate strong {
+      font-size: 58px;
+      line-height: 1;
+    }
+
+    .task-rate span {
+      color: var(--muted);
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .task-rate__label {
+      display: block;
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .task-progress {
+      height: 9px;
+      margin-bottom: 18px;
+      overflow: hidden;
+      background: var(--surface-2);
+    }
+
+    .task-progress span {
+      display: block;
+      height: 100%;
+      background: var(--ink);
+    }
+
+    .task-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .task-stat {
+      padding: 14px 16px;
+    }
+
+    .task-stat + .task-stat {
+      border-left: 1px solid var(--line);
+    }
+
+    .task-stat span {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .task-stat strong {
+      display: block;
+      margin-top: 5px;
+      font-size: 17px;
+    }
+
+    .missing-overview {
+      margin-top: 18px;
+    }
+
+    .missing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .missing-card {
+      min-height: 82px;
+      padding: 15px 16px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    .missing-card__head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .missing-card__lesson {
+      font-size: 13px;
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+
+    .missing-card__count {
+      flex: 0 0 auto;
+      color: var(--accent-dark);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .missing-card__note {
+      display: inline-block;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .missing-card__tasks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 12px;
+      margin: 12px 0 0;
+      padding: 10px 0 0;
+      border-top: 1px solid var(--line);
+      color: var(--ink-2);
+      font-size: 11px;
+      list-style: none;
+    }
+
+    .missing-card__tasks li {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      min-height: 34px;
+      padding-right: 132px;
+      overflow-wrap: anywhere;
+    }
+
+    .late-submit-open {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      min-height: 32px;
+      padding: 0 10px;
+      border: 1px solid var(--line-strong);
+      background: var(--surface);
+      color: var(--ink);
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 700;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-50%);
+      visibility: hidden;
+      white-space: nowrap;
+    }
+
+    .missing-card__tasks li:hover .late-submit-open,
+    .missing-card__tasks li:focus-within .late-submit-open,
+    .missing-card__tasks li.is-late-action-open .late-submit-open,
+    .missing-card__tasks li.is-late-request-pending .late-submit-open {
+      opacity: 1;
+      pointer-events: auto;
+      visibility: visible;
+    }
+
+    .missing-card__tasks li:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 2px;
+    }
+
+    .late-submit-open:disabled {
+      color: var(--muted);
+      cursor: default;
+    }
+
+    .late-submit-modal[hidden] { display: none; }
+
+    .late-submit-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1200;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background: rgba(0, 0, 0, 0.48);
+    }
+
+    .late-submit-dialog {
+      width: min(520px, 100%);
+      border: 1px solid var(--line-strong);
+      background: var(--surface);
+    }
+
+    .late-submit-dialog__header,
+    .late-submit-dialog__body,
+    .late-submit-dialog__footer {
+      padding: 20px 22px;
+    }
+
+    .late-submit-dialog__header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .late-submit-dialog__header h2 { margin: 0; font-size: 18px; }
+    .late-submit-dialog__body p { margin: 0; color: var(--ink-2); font-size: 13px; line-height: 1.75; }
+    .late-submit-guidance p + p { margin-top: 18px; }
+    .late-submit-guidance ol { margin: 18px 0; padding-left: 22px; color: var(--ink-2); font-size: 13px; line-height: 1.75; }
+    .late-submit-guidance li { padding-left: 5px; }
+    .late-submit-guidance li + li { margin-top: 10px; }
+    .late-submit-target { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 12px; }
+    .late-submit-target strong { display: block; margin-top: 5px; }
+    .late-submit-message { min-height: 20px; margin-top: 12px; color: var(--accent-dark); font-size: 12px; font-weight: 700; }
+    .late-submit-dialog__footer { display: flex; justify-content: flex-end; gap: 8px; border-top: 1px solid var(--line); }
+    #lateSubmitModal .late-submit-dialog { width: min(760px, 100%); }
+    #lateSubmitModal .late-submit-dialog__header h2 { font-size: 22px; }
+    #lateSubmitModal .late-submit-dialog__body { padding-top: 24px; padding-bottom: 24px; }
+    #lateSubmitModal .late-submit-guidance p,
+    #lateSubmitModal .late-submit-guidance ol { font-size: 15px; line-height: 1.8; }
+    #lateSubmitModal .late-submit-dialog__footer .button { min-height: 48px; font-size: 15px; }
+
+    .support-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .support-list {
+      margin: 0;
+    }
+
+    .support-list > div {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 16px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .support-list > div:first-child {
+      padding-top: 0;
+    }
+
+    .support-list > div:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .support-list dt {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .support-list dd {
+      margin: 0;
+      font-size: 13px;
+      font-weight: 700;
+      text-align: right;
+    }
+
+    .evaluation-empty {
+      margin-top: 22px;
+    }
+
+    .latest-layout {
+      display: grid;
+      grid-template-columns: 310px minmax(0, 1fr);
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .score-overview {
+      min-height: 100%;
+    }
+
+    .total-score {
+      display: flex;
+      align-items: baseline;
+      gap: 5px;
+      margin: 8px 0 4px;
+    }
+
+    .total-score strong {
+      font-size: 50px;
+      line-height: 1;
+    }
+
+    .total-score span {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .score-level {
+      color: var(--accent-dark);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .latest-meta {
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.75;
+    }
+
+    .category-list {
+      display: grid;
+      gap: 15px;
+    }
+
+    .category-row {
+      display: grid;
+      grid-template-columns: 74px minmax(0, 1fr) 52px;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .category-row__label {
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .category-row__score {
+      font-size: 12px;
+      font-weight: 700;
+      text-align: right;
+    }
+
+    .feedback-band {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-top: 18px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    .feedback-section {
+      min-height: 0;
+      padding: 22px;
+    }
+
+    .feedback-section + .feedback-section {
+      border-left: 1px solid var(--line);
+    }
+
+    .feedback-kicker {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .feedback-copy {
+      margin: 0;
+      color: var(--ink-2);
+      font-size: 14px;
+      line-height: 1.75;
+      white-space: pre-wrap;
+    }
+
+    .correction-section {
+      margin-top: 18px;
+    }
+
+    .correction-table {
+      width: min(100%, 480px);
+      max-width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    .correction-table__arrow-col {
+      width: 46px;
+    }
+
+    .correction-table__text-col {
+      width: calc((100% - 46px) / 2);
+    }
+
+    .correction-table th,
+    .correction-table td {
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: center;
+      vertical-align: top;
+      overflow-wrap: anywhere;
+    }
+
+    .correction-table th {
+      background: var(--surface-2);
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .correction-table td {
+      font-size: 13px;
+    }
+
+    .correction-table td:last-child {
+      font-weight: 700;
+    }
+
+    .correction-table .correction-table__arrow {
+      width: 46px;
+      padding-right: 0;
+      padding-left: 0;
+      color: var(--ink);
+      font-size: 17px;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .history {
+      margin-top: 30px;
+    }
+
+    .history-heading {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    .history-list {
+      border-top: 1px solid var(--line-strong);
+    }
+
+    .history-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 130px minmax(220px, max-content) auto;
+      gap: 18px;
+      align-items: center;
+      min-height: 76px;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    .history-open {
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 700;
+      text-align: right;
+    }
+
+    .history-title {
+      font-weight: 700;
+    }
+
+    .history-subtitle,
+    .history-date {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .history-score {
+      font-size: 14px;
+      font-weight: 700;
+      text-align: right;
+    }
+
+    .history-score--attendance {
+      color: var(--accent);
+      font-size: 12px;
+      line-height: 1.45;
+      white-space: nowrap;
+    }
+
+    .feedback-modal[hidden] { display: none; }
+
+    .feedback-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1100;
+      display: grid;
+      place-items: center;
+      padding: 28px;
+      background: rgba(0, 0, 0, 0.48);
+    }
+
+    .feedback-dialog {
+      width: min(920px, 100%);
+      max-height: min(820px, calc(100vh - 56px));
+      overflow: hidden;
+      border: 1px solid var(--line-strong);
+      background: var(--surface);
+    }
+
+    .feedback-dialog__header {
+      min-height: 84px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 20px;
+      align-items: center;
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--line-strong);
+    }
+
+    .feedback-dialog__header h2 { margin: 0; font-size: 19px; }
+    .feedback-dialog__meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 18px;
+      margin-top: 9px;
+      color: var(--ink-2);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .feedback-dialog__actions { display: flex; align-items: center; gap: 18px; }
+    .feedback-total { min-width: 84px; text-align: right; font-size: 22px; line-height: 1; }
+    .feedback-close {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: var(--surface);
+      color: var(--ink);
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .feedback-dialog__body { max-height: calc(min(820px, 100vh - 56px) - 148px); overflow-y: auto; }
+    .detail-section { padding: 22px; }
+    .detail-section + .detail-section { border-top: 1px solid var(--line-strong); }
+    .detail-title { margin: 0 0 14px; font-size: 12px; }
+    .detail-score-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .detail-score { padding: 12px 10px; text-align: center; }
+    .detail-score + .detail-score { border-left: 1px solid var(--line); }
+    .detail-score span { display: block; color: var(--muted); font-size: 10px; }
+    .detail-score strong { display: block; margin-top: 5px; font-size: 13px; }
+    .detail-copy-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .detail-copy { min-height: 120px; padding-right: 18px; }
+    .detail-copy + .detail-copy { padding: 0 0 0 18px; border-left: 1px solid var(--line); }
+    .detail-copy strong { display: block; margin-bottom: 9px; font-size: 12px; }
+    .detail-copy p { margin: 0; color: var(--ink-2); font-size: 12px; line-height: 1.75; white-space: pre-wrap; }
+    .feedback-corrections .correction-table { width: 100%; }
+    .feedback-attendance { margin: 0; font-size: 14px; font-weight: 700; }
+    .feedback-dialog__footer {
+      min-height: 64px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 16px;
+      padding: 10px 22px;
+      border-top: 1px solid var(--line-strong);
+      background: var(--surface);
+    }
+
+    .feedback-nav {
+      min-height: 40px;
+      padding: 0 14px;
+      border: 1px solid var(--line-strong);
+      background: var(--surface);
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .feedback-nav:first-child { justify-self: start; }
+    .feedback-nav:last-child { justify-self: end; }
+    .feedback-nav:disabled { color: #aaa; border-color: var(--line); cursor: default; }
+    .feedback-position { min-width: 48px; text-align: center; color: var(--muted); font-size: 12px; }
+    html.feedback-modal-open { overflow: hidden; }
+
+    .surface__header > .badge,
+    .evaluation-status {
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .evaluation-status { color: var(--accent-dark); font-size: 12px; font-weight: 700; }
+
+    .mobile-score-summary {
+      display: none;
+    }
+
+    @media (max-width: 840px) {
+      .missing-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .latest-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .score-overview .surface__body {
+        display: grid;
+        grid-template-columns: 150px minmax(0, 1fr);
+        gap: 18px;
+      }
+
+      .latest-meta {
+        margin: 0;
+        padding: 0;
+        border: 0;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .lookup-form {
+        grid-template-columns: 1fr;
+      }
+
+      .lookup-form .button {
+        width: 100%;
+        min-width: 0;
+      }
+
+      .student-identity {
+        grid-template-columns: 1fr;
+        padding: 18px 16px;
+      }
+
+      .student-identity h1 {
+        font-size: 23px;
+      }
+
+      .identity-actions {
+        width: 100%;
+      }
+
+      .identity-actions .button {
+        flex: 1;
+      }
+
+      .task-overview__body {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .task-rate strong {
+        font-size: 50px;
+      }
+
+      .support-grid,
+      .missing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .task-stat-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .task-stat + .task-stat {
+        border-top: 1px solid var(--line);
+        border-left: 0;
+      }
+
+      .score-overview .surface__body {
+        display: block;
+      }
+
+      .latest-meta {
+        margin-top: 16px;
+        padding-top: 14px;
+        border-top: 1px solid var(--line);
+      }
+
+      .feedback-band {
+        grid-template-columns: 1fr;
+      }
+
+      .feedback-section {
+        min-height: 0;
+        padding: 18px 16px;
+      }
+
+      .feedback-section + .feedback-section {
+        border-top: 1px solid var(--line);
+        border-left: 0;
+      }
+
+      .correction-table th,
+      .correction-table td {
+        padding: 10px 11px;
+        font-size: 11px;
+      }
+
+      .history-row {
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 6px 14px;
+        min-height: 84px;
+      }
+
+      .history-date {
+        grid-column: 1;
+      }
+
+      .history-score {
+        grid-column: 2;
+        grid-row: 1;
+      }
+
+      .history-score--attendance {
+        grid-column: 1 / -1;
+        grid-row: 3;
+        text-align: left;
+      }
+
+      .history-open {
+        grid-column: 2;
+        grid-row: 2;
+      }
+
+      .feedback-modal { padding: 0; place-items: stretch; }
+      .feedback-dialog { width: 100%; height: 100dvh; max-height: 100dvh; border: 0; }
+      .feedback-dialog__header { min-height: 78px; padding: 16px; }
+      .feedback-dialog__header h2 { font-size: 17px; }
+      .feedback-dialog__meta { font-size: 12px; }
+      .feedback-dialog__actions { gap: 10px; }
+      .feedback-total { min-width: auto; font-size: 18px; }
+      .feedback-dialog__body { max-height: calc(100dvh - 142px); }
+      .detail-section { padding: 18px 14px; }
+      .detail-score-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .detail-score:nth-child(odd) { border-left: 0; }
+      .detail-score:nth-child(n + 3) { border-top: 1px solid var(--line); }
+      .detail-score:last-child { grid-column: 1 / -1; border-left: 0; }
+      .detail-copy-grid { grid-template-columns: 1fr; }
+      .detail-copy { min-height: 0; padding: 0 0 18px; }
+      .detail-copy + .detail-copy { padding: 18px 0 0; border-top: 1px solid var(--line); border-left: 0; }
+      .feedback-dialog__footer { min-height: 64px; padding: 10px 14px; gap: 8px; }
+      .feedback-nav { padding: 0 12px; }
+      .late-submit-modal { padding: 0; place-items: end stretch; }
+      .late-submit-dialog { width: 100%; border-right: 0; border-bottom: 0; border-left: 0; }
+      .late-submit-dialog__header,
+      .late-submit-dialog__body,
+      .late-submit-dialog__footer { padding-right: 16px; padding-left: 16px; }
+    }
+  </style>
+  <link rel="stylesheet" href="/hogan-portfolio/student-db/assets/quiet-ui-20260917.css">
+<link rel="stylesheet" href="/hogan-portfolio/v138-frame.css"><style>html{scrollbar-width:none}html::-webkit-scrollbar{display:none}</style></head>
+<body>
+  <header class="app-header">
+    <div class="app-header__inner">
+      <a class="brand" href="#" aria-label="과제 제출률 및 전화수업 피드백/평가 홈">
+        <img class="brand__mark" src="/hogan-portfolio/student-db/assets/brand-mark.png" alt="">
+        <span class="brand__copy">
+          <strong class="brand__name">신짜오율쌤</strong>
+          <span class="brand__section">과제 제출률 및 전화수업 피드백/평가</span>
+        </span>
+      </a>
+      <div class="header-actions">
+        <span class="student-account-label">개인 조회</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="lookup" id="lookupSection">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">MY LEARNING</p>
+          <h1>과제 제출률 및 전화수업 피드백/평가</h1>
+          <p class="page-description">과제 제출 현황과 미제출 과제, 발음코칭 사용 내역, 전화수업 피드백을 한곳에서 확인할 수 있습니다.</p>
+        </div>
+      </div>
+
+      <div class="surface">
+        <div class="surface__header">
+          <div>
+            <h2 class="section-title">본인 확인</h2>
+            <span class="section-subtitle">이름과 홈페이지 가입 아이디를 입력해주세요.</span>
+          </div>
+        </div>
+        <form class="surface__body lookup-form" id="lookupForm">
+          <div class="field">
+            <label for="studentName">이름</label>
+            <input class="input" id="studentName" name="studentName" autocomplete="name" placeholder="체험학습자 25" required>
+          </div>
+          <div class="field">
+            <label for="loginKey">신짜오율쌤 아이디 <small>이메일 또는 @ 앞부분</small></label>
+            <input class="input" id="loginKey" name="loginKey" autocomplete="username" placeholder="portfolio-demo-25" required>
+          </div>
+          <button class="button" type="submit">학습 현황 조회</button>
+        </form>
+        <div class="surface__body" style="padding-top:0">
+          <p class="privacy-note"><span class="privacy-dot"></span><span>수강 신청 시 사용한 이름과 신짜오율쌤 아이디를 입력하면 내 학습 현황과 전화수업 피드백을 확인할 수 있습니다.</span></p>
+        </div>
+      </div>
+      <div id="lookupMessage" aria-live="polite"></div>
+    </section>
+
+    <section class="student-dashboard" id="studentDashboard" hidden>
+      <div class="student-identity">
+        <div>
+          <h1 id="studentHeading">학생님 학습 현황</h1>
+          <div class="identity-meta" id="identityMeta"></div>
+        </div>
+        <div class="identity-actions no-print">
+          <button class="button button--secondary" type="button" id="printButton">인쇄</button>
+          <button class="button" type="button" id="lookupAgainButton">다시 조회</button>
+        </div>
+      </div>
+
+      <div id="studentResult"></div>
+    </section>
+  </main>
+
+  <div class="feedback-modal" id="feedbackModal" hidden>
+    <section class="feedback-dialog" role="dialog" aria-modal="true" aria-labelledby="feedbackModalTitle" tabindex="-1">
+      <header class="feedback-dialog__header">
+        <div>
+          <h2 id="feedbackModalTitle">전화수업 피드백</h2>
+          <div class="feedback-dialog__meta">
+            <span data-feedback-teacher>선생님 확인 필요</span>
+            <span data-feedback-date>날짜 확인 필요</span>
+          </div>
+        </div>
+        <div class="feedback-dialog__actions">
+          <strong class="feedback-total" data-feedback-total>-</strong>
+          <button class="feedback-close" type="button" aria-label="피드백 닫기" data-feedback-close>&times;</button>
+        </div>
+      </header>
+      <div class="feedback-dialog__body" data-feedback-body></div>
+      <footer class="feedback-dialog__footer">
+        <button class="feedback-nav" type="button" data-feedback-prev>&larr; 이전 평가</button>
+        <span class="feedback-position" data-feedback-position>1 / 1</span>
+        <button class="feedback-nav" type="button" data-feedback-next>다음 평가 &rarr;</button>
+      </footer>
+    </section>
+  </div>
+
+  <div class="late-submit-modal" id="lateSubmitModal" hidden>
+    <section class="late-submit-dialog" role="dialog" aria-modal="true" aria-labelledby="lateSubmitTitle" tabindex="-1">
+      <header class="late-submit-dialog__header">
+        <h2 id="lateSubmitTitle">늦은 과제 제출</h2>
+        <button class="feedback-close" type="button" aria-label="늦은 과제 제출 닫기" data-late-submit-close>&times;</button>
+      </header>
+      <div class="late-submit-dialog__body">
+        <div class="late-submit-guidance">
+          <p>늦게라도 과제를 완료해주셔서 감사합니다!</p>
+          <ol>
+            <li>기한 이후 제출한 과제는 <strong>정상 제출로 인정되지 않으며, 과제 제출률에 포함되지 않습니다.</strong></li>
+            <li>제출 내역 반영에는 <strong>최대 2시간</strong>이 소요되며, 반영 전까지 미제출로 표시됩니다.</li>
+          </ol>
+          <p>다음 과제부터는 기한 내에 제출해 주세요.</p>
+        </div>
+        <div class="late-submit-target"><span data-late-submit-lesson></span><strong data-late-submit-task></strong></div>
+        <div class="late-submit-message" data-late-submit-message aria-live="polite"></div>
+      </div>
+      <footer class="late-submit-dialog__footer">
+        <button class="button button--secondary" type="button" data-late-submit-close>취소</button>
+        <button class="button" type="button" data-late-submit-confirm>늦은 과제 제출</button>
+      </footer>
+    </section>
+  </div>
+
+  
+  
+  
+<script type="module" src="./adapter.js"></script></body>
+</html>

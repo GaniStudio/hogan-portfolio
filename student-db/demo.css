@@ -1,0 +1,16 @@
+body,input,button{font-family:HGPreview,system-ui,sans-serif}body{padding-top:37px}.demo-banner{position:fixed;inset:0 0 auto;z-index:1000;padding:10px 16px;background:#16282b;color:#eff8f7;font-size:11px;text-align:center}.app-header{top:37px!important}[data-late-submit],#lateSubmitModal{display:none!important}.page-shell{max-width:1040px}#lookupMessage{padding:14px;color:#9b332f}:focus-visible{outline:2px solid #007c8c;outline-offset:3px}
+.lookup h1{word-break:keep-all;overflow-wrap:normal} [aria-invalid=true]{border-color:#9b332f!important}
+/* Portfolio demo readability: key labels only; operational source unchanged. */
+.task-stat span,.category-row__label,.category-row__score,.detail-title,.detail-score span{font-size:14px}
+/* Keep the embedded operator view readable after the 3D stage scales it down. */
+.demo-banner{font-size:13px;line-height:1.35;padding:9px 16px}
+@media (min-width:901px){
+ .student-table th,.course-progress__meta,.contact-filter-banner span,.contact-filter-banner a,.dashboard-source-link{font-size:14px}
+ .company-period__heading>span,.company-period__comparison-heading span,.company-period__month-head{font-size:13px}
+ .company-period__basis,.company-period__status,.company-period__form label,.company-period__result>p,.company-period__result dt,.company-period__month{font-size:14px}
+ .company-period__form input,.company-period__form select{font-size:14px}
+ .toolbar-filters{gap:10px}
+ .toolbar-filters .select{width:196px;min-width:196px;font-size:14px}
+ .toolbar-filters .search-field{min-width:220px}
+ .teacher-column-filter select{font-size:14px}
+}

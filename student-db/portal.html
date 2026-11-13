@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <title>신짜오율쌤 학생 운영 시스템</title>
+  <link rel="stylesheet" href="/hogan-portfolio/student-db/assets/styles.css">
+  <link rel="stylesheet" href="/hogan-portfolio/student-db/assets/maintenance.css">
+  <style>
+    .portal-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 340px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .route-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .route-item {
+      display: grid;
+      grid-template-columns: 170px minmax(0, 1fr) auto;
+      gap: 22px;
+      align-items: center;
+      min-height: 104px;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--line);
+      text-decoration: none;
+      transition: background 160ms ease;
+    }
+
+    .route-item:hover {
+      background: var(--surface-2);
+    }
+
+    .route-item__title {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .route-item__type {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .route-item__description {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .route-item__action {
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .portal-sidebar {
+      position: sticky;
+      top: calc(var(--header-height) + 20px);
+      display: grid;
+      gap: 14px;
+    }
+
+    .system-summary {
+      position: static;
+    }
+
+    .summary-list {
+      margin: 0;
+    }
+
+    .summary-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .summary-row:last-child {
+      border-bottom: 0;
+    }
+
+    .summary-row dt {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .summary-row dd {
+      margin: 0;
+      font-size: 13px;
+      font-weight: 700;
+      text-align: right;
+    }
+
+    .summary-link {
+      color: var(--ink);
+      font-weight: 700;
+      text-decoration-color: var(--line-strong);
+      text-underline-offset: 3px;
+    }
+
+    .health-state {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .health-state::before {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #a3a3a3;
+      content: "";
+    }
+
+    .health-state[data-state="ok"] {
+      color: #17643b;
+    }
+
+    .health-state[data-state="ok"]::before {
+      background: #2f9d61;
+    }
+
+    .health-state[data-state="pending"] {
+      color: #8a5a00;
+    }
+
+    .health-state[data-state="pending"]::before {
+      background: #d59b2d;
+    }
+
+    .health-state[data-state="error"] {
+      color: var(--accent);
+    }
+
+    .health-state[data-state="error"]::before {
+      background: var(--accent);
+    }
+
+    .portal-note {
+      margin-top: 14px;
+      padding: 14px;
+      border-left: 3px solid var(--ink);
+      background: var(--surface-2);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .contact-schedule-list {
+      display: grid;
+    }
+
+    .contact-schedule-item {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 7px 14px;
+      min-height: 108px;
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--line);
+      color: var(--ink);
+      text-decoration: none;
+      transition: background 160ms ease;
+    }
+
+    .contact-schedule-item:last-child {
+      border-bottom: 0;
+    }
+
+    .contact-schedule-item:hover {
+      background: var(--surface-2);
+    }
+
+    .contact-schedule-item[aria-disabled="true"] {
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .contact-schedule-item__type {
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .contact-schedule-item__dday {
+      font-size: 16px;
+      font-weight: 800;
+      text-align: right;
+    }
+
+    .contact-schedule-item__meta,
+    .contact-schedule-item__status {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .contact-schedule-item__status {
+      text-align: right;
+    }
+
+    @media (max-width: 920px) {
+      .portal-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .portal-sidebar {
+        position: static;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .route-item {
+        grid-template-columns: 1fr auto;
+        gap: 8px 14px;
+        min-height: 98px;
+        padding: 16px;
+      }
+
+      .route-item__description {
+        grid-column: 1 / -1;
+      }
+
+      .route-item__action {
+        grid-column: 2;
+        grid-row: 1;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="/hogan-portfolio/student-db/assets/quiet-ui-20260917.css">
+<link rel="stylesheet" href="/hogan-portfolio/v138-frame.css"><style>html{scrollbar-width:none}html::-webkit-scrollbar{display:none}</style></head>
+<body>
+  <header class="app-header">
+    <div class="app-header__inner">
+      <a class="brand" href="#" aria-label="신짜오율쌤 학생 운영 시스템 홈">
+        <img class="brand__mark" src="/hogan-portfolio/student-db/assets/brand-mark.png" alt="">
+        <span class="brand__copy">
+          <strong class="brand__name">신짜오율쌤</strong>
+          <span class="brand__section">학생 운영 시스템</span>
+        </span>
+      </a>
+      <div class="header-actions">
+          <span class="status-chip" id="headerRelease">Release 2026.09.16</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="page-heading">
+      <div>
+        <p class="eyebrow">STUDENT OPERATIONS</p>
+        <h1>6개월 밀착과정 운영 포털</h1>
+        <p class="page-description">수업 평가 입력, 과정 운영 현황, 개인별 피드백 기록을 목적에 맞는 화면에서 확인할 수 있습니다.</p>
+      </div>
+    </section>
+
+    <div class="portal-layout">
+      <section class="surface" aria-labelledby="route-heading">
+        <div class="surface__header">
+          <div>
+            <h2 class="section-title" id="route-heading">업무 선택</h2>
+            <span class="section-subtitle">사용 목적에 맞는 화면으로 이동합니다.</span>
+          </div>
+        </div>
+        <nav class="route-list" aria-label="운영 화면 목록">
+          <a class="route-item" href="#">
+            <div>
+              <span class="route-item__title">기초반 수업 평가</span>
+              <span class="route-item__type">전화수업 기록</span>
+            </div>
+            <p class="route-item__description">기초완성반 전화수업 직후 출석, 점수, 피드백을 기록합니다.</p>
+            <span class="route-item__action">열기</span>
+          </a>
+          <a class="route-item" href="#">
+            <div>
+              <span class="route-item__title">중고급반 수업 평가</span>
+              <span class="route-item__type">전화수업 기록</span>
+            </div>
+            <p class="route-item__description">중고급완성반 전화수업 직후 출석, 점수, 피드백을 기록합니다.</p>
+            <span class="route-item__action">열기</span>
+          </a>
+          <a class="route-item" href="#">
+            <div>
+              <span class="route-item__title">단과 수업 평가</span>
+              <span class="route-item__type">전화수업 기록</span>
+            </div>
+            <p class="route-item__description">단과 과정 전화수업 직후 출석, 점수, 피드백을 기록합니다.</p>
+            <span class="route-item__action">열기</span>
+          </a>
+          <a class="route-item" href="#">
+            <div>
+              <span class="route-item__title">6개월 과정 통합 DB</span>
+              <span class="route-item__type">과정 운영</span>
+            </div>
+            <p class="route-item__description">과제 제출, 코칭 사용, 전화수업 평가를 통합해 확인합니다.</p>
+            <span class="route-item__action">열기</span>
+          </a>
+          <a class="route-item" href="#">
+            <div>
+              <span class="route-item__title">단과 과정 통합 DB</span>
+              <span class="route-item__type">단과 운영</span>
+            </div>
+            <p class="route-item__description">단과 과정별 학생 및 과제 제출 현황을 확인합니다.</p>
+            <span class="route-item__action">열기</span>
+          </a>
+          <a class="route-item" href="#">
+            <div>
+              <span class="route-item__title">과제 제출률 및<br>전화수업 피드백/평가</span>
+              <span class="route-item__type">개인 조회</span>
+            </div>
+            <p class="route-item__description">이름과 홈페이지 아이디로 나의 전화수업 평가와 피드백을 확인합니다.</p>
+            <span class="route-item__action">열기</span>
+          </a>
+          
+        </nav>
+      </section>
+
+      <div class="portal-sidebar">
+        <aside class="surface surface--flat system-summary" aria-labelledby="summary-heading">
+          <div class="surface__header">
+            <div>
+              <h2 class="section-title" id="summary-heading">신짜오율쌤 학생 운영 시스템 Ver.3</h2>
+            <span class="section-subtitle" id="summaryRelease">Release 2026.09.16</span>
+            </div>
+            <span class="badge badge--warning" id="overallHealthBadge">점검 중</span>
+          </div>
+          <div class="surface__body">
+            <dl class="summary-list">
+              <div class="summary-row"><dt>운영 데이터</dt><dd><a class="summary-link" href="#" target="_blank" rel="noopener noreferrer">원본 시트 ↗</a></dd></div>
+              <div class="summary-row"><dt>클라우드 서버</dt><dd><span class="health-state" id="cloudHealth" data-state="pending">점검 중</span></dd></div>
+              <div class="summary-row"><dt>백엔드 시트</dt><dd><span class="health-state" id="backendHealth" data-state="pending">점검 중</span></dd></div>
+              <div class="summary-row"><dt>단과 과정</dt><dd><a class="summary-link" href="#"><span class="health-state" id="singleCourseHealth" data-state="pending">확인 중</span></a></dd></div>
+              <div class="summary-row"><dt>모바일 화면</dt><dd><span class="health-state" id="mobileHealth" data-state="pending">점검 중</span></dd></div>
+            </dl>
+            <div class="portal-note" id="healthMessage">시스템 상태를 확인하고 있습니다.</div>
+            <div class="maintenance-control" data-maintenance-controls>
+              <div class="maintenance-control__actions">
+                <button class="button button--secondary" type="button" data-maintenance-start>점검 시작</button>
+                <button class="button button--secondary" type="button" data-maintenance-schedule>점검 예약</button>
+                <button class="button button--accent" type="button" data-maintenance-stop hidden>점검 종료</button>
+                <button class="button button--secondary" type="button" data-maintenance-schedule-cancel hidden>예약 취소</button>
+              </div>
+              <span class="maintenance-control__status" data-maintenance-control-status>점검 상태를 확인하고 있습니다.</span>
+            </div>
+          </div>
+        </aside>
+
+        <section class="surface surface--flat" aria-labelledby="contact-schedule-heading">
+          <div class="surface__header">
+            <div>
+              <h2 class="section-title" id="contact-schedule-heading">다음 학생 연락 일정</h2>
+              <span class="section-subtitle" id="contactScheduleAsOf">일정을 확인하고 있습니다.</span>
+            </div>
+          </div>
+          <div class="contact-schedule-list" id="contactScheduleList" aria-live="polite">
+            <div class="contact-schedule-item"><span class="contact-schedule-item__type">학습 독려</span><strong class="contact-schedule-item__dday">-</strong><span class="contact-schedule-item__meta">대상 계산 중</span><span class="contact-schedule-item__status">점검 중</span></div>
+            <div class="contact-schedule-item"><span class="contact-schedule-item__type">칭찬 메시지</span><strong class="contact-schedule-item__dday">-</strong><span class="contact-schedule-item__meta">대상 계산 중</span><span class="contact-schedule-item__status">점검 중</span></div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  
+  
+  
+  
+<script type="module" src="./portal-adapter.mjs"></script></body>
+</html>

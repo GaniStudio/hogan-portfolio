@@ -1,0 +1,8 @@
+.agent-intro-layer{position:absolute!important;inset:auto!important;left:0!important;top:0!important;width:100%;background:none!important;contain:layout paint;overflow:hidden!important}
+.agent-intro-layer .agent-build-box{position:absolute!important}
+.agent-intro-layer .agent-intro-cursor{width:20px;height:21px}
+.agent-intro-layer .agent-intro-cursor svg{width:20px!important;height:auto!important}
+.agent-intro-layer .agent-intro-cursor span{left:20px;top:-17px;max-width:75px;font-size:9px;padding:2px 4px}
+@media(min-width:700px) and (max-width:1099px){.agent-intro-layer .agent-intro-cursor{width:17px;height:18px}.agent-intro-layer .agent-intro-cursor svg{width:17px!important}.agent-intro-layer .agent-intro-cursor span{left:16px;top:-16px;font-size:8px}}
+@media(max-width:699px){.agent-intro-layer .agent-intro-cursor{width:14px;height:15px}.agent-intro-layer .agent-intro-cursor svg{width:14px!important}.agent-intro-layer .agent-intro-cursor span{left:13px;top:-15px;font-size:8px;padding:1px 3px}}
+@media(prefers-reduced-motion:reduce){.agent-intro-layer{display:none!important}}

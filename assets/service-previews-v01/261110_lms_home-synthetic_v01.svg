@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="938" viewBox="0 0 1500 938">
+<rect width="1500" height="938" fill="#f2f5fa"/><path fill="#fff" d="M0 0h176v938H0zm176 0h1324v62H176z"/><path d="M176 62h1324M176 0v938" stroke="#dae3ee"/>
+<g font-family="Arial, 'Malgun Gothic', sans-serif" fill="#182638">
+<text x="46" y="34" font-size="16" font-weight="700">100일 챌린지</text><text x="46" y="52" font-size="11">신짜오율쌤</text><path d="m16 35 11-11 11 11-11 7z" fill="none" stroke="#de273d" stroke-width="2"/>
+<rect x="15" y="78" width="146" height="42" rx="8" fill="#eaf0ff"/>
+<g font-size="15"><text x="37" y="104">⌂　학습 홈</text><text x="37" y="150">◉　공지사항</text><text x="37" y="196">▤　오늘 학습</text><text x="37" y="242">✓　과제 제출</text><text x="37" y="288">▱　학습 메모</text><text x="37" y="334">◷　학습 기록</text><text x="32" y="705">신짜오율쌤 홈페이지</text><text x="32" y="750">공부 질문하기</text><text x="32" y="805">로그아웃</text><text x="1295" y="35">⌕　♧　체험학습자</text></g>
+<text x="348" y="116" font-size="23" font-weight="700">체험학습자님, 오늘은 <tspan fill="#df2440">1일</tspan>차예요.</text><text x="348" y="145" font-size="13" fill="#556779">준비한 내용을 확인하고 최종 제출까지 완료해 주세요.</text>
+<g fill="#fff" stroke="#d9e2ed"><rect x="348" y="174" width="604" height="245" rx="16"/><rect x="971" y="174" width="344" height="245" rx="16"/><rect x="348" y="438" width="967" height="430" rx="16"/></g>
+<text x="386" y="230" fill="#335aca" font-size="14">오늘의 학습</text><text x="386" y="279" font-weight="700" font-size="37">ăn</text><text x="386" y="310" font-weight="700" font-size="22">먹다</text>
+<rect x="380" y="361" width="263" height="40" rx="10" fill="#303641"/><rect x="653" y="361" width="267" height="40" rx="10" fill="white" stroke="#e92d45"/>
+<text x="481" y="386" fill="white" font-size="14">복습하기</text><text x="754" y="386" fill="#df2440" font-size="14">과제 확인하기</text>
+<text x="990" y="213" font-size="19" font-weight="700">학습 진행 현황</text>
+<text x="990" y="258" font-size="13">챌린지 진행률</text><text x="1269" y="258" font-size="19" font-weight="700">1%</text><text x="990" y="305" font-size="13">미션 인정률</text><text x="1269" y="305" font-size="19" font-weight="700">0%</text>
+<path d="M990 269h305m-305 47h305" stroke="#e5eaf2" stroke-width="5"/><path d="M990 269h4" stroke="#315bcc" stroke-width="5"/><path d="M990 336h305" stroke="#dce4ef"/>
+<text x="1012" y="365" font-size="13">제출 완료　　　지각 제출　　　미제출</text><text x="1018" y="397" font-size="19" font-weight="700">0일　　　　0일　　　　0일</text>
+<text x="371" y="486" font-size="18" font-weight="700">학습 및 과제 기록</text><text x="1112" y="486" font-size="14">전체 상태　⌄　　최신순　⌄</text>
+<path d="M349 511h965v55H349z" fill="#f4f7fa"/><path d="M349 566h965v66H349z" fill="#edf2fd"/><path d="M349 566h965m-965 66h965m-965 66h965m-965 66h965m-965 66h965" stroke="#dbe4ef"/>
+<g font-size="14"><text x="415" y="543">일차　　　학습 제목</text><text x="1155" y="543">학습 및 제출</text><text x="415" y="605">1일차　　　ăn　먹다</text><text x="415" y="671">2일차　　　nhà　집</text><text x="415" y="737">3일차　　　nước　물</text><text x="415" y="803">4일차　　　bàn　책상</text><text x="784" y="853">전체 학습 기록 보기</text></g>
+</g></svg>

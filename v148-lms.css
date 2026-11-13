@@ -1,0 +1,7 @@
+/* Body overflow creates a non-scrolling sticky ancestor while HTML scrolls.
+   Keep the source sidebar at the iframe viewport; retain its original grid column. */
+@media(min-width:861px){
+ .v136-shell.app-shell-approved.app-shell-v2>.shell-sidebar{position:fixed!important;left:0;top:0;bottom:0;width:var(--approved-sidebar-width,224px);height:100dvh;min-height:0;overflow:hidden}
+ .v136-shell.app-shell-approved.app-shell-v2>.shell-sidebar>.shell-sidebar-inner{height:100dvh;min-height:0;overflow-y:auto}
+ .v136-shell.app-shell-approved.app-shell-v2>.shell-workspace{grid-column:2;min-width:0}
+}
