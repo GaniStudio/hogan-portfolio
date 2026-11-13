@@ -10,3 +10,5 @@ for(const el of document.querySelectorAll('[data-v149-src]'))observer.observe(el
 document.documentElement.dataset.appsReleased='true';
 
 await import('./mobile-v179.mjs');
+
+await import('./mobile-v181.mjs');
