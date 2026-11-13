@@ -45,6 +45,7 @@ document.addEventListener('click',e=>{
  if(a.dataset.pageLink){e.preventDefault();open(a.dataset.pageLink,a);return;}
  if(a.hasAttribute('data-page-return')||(current&&a.closest('.site-header'))){e.preventDefault();if(history.state?.v159Detail){history.back();}else{const was=current;history.replaceState({},'','/hogan-portfolio/');navigate(null,null,{anchor:was!=='about'?'#services-overview':'#intro',focusSelector:was!=='about'?'#services-overview a[data-page-link="'+was+'"]':'#intro a[data-page-link="about"]'});}return;}
 });
-addEventListener('popstate',()=>navigate(key(),null,history.state?.v159));
+addEventListener('popstate',()=>{const next=key();if(next===current)return; // Native section hashes keep their own scroll position.
+ navigate(next,null,history.state?.v159);});
 // Native path entries show content immediately, without replaying the intro.
 if(key()){show(key());scrollTo(0,0);}

@@ -8,3 +8,5 @@ for(const src of modules)await import(new URL(src,location.href).href);
 const observer=new IntersectionObserver(entries=>{for(const {target,isIntersecting} of entries){if(!isIntersecting)continue;const src=target.dataset.v149Src;if(src&&!target.hasAttribute('src'))target.src=src;observer.unobserve(target);}},{rootMargin:'900px'});
 for(const el of document.querySelectorAll('[data-v149-src]'))observer.observe(el);
 document.documentElement.dataset.appsReleased='true';
+
+await import('./mobile-v179.mjs');

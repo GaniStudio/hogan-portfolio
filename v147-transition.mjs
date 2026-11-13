@@ -145,7 +145,7 @@ function setup(track){
  const frame=track.querySelector('iframe.inline-service'),shell=frame?.closest('.demo-window');if(!shell||shell.dataset.v147Transition)return false;shell.dataset.v147Transition='true';
  const buttons=[...track.querySelectorAll('[data-step],[data-word-stage]')];let current=-1,overlay=null,animation=null;
  function clear(){animation?.cancel();animation=null;overlay?.remove();overlay=null;}
- function change(index){if(index<0||index===current)return;const previous=current;current=index;clear();if(previous<0||reduced.matches)return;
+ function change(index){if(index<0||index===current)return;const previous=current;current=index;clear();if(previous<0||reduced.matches||matchMedia('(max-width:1099px), (pointer:coarse)').matches)return;
  const rect=shell.getBoundingClientRect();if(rect.bottom<=0||rect.top>=innerHeight)return;
  try{const doc=frame.contentDocument;if(!doc?.body)return;const snapshot=copyDocument(doc);if(!snapshot)return;
  overlay=document.createElement('div');overlay.className='v147-departing-screen';overlay.inert=true;overlay.setAttribute('aria-hidden','true');overlay.append(snapshot);shell.append(overlay);restoreScroll(snapshot);

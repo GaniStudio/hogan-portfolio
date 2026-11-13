@@ -1,3 +1,4 @@
+import {mobileTourPolicy} from './mobile-tour-policy.mjs';
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');
 const pin=matchMedia('(min-height:480px)');
 const plan={
@@ -21,7 +22,9 @@ for(const track of document.querySelectorAll('[data-scroll-service]')){
  const outer=()=>frame.contentDocument;
  const student=()=>outer()?.querySelector('#student-view')?.contentDocument;
  const docs=new WeakSet();
- let manual=false,last='',current=-1,activeFeedback;
+ let manual=false,last='',current=-1,activeFeedback;let touchHeight=innerHeight,touchWidth=innerWidth;
+ const compactPolicy=()=>mobileTourPolicy(id,innerWidth,touchHeight,matchMedia('(pointer:coarse)').matches);
+ const stagePlan=()=>compactPolicy()?.steps??config.stages;
  function handoff(){
   if(manual)return;
   manual=true;
@@ -90,6 +93,9 @@ for(const track of document.querySelectorAll('[data-scroll-service]')){
   return true;
  }
  function geometry(){
+  if(innerWidth!==touchWidth){touchWidth=innerWidth;touchHeight=innerHeight;}
+  const compact=compactPolicy();
+  if(compact){track.style.setProperty('--v179-tour-range',compact.range+'px');track.style.setProperty('--v179-stage-height',stage.offsetHeight+'px');}
   const top=track.getBoundingClientRect().top;
   const pinned=pin.matches&&!reduced.matches;
   const inset=innerWidth<700?64:innerWidth<1100?72:84;
@@ -106,8 +112,9 @@ for(const track of document.querySelectorAll('[data-scroll-service]')){
   const p=limit((anchor-top)/range);
   track.dataset.tourProgress=p.toFixed(3);
   stage.style.setProperty('--stage-progress',p.toFixed(3));
-  const index=config.stages.findLastIndex(value=>p>=value);
-  const fraction=completePhase((p-config.stages[index])/((config.stages[index+1]??1)-config.stages[index]));
+  const stages=stagePlan();
+  const index=stages.findLastIndex(value=>p>=value);
+  const fraction=completePhase((p-stages[index])/((stages[index+1]??1)-stages[index]));
   track.dataset.stageFraction=fraction.toFixed(3);
   const stageBounds=stage.getBoundingClientRect();
   const visibility=Math.min(limit((innerHeight-stageBounds.top)/Math.min(220,innerHeight*.25)),limit((track.getBoundingClientRect().bottom-anchor)/Math.min(220,innerHeight*.25)));
@@ -145,7 +152,7 @@ for(const track of document.querySelectorAll('[data-scroll-service]')){
    return;
   }
   const {top,anchor,range}=geometry();
-  scrollTo({top:scrollY+top-anchor+range*(config.stages[index]+.005),behavior:'smooth'});
+  scrollTo({top:scrollY+top-anchor+range*(stagePlan()[index]+.005),behavior:compactPolicy()?'instant':'smooth'});
  }));
  const operatorTrigger=track.closest('section').querySelector('[data-operator-view]');
  operatorTrigger?.addEventListener('click',()=>{

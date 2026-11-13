@@ -1,3 +1,4 @@
+import {mobileTourPolicy} from './mobile-tour-policy.mjs';
 const gallery=document.querySelector('[data-scroll-words]');
 const track=gallery.querySelector('.words-scroll-track');
 const stage=track.querySelector('.words-scroll-stage');
@@ -5,7 +6,7 @@ const nav=stage.querySelector('.words-feature-steps');
 const status=stage.querySelector('.words-scroll-status');
 const motion=matchMedia('(prefers-reduced-motion: reduce)');
 const pinned=matchMedia('(min-height:480px)');
-const distances={landing:0,test:500,result:1100,next:3600};
+const desktopDistances={landing:0,test:500,result:1100,next:3600};let distances=desktopDistances;let touchHeight=innerHeight,touchWidth=innerWidth;
 const tourLength=4100;
 const pinTop=()=>innerWidth<700?64:innerWidth<1100?72:84;
 let frame, manual=false, last='', raf=0;
@@ -41,6 +42,10 @@ function sync(){
  if(key!==last){last=key;frame.contentWindow.postMessage({type:'words:snapshot',stage:screen,count:matched,time,beat,fraction},location.origin);}
 }
 function geometry(){
+ if(innerWidth!==touchWidth){touchWidth=innerWidth;touchHeight=innerHeight;}
+ const compact=mobileTourPolicy('words',innerWidth,touchHeight,matchMedia('(pointer:coarse)').matches);
+ distances=compact?Object.fromEntries(['landing','test','result','next'].map((key,i)=>[key,compact.steps[i]*tourLength])):desktopDistances;
+ if(compact){track.style.setProperty('--v179-tour-range',compact.range+'px');track.style.setProperty('--v179-stage-height',stage.offsetHeight+'px');}
  if(pinned.matches)track.style.setProperty('--v136-words-stage-height',stage.offsetHeight+'px');
  const rect=track.getBoundingClientRect();
  return {position:(pinned.matches?pinTop():innerHeight*.75)-rect.top,range:Math.max(1,pinned.matches?track.offsetHeight-stage.offsetHeight:rect.height+innerHeight*.35)};
@@ -100,7 +105,7 @@ nav.addEventListener('click',event=>{
   return;
  }
  const {position,range}=geometry();
- window.scrollTo({top:scrollY-position+range*(distances[screen]+1)/tourLength,behavior:'smooth'});
+ window.scrollTo({top:scrollY-position+range*(distances[screen]+1)/tourLength,behavior:mobileTourPolicy('words',innerWidth,touchHeight,matchMedia('(pointer:coarse)').matches)?'instant':'smooth'});
 });
 // v148: do not rewind already-painted text or navigation.
 if(motion.matches){if(status)status.textContent='';}

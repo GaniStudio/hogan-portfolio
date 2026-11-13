@@ -7,138 +7,24 @@ let tick=0;function checkCurrent(){tick=0;for(const f of frames){if(!f.getAttrib
 
 import("/hogan-portfolio/v171-scenes.mjs");
 
-import("/hogan-portfolio/v171-scenes.mjs");
 
-import("/hogan-portfolio/v171-scenes.mjs");
 
-import("/hogan-portfolio/v171-scenes.mjs");
 
-import("/hogan-portfolio/v171-scenes.mjs");
 
-import("/hogan-portfolio/v171-scenes.mjs");
 
-import("/hogan-portfolio/v171-scenes.mjs");
 
-import("/hogan-portfolio/v171-scenes.mjs");
 
-import("/hogan-portfolio/v171-scenes.mjs");
 
-import("/hogan-portfolio/v171-scenes.mjs");
 
-import("/hogan-portfolio/v171-scenes.mjs");
 
 import("/hogan-portfolio/v174.mjs");
 
-import("/hogan-portfolio/v171-scenes.mjs");
 
-import("/hogan-portfolio/v174.mjs");
 
-import("/hogan-portfolio/v171-scenes.mjs");
 
-import("/hogan-portfolio/v174.mjs");
 
-import("/hogan-portfolio/v171-scenes.mjs");
 
-import("/hogan-portfolio/v174.mjs");
 
-import("/hogan-portfolio/v171-scenes.mjs");
 
-import("/hogan-portfolio/v174.mjs");
-
-addEventListener('message',e=>{if(e.origin!==location.origin||!['v175-start','v175-done'].includes(e.data?.type))return;const f=[...document.querySelectorAll('.v175-scene iframe')].find(x=>x.contentWindow===e.source);if(!f)return;let n=f.closest('.v175-scene')?.nextElementSibling;if(n?.classList.contains('v171-sheet'))n=n.nextElementSibling;if(n?.classList.contains('v171-now'))n.style.opacity=e.data.type==='v175-start'?'.28':'1'});
-
-import("/hogan-portfolio/v171-scenes.mjs");
-
-import("/hogan-portfolio/v174.mjs");
-
-addEventListener('message',e=>{if(e.origin!==location.origin||!['v175-start','v175-done'].includes(e.data?.type))return;const f=[...document.querySelectorAll('.v175-scene iframe')].find(x=>x.contentWindow===e.source);if(!f)return;let n=f.closest('.v175-scene')?.nextElementSibling;if(n?.classList.contains('v171-sheet'))n=n.nextElementSibling;if(n?.classList.contains('v171-now'))n.style.opacity=e.data.type==='v175-start'?'.28':'1'});
-
-import("/hogan-portfolio/v171-scenes.mjs");
-
-import("/hogan-portfolio/v174.mjs");
-
-addEventListener('message',e=>{if(e.origin!==location.origin||!['v175-start','v175-done'].includes(e.data?.type))return;const f=[...document.querySelectorAll('.v175-scene iframe')].find(x=>x.contentWindow===e.source);if(!f)return;let n=f.closest('.v175-scene')?.nextElementSibling;if(n?.classList.contains('v171-sheet'))n=n.nextElementSibling;if(n?.classList.contains('v171-now'))n.style.opacity=e.data.type==='v175-start'?'.28':'1'});
-
-import("/hogan-portfolio/v171-scenes.mjs");
-
-import("/hogan-portfolio/v174.mjs");
-
-addEventListener('message',e=>{if(e.origin!==location.origin||!['v175-start','v175-done'].includes(e.data?.type))return;const f=[...document.querySelectorAll('.v175-scene iframe')].find(x=>x.contentWindow===e.source);if(!f)return;let n=f.closest('.v175-scene')?.nextElementSibling;if(n?.classList.contains('v171-sheet'))n=n.nextElementSibling;if(n?.classList.contains('v171-now'))n.style.opacity=e.data.type==='v175-start'?'.28':'1'});
-
-import("/hogan-portfolio/v171-scenes.mjs");
-
-import("/hogan-portfolio/v174.mjs");
-
-addEventListener('message',e=>{if(e.origin!==location.origin||!['v175-start','v175-done'].includes(e.data?.type))return;const f=[...document.querySelectorAll('.v175-scene iframe')].find(x=>x.contentWindow===e.source);if(!f)return;let n=f.closest('.v175-scene')?.nextElementSibling;if(n?.classList.contains('v171-sheet'))n=n.nextElementSibling;if(n?.classList.contains('v171-now'))n.style.opacity=e.data.type==='v175-start'?'.28':'1'});
-
-import("/hogan-portfolio/v171-scenes.mjs");
-
-import("/hogan-portfolio/v174.mjs");
-
-addEventListener('message',e=>{if(e.origin!==location.origin||!['v175-start','v175-done'].includes(e.data?.type))return;const f=[...document.querySelectorAll('.v175-scene iframe')].find(x=>x.contentWindow===e.source);if(!f)return;let n=f.closest('.v175-scene')?.nextElementSibling;if(n?.classList.contains('v171-sheet'))n=n.nextElementSibling;if(n?.classList.contains('v171-now'))n.style.opacity=e.data.type==='v175-start'?'.28':'1'});
-
-import("/hogan-portfolio/v171-scenes.mjs");
-
-import("/hogan-portfolio/v174.mjs");
-
-addEventListener('message',e=>{if(e.origin!==location.origin||!['v175-start','v175-done'].includes(e.data?.type))return;const f=[...document.querySelectorAll('.v175-scene iframe')].find(x=>x.contentWindow===e.source);if(!f)return;let n=f.closest('.v175-scene')?.nextElementSibling;if(n?.classList.contains('v171-sheet'))n=n.nextElementSibling;if(n?.classList.contains('v171-now'))n.style.opacity=e.data.type==='v175-start'?'.28':'1'});
-
-import("/hogan-portfolio/v171-scenes.mjs");
-
-import("/hogan-portfolio/v174.mjs");
-
-addEventListener('message',e=>{if(e.origin!==location.origin||!['v175-start','v175-done'].includes(e.data?.type))return;const f=[...document.querySelectorAll('.v175-scene iframe')].find(x=>x.contentWindow===e.source);if(!f)return;let n=f.closest('.v175-scene')?.nextElementSibling;if(n?.classList.contains('v171-sheet'))n=n.nextElementSibling;if(n?.classList.contains('v171-now'))n.style.opacity=e.data.type==='v175-start'?'.28':'1'});
-
-import("/hogan-portfolio/v171-scenes.mjs");
-
-import("/hogan-portfolio/v174.mjs");
-
-addEventListener('message',e=>{if(e.origin!==location.origin||!['v175-start','v175-done'].includes(e.data?.type))return;const f=[...document.querySelectorAll('.v175-scene iframe')].find(x=>x.contentWindow===e.source);if(!f)return;let n=f.closest('.v175-scene')?.nextElementSibling;if(n?.classList.contains('v171-sheet'))n=n.nextElementSibling;if(n?.classList.contains('v171-now'))n.style.opacity=e.data.type==='v175-start'?'.28':'1'});
-
-import("/hogan-portfolio/v171-scenes.mjs");
-
-import("/hogan-portfolio/v174.mjs");
-
-addEventListener('message',e=>{if(e.origin!==location.origin||!['v175-start','v175-done'].includes(e.data?.type))return;const f=[...document.querySelectorAll('.v175-scene iframe')].find(x=>x.contentWindow===e.source);if(!f)return;let n=f.closest('.v175-scene')?.nextElementSibling;if(n?.classList.contains('v171-sheet'))n=n.nextElementSibling;if(n?.classList.contains('v171-now'))n.style.opacity=e.data.type==='v175-start'?'.28':'1'});
-
-import("/hogan-portfolio/v171-scenes.mjs");
-
-import("/hogan-portfolio/v174.mjs");
-
-addEventListener('message',e=>{if(e.origin!==location.origin||!['v175-start','v175-done'].includes(e.data?.type))return;const f=[...document.querySelectorAll('.v175-scene iframe')].find(x=>x.contentWindow===e.source);if(!f)return;let n=f.closest('.v175-scene')?.nextElementSibling;if(n?.classList.contains('v171-sheet'))n=n.nextElementSibling;if(n?.classList.contains('v171-now'))n.style.opacity=e.data.type==='v175-start'?'.28':'1'});
-
-import("/hogan-portfolio/v171-scenes.mjs");
-
-import("/hogan-portfolio/v174.mjs");
-
-addEventListener('message',e=>{if(e.origin!==location.origin||!['v175-start','v175-done'].includes(e.data?.type))return;const f=[...document.querySelectorAll('.v175-scene iframe')].find(x=>x.contentWindow===e.source);if(!f)return;let n=f.closest('.v175-scene')?.nextElementSibling;if(n?.classList.contains('v171-sheet'))n=n.nextElementSibling;if(n?.classList.contains('v171-now'))n.style.opacity=e.data.type==='v175-start'?'.28':'1'});
-
-import("/hogan-portfolio/v171-scenes.mjs");
-
-import("/hogan-portfolio/v174.mjs");
-
-addEventListener('message',e=>{if(e.origin!==location.origin||!['v175-start','v175-done'].includes(e.data?.type))return;const f=[...document.querySelectorAll('.v175-scene iframe')].find(x=>x.contentWindow===e.source);if(!f)return;let n=f.closest('.v175-scene')?.nextElementSibling;if(n?.classList.contains('v171-sheet'))n=n.nextElementSibling;if(n?.classList.contains('v171-now'))n.style.opacity=e.data.type==='v175-start'?'.28':'1'});
-
-import("/hogan-portfolio/v171-scenes.mjs");
-
-import("/hogan-portfolio/v174.mjs");
-
-addEventListener('message',e=>{if(e.origin!==location.origin||!['v175-start','v175-done'].includes(e.data?.type))return;const f=[...document.querySelectorAll('.v175-scene iframe')].find(x=>x.contentWindow===e.source);if(!f)return;let n=f.closest('.v175-scene')?.nextElementSibling;if(n?.classList.contains('v171-sheet'))n=n.nextElementSibling;if(n?.classList.contains('v171-now'))n.style.opacity=e.data.type==='v175-start'?'.28':'1'});
-
-import("/hogan-portfolio/v171-scenes.mjs");
-
-import("/hogan-portfolio/v174.mjs");
-
-addEventListener('message',e=>{if(e.origin!==location.origin||!['v175-start','v175-done'].includes(e.data?.type))return;const f=[...document.querySelectorAll('.v175-scene iframe')].find(x=>x.contentWindow===e.source);if(!f)return;let n=f.closest('.v175-scene')?.nextElementSibling;if(n?.classList.contains('v171-sheet'))n=n.nextElementSibling;if(n?.classList.contains('v171-now'))n.style.opacity=e.data.type==='v175-start'?'.28':'1'});
-
-import("/hogan-portfolio/v171-scenes.mjs");
-
-import("/hogan-portfolio/v174.mjs");
-
-addEventListener('message',e=>{if(e.origin!==location.origin||!['v175-start','v175-done'].includes(e.data?.type))return;const f=[...document.querySelectorAll('.v175-scene iframe')].find(x=>x.contentWindow===e.source);if(!f)return;let n=f.closest('.v175-scene')?.nextElementSibling;if(n?.classList.contains('v171-sheet'))n=n.nextElementSibling;if(n?.classList.contains('v171-now'))n.style.opacity=e.data.type==='v175-start'?'.28':'1'});
-
-import("/hogan-portfolio/v171-scenes.mjs");
-
-import("/hogan-portfolio/v174.mjs");
 
 addEventListener('message',e=>{if(e.origin!==location.origin||!['v175-start','v175-done'].includes(e.data?.type))return;const f=[...document.querySelectorAll('.v175-scene iframe')].find(x=>x.contentWindow===e.source);if(!f)return;let n=f.closest('.v175-scene')?.nextElementSibling;if(n?.classList.contains('v171-sheet'))n=n.nextElementSibling;if(n?.classList.contains('v171-now'))n.style.opacity=e.data.type==='v175-start'?'.28':'1'});

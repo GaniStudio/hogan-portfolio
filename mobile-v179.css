@@ -1,0 +1,77 @@
+/* Portfolio-only compact rules. The original apps keep their own typography. */
+.v179-mobile-replay{display:none}
+@media(max-width:1099px),(hover:none) and (pointer:coarse){
+  :root{--v179-gutter:24px;--v179-section:48px;--v179-gap:24px}
+  html{scroll-padding-top:80px}
+  body{touch-action:pan-y pinch-zoom}
+  body #intro.person-intro{min-height:0!important;padding:96px var(--v179-gutter) 24px!important}
+  body #intro .v134-intro-top{gap:28px!important}
+  body #intro .intro-copy #intro-title{margin:20px 0 24px!important}
+  body #intro .intro-next{margin-top:24px!important;min-height:44px}
+  body #intro .v134-career dl>div{min-height:0!important;padding-block:14px!important}
+  body #intro .application-track{margin-top:20px!important}
+  body #intro .v144-operating-summary{margin-top:12px!important;line-height:1.65!important}
+  body #services-overview{padding:8px var(--v179-gutter) 32px!important}
+  body #services-overview .hero-previews{gap:20px!important}
+  body #services-overview .service-card-v159{min-height:0!important;height:auto!important}
+  body #services-overview .service-card-v159>div{padding:18px!important}
+  body #services-overview .service-card-v159 h3{margin:12px 0!important}
+  body #services-overview .service-card-v159 p{margin:12px 0!important}
+  body #services-overview .service-card-v159 p:last-child{margin-bottom:0!important}
+  body :is(#static-gallery,#student-db,#lms,#db-decision,#reading,#ai-workflow,#ai-system,#vision,#implementation-exhibit){padding:var(--v179-section) var(--v179-gutter)!important;min-height:0!important}
+  body :is(.words-feature-heading,.v140-lms-heading-copy){margin-bottom:24px!important;gap:20px!important}
+  body #static-gallery>.words-feature-heading,body #student-db .service-static>.words-feature-heading,body #lms .service-static>.words-feature-heading{padding-top:32px!important}
+  body .v139-preface,body .service-period{margin-block:20px!important}
+  body .v175-scene{margin-block:24px!important;overflow:visible!important;touch-action:pan-y pinch-zoom}
+  body .v175-scene iframe{pointer-events:none!important}
+  .v179-mobile-replay{display:inline-flex;align-items:center;min-height:44px;padding:12px 0;margin:4px 0 0;border:0;border-bottom:1px solid #6f8d92;background:transparent;color:#b8d5da;font:400 16px/1.5 'Portfolio Pretendard',sans-serif;touch-action:manipulation}
+  .v179-mobile-replay:focus-visible{outline:2px solid #afdce1;outline-offset:4px}
+  body .v171-now{margin-top:24px!important;padding-top:20px!important;opacity:1!important}
+  body #static-gallery .words-scroll-track,body #student-db .service-scroll-track,body #lms .service-scroll-track,body [data-v139-chapter] .service-scroll-track,body .service-scroll-track{height:auto!important;min-height:calc(var(--v179-stage-height,660px) + var(--v179-tour-range,2000px))!important;padding-bottom:0!important;touch-action:pan-y pinch-zoom}
+  body :is(.words-scroll-stage,.service-scroll-stage){top:72px!important;min-height:0!important;opacity:1!important;filter:none!important;touch-action:pan-y pinch-zoom}
+  body :is(#static-gallery,#student-db,#lms) :is(.words-scroll-stage,.service-scroll-stage) .demo-window{height:min(760px,calc(100svh - 164px))!important;min-height:260px!important;box-shadow:none!important;transform:none!important;touch-action:pan-y pinch-zoom}
+  body :is(.words-scroll-stage,.service-scroll-stage) .demo-window-body{position:relative!important;min-height:0!important;touch-action:pan-y pinch-zoom}
+  body :is(.words-scroll-stage,.service-scroll-stage) iframe.inline-service{pointer-events:none!important;height:100%!important}
+  .v179-pan-surface{position:absolute;inset:0;z-index:20;touch-action:pan-y pinch-zoom;pointer-events:auto;background:transparent}
+  body :is(.service-scroll-stage,.words-scroll-stage) .words-feature-steps{display:none!important}
+  body .v138-compact-steps{display:grid!important;grid-template-columns:minmax(0,1fr);gap:8px;margin-top:12px!important;min-height:52px!important}
+  body .v138-compact-steps select{width:100%;min-width:0;min-height:44px;font-size:15px!important;padding:8px 12px!important;border:1px solid #3e485b;border-radius:8px;background:#101523;color:#e9eef4;touch-action:manipulation}
+  body .v138-compact-steps progress{width:100%;height:2px}
+  body :is(.v140-stage-title,.v140-rail-neighbor,.v147-departing-screen){display:none!important}
+  body #ai-system .ai-system-flow{min-height:0!important}
+  body :is(.case-page,.about-page){padding-inline:var(--v179-gutter)!important}
+  body :is(.case-section,.v163-story){margin-block:40px!important}
+  body :is(a,button,input,select,textarea){-webkit-tap-highlight-color:#b8d5da33}
+  body .site-header a,body .v138-header-toggle{min-height:44px;display:inline-flex;align-items:center}
+  body .site-header:has(.v138-header-toggle) nav:not(.v138-nav-open){display:none!important}
+  body .site-header .v138-header-toggle{margin-left:auto;flex-shrink:0}
+  body .site-header nav.v138-nav-open{position:absolute;top:64px;left:var(--v179-gutter);right:var(--v179-gutter);display:grid!important;max-width:none;background:#080d1b;padding:12px;gap:4px;max-height:calc(100svh - 72px);overflow-y:auto;overscroll-behavior:auto}
+}
+@media(max-width:699px){
+  :root{--v179-gutter:20px;--v179-section:40px;--v179-gap:20px}
+  body #intro.person-intro{padding-top:88px!important}
+  body #intro .intro-copy #intro-title{font-size:56px!important}
+  body #intro .intro-copy h2{font-size:22px!important;line-height:1.55!important}
+  body #intro .v134-intro-top{gap:24px!important}
+  body #intro .v134-career dl>div{padding-block:12px!important}
+  body #services-overview .hero-previews{grid-template-columns:minmax(0,1fr)!important}
+  body .words-feature-heading h2,body #lms .words-feature-heading h2{font-size:30px!important;line-height:1.25!important}
+  body :is(.words-feature-copy,.v140-lms-heading-copy .words-feature-copy)>p:not(.disclosure){font-size:18px!important;line-height:1.6!important}
+  body .v171-heading{gap:8px!important}
+  body .v171-heading h3{font-size:24px!important}
+  body .v139-results{gap:24px!important;margin-top:24px!important}
+  body .reader-quotes,body .v141-vision-concepts{gap:24px!important}
+  body :is(.words-scroll-stage,.service-scroll-stage){top:64px!important}
+  body :is(#static-gallery,#student-db,#lms) :is(.words-scroll-stage,.service-scroll-stage) .demo-window{height:calc(100svh - 156px)!important;max-height:660px!important}
+  body main :is(.editorial-story,.v139-results,.v141-vision,#ai-workflow,#reading) p{font-size:16px!important;line-height:1.7!important}
+  body #vision .v141-vision-concepts article{padding-block:24px!important;min-height:0!important}
+}
+@media(max-height:479px) and (max-width:1099px){
+  body #static-gallery .words-scroll-track,body #student-db .service-scroll-track,body #lms .service-scroll-track,body [data-v139-chapter] .service-scroll-track{min-height:0!important}
+  body :is(.words-scroll-stage,.service-scroll-stage){position:static!important}
+  body :is(#static-gallery,#student-db,#lms) :is(.words-scroll-stage,.service-scroll-stage) .demo-window{height:360px!important;max-height:none!important}
+}
+@media(prefers-reduced-motion:reduce){
+  body #static-gallery .words-scroll-track,body #student-db .service-scroll-track,body #lms .service-scroll-track,body [data-v139-chapter] .service-scroll-track{min-height:0!important}
+  body :is(.words-scroll-stage,.service-scroll-stage){position:static!important}
+}
