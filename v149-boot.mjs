@@ -12,3 +12,5 @@ document.documentElement.dataset.appsReleased='true';
 await import('./mobile-v179.mjs');
 
 await import('./mobile-v181.mjs');
+
+await import('./metrics-v182.mjs');

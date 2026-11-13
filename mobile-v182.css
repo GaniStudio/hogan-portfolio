@@ -1,0 +1,23 @@
+@font-face{font-family:PortfolioCompact;src:url('/hogan-portfolio/fonts/PretendardVariable.woff2') format('woff2');font-style:normal;font-weight:100 900;font-display:swap}
+.v139-metrics strong .v182-count-value{font:inherit!important;line-height:inherit!important;letter-spacing:inherit!important;color:inherit;font-variant-numeric:tabular-nums;display:inline-block;min-width:calc(var(--v182-digits)*1ch);text-align:right}
+.v139-metrics strong .v182-count-unit{font:inherit!important;line-height:inherit!important;color:inherit;flex:none}
+@media(max-width:1099px){
+  body :is(#student-db,#lms) .service-static.linear-service{padding-inline:0!important}
+  body :is(#static-gallery,#student-db,#lms) :is(.words-scroll-track,.service-scroll-track,.words-scroll-stage,.service-scroll-stage,.flow-row){width:100%!important;max-width:100%!important;padding-inline:0!important;margin-inline:0!important;min-width:0!important}
+  body :is(#static-gallery,#student-db,#lms) .demo-window{width:100%!important;max-width:100%!important;margin-inline:0!important}
+  body :is(#static-gallery,#student-db,#lms) .v171-now{width:100%!important;max-width:100%!important;margin:24px 0 0!important;padding:24px 0 0!important;gap:12px!important}
+  body :is(#static-gallery,#student-db,#lms) .v171-now .v171-heading{margin:0 0 12px!important;padding:0!important;gap:12px!important;align-items:baseline!important}
+  body :is(#static-gallery,#student-db,#lms) .v171-now h3{font-family:PortfolioCompact,sans-serif!important;font-size:28px!important;font-weight:700!important;line-height:1.3!important;letter-spacing:-.025em;margin:0!important}
+  body :is(#static-gallery,#student-db,#lms) .v171-now>p{font-size:16px!important;line-height:1.7!important;margin:0!important;max-width:none!important}
+  body #ai-system .v165-map :is(.v165-node,.v165-hub){font-family:PortfolioCompact,sans-serif!important;font-synthesis:none}
+  body #ai-system .v165-map :is(.v165-node,.v165-hub) strong{font-family:inherit!important;font-weight:600!important}
+  body #ai-system .v165-map :is(.v165-node,.v165-hub) small{font-family:inherit!important;font-weight:400!important}
+  body #lms .v139-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:start}
+  body #lms .v139-metrics>div{min-width:0;gap:12px}
+  body #lms .v139-metrics>div>span{font-size:16px;line-height:1.65}
+}
+@media(max-width:699px){
+  body :is(#static-gallery,#student-db,#lms) .v171-now h3{font-size:24px!important}
+  body #lms .v139-metrics{gap:20px}
+  body #lms .v139-metrics strong{font-size:36px!important}
+}

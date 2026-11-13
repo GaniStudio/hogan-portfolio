@@ -1,0 +1,8 @@
+/* Past and present use the same host-document typography at every width. */
+:root{--v183-scene-title:28px}
+body :is(#static-gallery,#student-db,#lms) :is(.v183-past-title,.v171-now h3){font-family:PortfolioCompact,sans-serif!important;font-size:var(--v183-scene-title)!important;font-weight:700!important;line-height:1.3!important;letter-spacing:-.025em!important;color:#f5f2ec!important}
+body :is(#static-gallery,#student-db,#lms) .v183-past-title{margin:0 0 24px!important;padding:0!important;text-align:left}
+body :is(#static-gallery,#student-db,#lms) .v171-now{max-width:100%!important;margin:24px 0 0!important;padding:24px 0 0!important}
+body :is(#static-gallery,#student-db,#lms) .v171-now .v171-heading{margin:0 0 12px!important;padding:0!important;gap:12px!important;align-items:baseline!important}
+body :is(#static-gallery,#student-db,#lms) .v171-now h3{margin:0!important;padding:0!important}
+@media(max-width:699px){:root{--v183-scene-title:24px}}
