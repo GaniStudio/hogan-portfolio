@@ -15,4 +15,6 @@ await import('./mobile-v181.mjs');
 
 await import('./metrics-v182.mjs');
 
-await import('./mobile-experience-v184.mjs');
+await import('./inline-db-v186.mjs');
+
+await import('./touch-cue-v187.mjs');

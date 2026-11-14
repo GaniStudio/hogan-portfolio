@@ -2346,3 +2346,36 @@ body .v184-past-heading .v183-past-title{display:block!important;opacity:1!impor
  .v184-db-launch a:focus-visible{outline:2px solid #fff;outline-offset:-5px}
  .v184-db-launch a:active{background:#d2e7eb}
 }
+/* source: /inline-db-v186.css */
+/* Local mobile/pad proposal. Existing portfolio tokens and original app UI. */
+.v186-db-inline{display:none}
+@media(max-width:1099px){
+ html.v186-db-scroll{overflow-anchor:none}
+ body #student-db .v186-db-inline{display:block;margin:20px 0 28px;border:0;border-radius:0;overflow:visible;background:transparent;--v186-header:72px}
+ .v186-db-inline .v186-steps{position:sticky;top:var(--v186-header);z-index:8;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:10px 0 12px;margin:0;background:#060918}
+ .v186-db-inline .v186-steps button{appearance:none;min-width:0;min-height:48px;border:1px solid #f5f2ec33;border-radius:8px;background:transparent;color:#c5cad4;font:500 16px/24px 'Portfolio Pretendard',sans-serif;padding:10px 4px;touch-action:manipulation}
+ .v186-db-inline .v186-steps button[aria-current=step]{background:#b8d5da;border-color:#b8d5da;color:#09101b;font-weight:600}
+ .v186-db-inline .v186-steps button:disabled{opacity:.5}
+ .v186-db-inline :is(a,button):focus-visible{outline:2px solid #f5f2ec;outline-offset:3px}
+ .v186-db-inline .v186-app{display:block;width:100%;height:1px;border:1px solid #f5f2ec26;border-radius:12px;background:#f7f7f7;overflow:hidden;scroll-margin-top:calc(var(--v186-header) + 70px);pointer-events:auto;touch-action:pan-y pinch-zoom}
+ .v186-db-inline [role=status]{margin:0!important;padding:12px 0;font-size:14px!important;line-height:22px!important;color:#b8d5da}
+ .v186-db-inline [role=status]:empty{display:none}
+ .v186-db-inline .v186-expand{display:inline-flex;align-items:center;min-height:44px;margin-top:12px;padding:8px 0;border:0;border-bottom:1px solid #6f8d92;background:none;color:#b8d5da;font:400 14px/24px 'Portfolio Pretendard',sans-serif;text-decoration:none}
+}
+/* source: /touch-cue-v187.css */
+@media(max-width:1099px){
+ .v186-db-inline .v187-touch-label{font-size:14px!important;line-height:22px!important;font-weight:400!important;color:#b8d5da;margin:0 0 8px!important}
+ .v186-db-inline .v186-steps button{position:relative;cursor:pointer;transition:background-color 140ms ease,border-color 140ms ease,color 140ms ease}
+ .v186-db-inline .v186-steps button::after{content:'';position:absolute;inset:2px;border:1px solid #c7e4e8;border-radius:7px;pointer-events:none;opacity:0;transform:scale(1);transform-origin:center}
+ .v186-steps[data-touch-cue=playing] button::after{animation:v187-touch-outline 1000ms cubic-bezier(.2,.65,.35,1) 2;animation-delay:var(--v187-cue-delay,0ms)}
+ .v186-steps button:nth-child(2){--v187-cue-delay:160ms}
+ .v186-steps button:nth-child(3){--v187-cue-delay:320ms}
+ .v186-db-inline .v186-steps button:not(:disabled):active{border-color:#effbfc;background:#243641;color:#f5f2ec}
+ .v186-steps[data-touch-cue=static] button:not(:disabled){border-color:#8baeb6}
+ @media(hover:hover){.v186-db-inline .v186-steps button:not(:disabled):hover{border-color:#c7e4e8}}
+}
+@keyframes v187-touch-outline{0%{opacity:0;transform:scale(1)}12%{opacity:.85;transform:scale(1)}80%,100%{opacity:0;transform:scale(1.08,1.18)}}
+@media(prefers-reduced-motion:reduce){
+ .v186-db-inline .v186-steps button{transition:none}
+ .v186-db-inline .v186-steps button::after{animation:none!important;display:none}
+}
