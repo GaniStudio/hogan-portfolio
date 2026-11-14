@@ -14,6 +14,7 @@ const bound=new WeakSet();
 let start=0, end=null, timer;
 
 function sync(){
+ if(matchMedia("(max-width:1099px)").matches){raf=0;return;}
  raf=0;
  if(manual||motion.matches||gallery.hidden||frame?.dataset.ready!=='true')return;
  const {position, range}=geometry();

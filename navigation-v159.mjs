@@ -4,9 +4,9 @@ const baseTitle=document.title;
 const reducedQuery=new URLSearchParams(location.search).has('reducedmotion');
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches||reducedQuery;
 const key=()=>location.pathname.startsWith('/hogan-portfolio/about')?'about':location.pathname.startsWith('/hogan-portfolio/projects/words')?'words':location.pathname.startsWith('/hogan-portfolio/projects/lms')?'lms':location.pathname.startsWith('/hogan-portfolio/projects/student-db')||location.hash==='#case/student-db'?'db':null;
-let current=null,serial=0,animations=[],clone=null,savedFocus=null,transitionDestination=null;
+let lastCaseReturn=null,returnHoldCleanup=null;let current=null,serial=0,animations=[],clone=null,savedFocus=null,transitionDestination=null;
 history.scrollRestoration='manual';
-function cancel(){if(transitionDestination){transitionDestination.style.removeProperty('visibility');transitionDestination=null;}animations.forEach(a=>a.cancel());animations=[];clone?.remove();clone=null;document.body.classList.remove('route-transition');for(const p of Object.values(pages))p.style.removeProperty('opacity');}
+function cancel(){returnHoldCleanup?.();if(transitionDestination){transitionDestination.style.removeProperty('visibility');transitionDestination=null;}animations.forEach(a=>a.cancel());animations=[];clone?.remove();clone=null;document.body.classList.remove('route-transition');for(const p of Object.values(pages))p.style.removeProperty('opacity');}
 function show(next){
  delete document.documentElement.dataset.v159Route;
  window.__hoganEndIntro?.('detail-navigation');
@@ -17,7 +17,7 @@ function show(next){
 }
 const frame=()=>new Promise(r=>requestAnimationFrame(r));
 async function navigate(next,origin,restore){
- const token=++serial;cancel();
+ const token=++serial;cancel();window.__v192CaseRestoring=Boolean(!next&&restore);
  const image=origin?.querySelector('img');const from=image?.getBoundingClientRect();
  show(next);scrollTo(0,0);await frame();if(token!==serial)return;
  const destination=next&&next!=='about'?pages[next].querySelector('.case-screen img'):null;
@@ -35,17 +35,26 @@ async function navigate(next,origin,restore){
   const y=restore?.y??0;const id=restore?.focus;
   scrollTo(0,y);(id?document.getElementById(id):savedFocus)?.focus({preventScroll:true});
   // Deferred service loading can change main height after direct entry.
-  if(restore?.anchor){const anchor=document.querySelector(restore.anchor);const header=document.querySelector('.site-header')?.getBoundingClientRect().height||72;if(anchor)scrollTo(0,Math.max(0,anchor.getBoundingClientRect().top+scrollY-header-24));document.querySelector(restore.focusSelector||'#services-overview a')?.focus({preventScroll:true});}
+  if(restore?.anchor){const anchor=document.querySelector(restore.anchor);const header=document.querySelector('.site-header')?.getBoundingClientRect().height||72;if(anchor)scrollTo(0,Math.max(0,anchor.getBoundingClientRect().top+scrollY-header-24));document.querySelector(restore.focusSelector||'.v192-case-entry')?.focus({preventScroll:true});}holdReturnAnchor(restore);window.__v192CaseRestoring=false;
  }
 }
-function remember(origin){if(current)return; if(origin&&!origin.id)origin.id='v159-origin-'+Math.random().toString(36).slice(2,9);savedFocus=origin;history.replaceState({...history.state,v159:{y:scrollY,focus:origin?.id}},'',location.href);}
+function holdReturnAnchor(restore){
+ if(!restore?.anchor)return;const anchor=document.querySelector(restore.anchor),main=document.querySelector('main');if(!anchor||!main)return;
+ let pending=0,timer=0,stopped=false,documentY=anchor.getBoundingClientRect().top+scrollY;
+ // Compensate only layout displacement, preserving every user scroll offset.
+ const compensate=()=>{pending=0;if(stopped||current||!anchor.isConnected)return;const nextY=anchor.getBoundingClientRect().top+scrollY,delta=nextY-documentY;documentY=nextY;if(Math.abs(delta)>.5)scrollBy({top:delta,behavior:'instant'})};
+ const observer=new ResizeObserver(()=>{if(!pending)pending=requestAnimationFrame(compensate)});
+ const stop=()=>{if(stopped)return;stopped=true;clearTimeout(timer);cancelAnimationFrame(pending);observer.disconnect();if(returnHoldCleanup===stop)returnHoldCleanup=null};
+ returnHoldCleanup=stop;observer.observe(main);timer=setTimeout(stop,4000);
+}
+function remember(origin){if(current)return; if(origin&&!origin.id)origin.id='v159-origin-'+Math.random().toString(36).slice(2,9);savedFocus=origin;lastCaseReturn={y:scrollY,focus:origin?.id,...(origin?.matches('.v192-case-entry')?{anchor:'#'+origin.id,focusSelector:'#'+origin.id}:{})};history.replaceState({...history.state,v159:lastCaseReturn},'',location.href);}
 function open(next,origin){remember(origin);history.pushState({v159Detail:true},'',routes[next]);navigate(next,origin);}
 document.addEventListener('click',e=>{
  const a=e.target.closest('a');if(!a||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
  if(a.dataset.pageLink){e.preventDefault();open(a.dataset.pageLink,a);return;}
- if(a.hasAttribute('data-page-return')||(current&&a.closest('.site-header'))){e.preventDefault();if(history.state?.v159Detail){history.back();}else{const was=current;history.replaceState({},'','/hogan-portfolio/');navigate(null,null,{anchor:was!=='about'?'#services-overview':'#intro',focusSelector:was!=='about'?'#services-overview a[data-page-link="'+was+'"]':'#intro a[data-page-link="about"]'});}return;}
+ if(a.hasAttribute('data-page-return')||(current&&a.closest('.site-header'))){e.preventDefault();if(history.state?.v159Detail){history.back();}else{const was=current;history.replaceState({},'','/hogan-portfolio/');navigate(null,null,{anchor:was!=='about'?'.v192-case-entry[data-page-link="'+was+'"]':'#intro',focusSelector:was!=='about'?'.v192-case-entry[data-page-link="'+was+'"]':'#intro a[data-page-link="about"]'});}return;}
 });
 addEventListener('popstate',()=>{const next=key();if(next===current)return; // Native section hashes keep their own scroll position.
- navigate(next,null,history.state?.v159);});
+ navigate(next,null,history.state?.v159??lastCaseReturn);});
 // Native path entries show content immediately, without replaying the intro.
 if(key()){show(key());scrollTo(0,0);}

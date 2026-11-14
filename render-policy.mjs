@@ -33,10 +33,10 @@ export function enterSection(selector){
 
 // Restore an explicit story jump to its previous reading position on Back.
 if(typeof window!=='undefined')window.addEventListener('popstate',event=>{
- const y=event.state?.hoganReturnY;
+ if(window.__v192CaseRestoring||event.state?.v159?.focus)return;if(window.__v192CaseRestoring||event.state?.v159?.focus)return;if(window.__v192CaseRestoring||event.state?.v159?.focus)return;const y=event.state?.hoganReturnY;
  if(!Number.isFinite(y)||document.querySelector('dialog[open]'))return;
  requestAnimationFrame(()=>requestAnimationFrame(()=>{
-  window.scrollTo({top:y,behavior:'instant'});
+  if(window.__v192CaseRestoring)return;if(window.__v192CaseRestoring)return;if(window.__v192CaseRestoring)return;window.scrollTo({top:y,behavior:'instant'});
   const selector=event.state?.hoganReturnFocus;
   if(selector)document.querySelector(selector)?.focus({preventScroll:true});
  }));

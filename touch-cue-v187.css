@@ -1,13 +1,13 @@
 @media(max-width:1099px){
- .v186-db-inline .v187-touch-label{font-size:14px!important;line-height:22px!important;font-weight:400!important;color:#b8d5da;margin:0 0 8px!important}
+ .v186-db-inline .v187-touch-label{font-size:14px!important;line-height:22px!important;font-weight:400!important;color:#a8adb8;margin:0 0 8px!important}
  .v186-db-inline .v186-steps button{position:relative;cursor:pointer;transition:background-color 140ms ease,border-color 140ms ease,color 140ms ease}
- .v186-db-inline .v186-steps button::after{content:'';position:absolute;inset:2px;border:1px solid #c7e4e8;border-radius:7px;pointer-events:none;opacity:0;transform:scale(1);transform-origin:center}
+ .v186-db-inline .v186-steps button::after{content:'';position:absolute;inset:2px;border:1px solid #f5f2ec99;border-radius:7px;pointer-events:none;opacity:0;transform:scale(1);transform-origin:center}
  .v186-steps[data-touch-cue=playing] button::after{animation:v187-touch-outline 1000ms cubic-bezier(.2,.65,.35,1) 2;animation-delay:var(--v187-cue-delay,0ms)}
  .v186-steps button:nth-child(2){--v187-cue-delay:160ms}
  .v186-steps button:nth-child(3){--v187-cue-delay:320ms}
- .v186-db-inline .v186-steps button:not(:disabled):active{border-color:#effbfc;background:#243641;color:#f5f2ec}
- .v186-steps[data-touch-cue=static] button:not(:disabled){border-color:#8baeb6}
- @media(hover:hover){.v186-db-inline .v186-steps button:not(:disabled):hover{border-color:#c7e4e8}}
+ .v186-db-inline .v186-steps button:not(:disabled):active{border-color:#f5f2ec99;background:#ffffff14;color:#f5f2ec}
+ .v186-steps[data-touch-cue=static] button:not(:disabled){border-color:#f5f2ec66}
+ @media(hover:hover){.v186-db-inline .v186-steps button:not(:disabled):hover{border-color:#f5f2ec66}}
 }
 @keyframes v187-touch-outline{0%{opacity:0;transform:scale(1)}12%{opacity:.85;transform:scale(1)}80%,100%{opacity:0;transform:scale(1.08,1.18)}}
 @media(prefers-reduced-motion:reduce){

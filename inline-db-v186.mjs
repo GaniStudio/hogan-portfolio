@@ -1,7 +1,9 @@
 const panel=document.querySelector('.v186-db-inline');
 if(panel){
  const compact=matchMedia('(max-width:1099px)'),frame=panel.querySelector('iframe'),buttons=[...panel.querySelectorAll('[data-db-step]')],status=panel.querySelector('[role=status]');
- let doc,ready=false,heightTask=0,observer,resize,alignAfter=false,alignTimer;
+ let doc,ready=false,heightTask=0,observer,resize,alignAfter=false,alignTimer,loadTimer,readyWatch,attempt=0;
+ const retry=document.createElement('button');retry.type='button';retry.className='v186-expand v189-db-retry';retry.textContent='다시 불러오기 ↻';retry.hidden=true;status.after(retry);
+ function loadFailed(){if(ready)return;clearInterval(readyWatch);clearTimeout(loadTimer);panel.dataset.dbState='error';status.textContent='서비스 화면을 불러오지 못했습니다. 다시 불러오거나 전체 화면으로 확인해 주세요.';retry.hidden=false;frame.hidden=true}
  const header=document.querySelector('.site-header');
  function headerSize(){panel.style.setProperty('--v186-header',Math.ceil(header?.getBoundingClientRect().height||72)+'px')}
  const headerObserver=new ResizeObserver(headerSize);if(header)headerObserver.observe(header);headerSize();
@@ -15,8 +17,9 @@ if(panel){
   buttons.forEach(b=>{if(b.dataset.dbStep===step)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current')});schedule();
  }
  function initialize(){
-  const next=frame.contentDocument;if(next?.documentElement.dataset.demoMode!=='manual'||!next.getElementById('lookupForm')||doc===next)return;
-  observer?.disconnect();resize?.disconnect();doc=next;ready=true;
+  let next;try{next=frame.contentDocument}catch{loadFailed();return}
+  if(next?.documentElement.dataset.demoMode!=='manual'||!next.getElementById('lookupForm')||doc===next&&ready)return;
+  observer?.disconnect();resize?.disconnect();doc=next;
   // Keep the real DOM/render functions. Adapt only the frame viewport to the parent page.
   doc.documentElement.setAttribute('data-auto-tour','');
   const style=doc.createElement('style');style.id='v186-inline-viewport';style.textContent=`
@@ -40,6 +43,7 @@ if(panel){
   observer=new MutationObserver(sync);for(const id of ['lookupSection','feedbackModal','lateSubmitModal'])observer.observe(doc.getElementById(id),{attributes:true,attributeFilter:['hidden']});
   observer.observe(doc.getElementById('studentResult'),{childList:true,subtree:true});
   resize=new ResizeObserver(schedule);resize.observe(doc.body);doc.fonts.ready.then(schedule);
+  ready=true;clearInterval(readyWatch);clearTimeout(loadTimer);panel.dataset.dbState='ready';retry.hidden=true;frame.hidden=false;
   buttons.forEach(b=>b.disabled=false);status.textContent='';sync();
  }
  function select(step){
@@ -54,9 +58,20 @@ if(panel){
  }
  for(const b of buttons)b.addEventListener('click',()=>select(b.dataset.dbStep));
  frame.addEventListener('load',initialize);
+ frame.addEventListener('error',loadFailed);
  addEventListener('message',e=>{if(e.origin===location.origin&&e.source===frame.contentWindow&&e.data?.type==='demo:ready')initialize()});
- function activate(){document.documentElement.classList.toggle('v186-db-scroll',compact.matches);if(compact.matches&&!frame.hasAttribute('src'))frame.src=frame.dataset.inlineSrc;if(compact.matches)schedule()}
+ function load(){
+  if(panel.dataset.dbState==='loading')return;
+  ready=false;clearTimeout(loadTimer);clearInterval(readyWatch);panel.dataset.dbState='loading';retry.hidden=true;frame.hidden=false;status.textContent='서비스 화면을 불러오는 중입니다.';frame.style.height='400px';
+  buttons.forEach(b=>b.disabled=true);
+  const url=new URL(frame.dataset.inlineSrc,location.href);if(attempt++)url.searchParams.set('retry',String(attempt));frame.src=url.href;
+  readyWatch=setInterval(initialize,250);loadTimer=setTimeout(loadFailed,12000);
+ }
+ retry.addEventListener('click',load);
+ function activate(){document.documentElement.classList.toggle('v186-db-scroll',compact.matches);if(compact.matches&&!frame.hasAttribute('src'))load();if(compact.matches)schedule()}
  compact.addEventListener('change',activate);
  for(const event of ['wheel','touchstart'])addEventListener(event,()=>{alignAfter=false;clearTimeout(alignTimer)},{passive:true});
- const inView=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){activate();inView.disconnect()}},{rootMargin:'400px'});inView.observe(panel);
+ // Boot imports this module after the intro gate. Compact screens start the
+ // small local app immediately, independent of other scene modules or scrolling.
+ activate();
 }

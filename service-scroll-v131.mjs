@@ -102,7 +102,7 @@ for(const track of document.querySelectorAll('[data-scroll-service]')){
   return {top,anchor:pinned?inset:innerHeight*.75,range:Math.max(1,pinned?track.offsetHeight-stage.offsetHeight:track.offsetHeight+innerHeight*.35)};
  }
  function update(){
-  if(id==='student-db'&&matchMedia('(max-width:1099px)').matches)return;
+  if(matchMedia('(max-width:1099px)').matches)return;
   const doc=outer();
   const bounds=frame.getBoundingClientRect();
   doc?.documentElement?.toggleAttribute('data-tour-outside',bounds.bottom<=73||bounds.top>=innerHeight);

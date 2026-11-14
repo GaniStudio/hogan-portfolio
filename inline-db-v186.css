@@ -5,11 +5,12 @@
  body #student-db .v186-db-inline{display:block;margin:20px 0 28px;border:0;border-radius:0;overflow:visible;background:transparent;--v186-header:72px}
  .v186-db-inline .v186-steps{position:sticky;top:var(--v186-header);z-index:8;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:10px 0 12px;margin:0;background:#060918}
  .v186-db-inline .v186-steps button{appearance:none;min-width:0;min-height:48px;border:1px solid #f5f2ec33;border-radius:8px;background:transparent;color:#c5cad4;font:500 16px/24px 'Portfolio Pretendard',sans-serif;padding:10px 4px;touch-action:manipulation}
- .v186-db-inline .v186-steps button[aria-current=step]{background:#b8d5da;border-color:#b8d5da;color:#09101b;font-weight:600}
+ .v186-db-inline .v186-steps button[aria-current=step]{background:#ffffff0d;border-color:#f5f2ec66;color:#f5f2ec;font-weight:600}
  .v186-db-inline .v186-steps button:disabled{opacity:.5}
  .v186-db-inline :is(a,button):focus-visible{outline:2px solid #f5f2ec;outline-offset:3px}
  .v186-db-inline .v186-app{display:block;width:100%;height:1px;border:1px solid #f5f2ec26;border-radius:12px;background:#f7f7f7;overflow:hidden;scroll-margin-top:calc(var(--v186-header) + 70px);pointer-events:auto;touch-action:pan-y pinch-zoom}
  .v186-db-inline [role=status]{margin:0!important;padding:12px 0;font-size:14px!important;line-height:22px!important;color:#b8d5da}
  .v186-db-inline [role=status]:empty{display:none}
  .v186-db-inline .v186-expand{display:inline-flex;align-items:center;min-height:44px;margin-top:12px;padding:8px 0;border:0;border-bottom:1px solid #6f8d92;background:none;color:#b8d5da;font:400 14px/24px 'Portfolio Pretendard',sans-serif;text-decoration:none}
+ .v186-db-inline .v189-db-retry[hidden],.v186-db-inline .v186-app[hidden]{display:none!important}
 }

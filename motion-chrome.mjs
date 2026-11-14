@@ -83,9 +83,9 @@ document.addEventListener('click',event=>{
  });
 });
 window.addEventListener('popstate',()=>{
- const hash=location.hash;if(!['#intro','#motivation','#words','#db-story','#student-db','#db-decision','#lms-story','#lms','#reading','#ai-workflow','#vision'].includes(hash))return;
+ if(window.__v192CaseRestoring||history.state?.v159?.focus)return;if(window.__v192CaseRestoring||history.state?.v159?.focus)return;if(window.__v192CaseRestoring||history.state?.v159?.focus)return;const hash=location.hash;if(!['#intro','#motivation','#words','#db-story','#student-db','#db-decision','#lms-story','#lms','#reading','#ai-workflow','#vision'].includes(hash))return;
  const version=++focusVersion;
- requestAnimationFrame(()=>{if(version===focusVersion&&location.hash===hash&&!document.querySelector('dialog[open]'))focusSection(hash,true)});
+ requestAnimationFrame(()=>{if(!window.__v192CaseRestoring&&version===focusVersion&&location.hash===hash&&!document.querySelector('dialog[open]'))focusSection(hash,true)});
 });
 
 
@@ -94,4 +94,3 @@ window.addEventListener('popstate',()=>{
 
 
 window.addEventListener('pointermove',request,{passive:true});
-

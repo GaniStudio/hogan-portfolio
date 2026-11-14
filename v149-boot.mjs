@@ -1,6 +1,10 @@
 // Heavy apps and media start only after the intro has released the gate.
 await window.__hoganIntroReady;
 await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+// Essential compact DB starts before unrelated scene modules.
+await import('./inline-db-v186.mjs?v189');
+await import('./inline-services-v194.mjs');
+await import('./touch-cue-v187.mjs');
 const modules=[...document.querySelectorAll('script[data-v149-module]')].map(s=>s.dataset.v149Module);
 const first=['document-flow.mjs','/hogan-portfolio/v139-word-bootstrap.mjs','v139-word-bootstrap.mjs'];
 for(const key of first){const found=modules.find(m=>m===key);if(found){await import(new URL(found,location.href).href);modules.splice(modules.indexOf(found),1);}}
@@ -15,6 +19,6 @@ await import('./mobile-v181.mjs');
 
 await import('./metrics-v182.mjs');
 
-await import('./inline-db-v186.mjs');
 
-await import('./touch-cue-v187.mjs');
+
+await import('./ai-compare-v195.mjs');
