@@ -23,7 +23,7 @@ function sync(){
   frames.forEach(frame=>{
     // Tiny local scene documents are loaded after the intro, before a long
     // default iframe placeholder can become part of the swipe path.
-    if(compact.matches&&!frame.hasAttribute('src')){frame.loading='eager';frame.src=frame.dataset.v167Src;}
+    if(compact.matches&&!frame.hasAttribute('src')){frame.loading='eager';frame.src=frame.dataset.v167Src+'?v184';}
     configure(frame);
   });
   for(const frame of document.querySelectorAll('iframe.inline-service')){

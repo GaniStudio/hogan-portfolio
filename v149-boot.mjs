@@ -9,8 +9,10 @@ const observer=new IntersectionObserver(entries=>{for(const {target,isIntersecti
 for(const el of document.querySelectorAll('[data-v149-src]'))observer.observe(el);
 document.documentElement.dataset.appsReleased='true';
 
-await import('./mobile-v179.mjs');
+await import('./mobile-v179.mjs?v184');
 
 await import('./mobile-v181.mjs');
 
 await import('./metrics-v182.mjs');
+
+await import('./mobile-experience-v184.mjs');
