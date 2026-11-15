@@ -1,4 +1,13 @@
+import {watchScene} from './scroll-motion-v198.mjs';
 const frames=[...document.querySelectorAll('.v167-scene iframe')];
+const rearm=new Map();
+for(const frame of frames){
+ const finish=()=>{seen.add(frame);frame.dataset.finishOnLoad='true';if(!frame.hasAttribute('src'))frame.src=frame.dataset.v167Src+'?v198';else frame.contentWindow?.postMessage('v198-finish',location.origin)};
+ rearm.set(frame,watchScene(frame,finish));
+ frame.addEventListener('load',()=>{if(frame.dataset.finishOnLoad)frame.contentWindow?.postMessage('v198-finish',location.origin)});
+}
+addEventListener('message',e=>{if(e.origin!==location.origin||e.data?.type!=='v198-replay')return;const f=frames.find(f=>f.contentWindow===e.source);if(f){delete f.dataset.finishOnLoad;rearm.get(f)?.()}});
+document.addEventListener('click',e=>{const b=e.target.closest?.('.v179-mobile-replay');if(b){const f=b.previousElementSibling;delete f.dataset.finishOnLoad;rearm.get(f)?.()}});
 const seen=new WeakSet();const reduce=matchMedia('(prefers-reduced-motion: reduce)');
 const start=frame=>{if(seen.has(frame))return;if(!frame.getAttribute('src')){frame.src=frame.dataset.v167Src+'?v184';return}try{const past=frame.contentDocument?.getElementById('past');if(!past)return;const f=frame.getBoundingClientRect(),p=past.getBoundingClientRect(),middle=f.top+p.top+Math.min(p.height,innerHeight)*.5;if(!reduce.matches&&(middle>innerHeight*.75||middle<innerHeight*.1))return}catch{return}seen.add(frame);frame.contentWindow?.postMessage('v167-play',location.origin)};
 const io=new IntersectionObserver(entries=>{for(const e of entries)if(e.isIntersecting)start(e.target)},{rootMargin:'-20% 0px -20% 0px',threshold:0});frames.forEach(f=>{io.observe(f);f.addEventListener('load',()=>{const r=f.getBoundingClientRect();if(r.top<innerHeight*.8&&r.bottom>innerHeight*.2)start(f)})});

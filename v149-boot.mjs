@@ -1,4 +1,5 @@
 // Heavy apps and media start only after the intro has released the gate.
+await import('./scroll-motion-v198.mjs');
 await window.__hoganIntroReady;
 await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
 // Essential compact DB starts before unrelated scene modules.

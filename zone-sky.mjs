@@ -31,7 +31,7 @@ if(sky){
   const vh=innerHeight,c=scrollY+vh*.5,hw=vh*.6;let d=0,dn=0;
   ZONES.forEach((z,i)=>{const [a,b]=R[i];if(a==null||b==null)return;
    const inW=z.late?ss(a,a+vh*.8,c):ss(a-hw,a+hw,c),outW=!z.to?1:z.lead?1-ss(b-hw*1.2,b+hw*.4,c):1-ss(b-hw,b+hw,c);const w=Math.min(inW,outW)*(z.max||1);
-   layers[i].style.opacity=w.toFixed(3);if(z.dim)d=Math.max(d,w*z.dim);if(z.dense)dn=Math.max(dn,w);});
+   layers[i].style.opacity=(w * .8).toFixed(3);if(z.dim)d=Math.max(d,w*z.dim);if(z.dense)dn=Math.max(dn,w);});
   dim.style.opacity=d.toFixed(3);cv.style.opacity=dn.toFixed(3);
  }
  let q=0;const tick=()=>{if(!q)q=requestAnimationFrame(()=>{q=0;update();});};

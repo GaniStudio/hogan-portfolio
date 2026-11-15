@@ -1,3 +1,4 @@
+import {watchScene} from './scroll-motion-v198.mjs';
 import {sheetDelayMs,previewPixelsPerMs,shuffleCells} from './v152-db-config.mjs';
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');
 // The original table geometry and fixture values stay intact. Only the reveal
@@ -9,6 +10,7 @@ if(sheet){
  const pointer=sheet.querySelector('.v140-sheet-cursor');let timer=0,step=0,started=false;
  all.forEach(cell=>cell.dataset.sheetValue=cell.textContent);
  const finish=()=>{clearTimeout(timer);all.forEach(cell=>{cell.textContent=cell.dataset.sheetValue;cell.dataset.filled='true';});if(pointer)pointer.hidden=true;};
+ watchScene(sheet,()=>{started=true;finish()});
  const paint=()=>{if(reduced.matches||document.hidden){finish();return;}const cell=visible[step++];if(!cell){finish();return;}cell.textContent=cell.dataset.sheetValue;cell.dataset.filled='true';if(pointer){pointer.hidden=false;const r=cell.getBoundingClientRect(),s=sheet.getBoundingClientRect();pointer.style.left=`${Math.max(4,Math.min(s.width-20,r.right-s.left-9))}px`;pointer.style.top=`${Math.max(38,Math.min(s.height-24,r.top-s.top+8))}px`;}sheet.dataset.filledCells=String(step);timer=setTimeout(paint,sheetDelayMs);};
  const start=()=>{if(started)return;started=true;if(reduced.matches){finish();return;}const viewport=sheet.querySelector('.v139-sheet-scroll').getBoundingClientRect();visible=all.filter(cell=>{const r=cell.getBoundingClientRect();return r.width>0&&r.left>=viewport.left&&r.right<=viewport.right&&r.top>=viewport.top&&r.bottom<=viewport.bottom;});visible=shuffleCells(visible);all.forEach(cell=>{cell.textContent='';cell.dataset.filled='false';});paint();};
  new IntersectionObserver(entries=>{for(const e of entries)if(e.isIntersecting)start();},{threshold:.2}).observe(sheet);

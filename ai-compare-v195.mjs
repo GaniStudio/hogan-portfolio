@@ -1,3 +1,4 @@
+import {watchScene} from './scroll-motion-v198.mjs';
 import {timeline} from './ai-compare-v195-content.mjs';
 import {initialState,applyOps,finalState,render} from './ai-compare-v195-render.mjs';
 for(const root of document.querySelectorAll('.v195-compare')){
@@ -6,7 +7,8 @@ for(const root of document.querySelectorAll('.v195-compare')){
  let timers=[],started=false,observer;
  const stop=()=>{timers.forEach(clearTimeout);timers=[]};
  const finish=()=>{stop();scene.innerHTML=render(finalState());scene.dataset.state='complete'};
- const play=()=>{started=true;observer?.disconnect();stop();if(reduced()){finish();return}const state=initialState();scene.innerHTML=render(state);scene.dataset.state='playing';
+ const rearm=watchScene(scene,()=>{started=true;observer?.disconnect();finish()});
+ const play=()=>{rearm();started=true;observer?.disconnect();stop();if(reduced()){finish();return}const state=initialState();scene.innerHTML=render(state);scene.dataset.state='playing';
   timers=timeline.map(([ms,ops],i)=>setTimeout(()=>{applyOps(state,ops);scene.innerHTML=render(state);if(i===timeline.length-1){scene.dataset.state='complete';timers=[]}},ms));
  };
  button.hidden=false;button.addEventListener('click',play);

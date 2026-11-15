@@ -44,7 +44,7 @@ function update(){ if(location.hash.startsWith("#case/")||document.body.classLis
  // scenes separately so direct links and refreshes keep their own anchor.
  const sceneAtMarker=id=>{const rect=document.querySelector(id)?.getBoundingClientRect();return rect&&rect.top<=innerHeight*.38&&rect.bottom>innerHeight*.38};
  const hash=visibleSectionHash(location.hash,activeService?.link.hash==='#db-story'?'#student-db':activeService?.link.hash==='#lms-story'?'#lms':readingVisible?'#reading':storyVisible?'#db-story':decisionVisible?'#db-decision':lmsStoryVisible?'#lms-story':sceneAtMarker('#student-db')?'#student-db':sceneAtMarker('#lms')?'#lms':current?.link.hash,!!document.querySelector('dialog[open]'));
- if(!restoringAnchor&&!(restoringReading&&location.hash==='#reading')&&hash!==location.hash)history.replaceState(history.state,'',hash);
+ // v198: passive scrolling does not persist an accidental reload anchor.
 }
 function request(){if(!pending){pending=true;requestAnimationFrame(update)}}
 window.addEventListener('scroll',request,{passive:true});window.addEventListener('resize',request);document.addEventListener('hogan:motion',request);document.addEventListener('hogan:section',request);update();

@@ -1,7 +1,7 @@
 import { typingStep, DRAG_MS, GLIDE_MS, HOLD_MS, TRAVEL_TO_RING_MS, ORBIT_END_MS, EXIT_MS, RING_RADIUS } from './agent-intro-timing.mjs';
 import { cursorHotspot, minJerk, approachPoints, ringPoint } from './agent-intro-path.mjs';
 const intro=document.querySelector('#intro'),motion=matchMedia('(prefers-reduced-motion: reduce)'),small=matchMedia('(max-width:900px)');
-if(intro&&!motion.matches&&(location.hash===''||location.hash==='#intro')&&scrollY<40&&document.documentElement.classList.contains('intro-pending')){
+if(!window.__hoganIntroFinished&&intro&&!motion.matches&&(location.hash===''||location.hash==='#intro')&&scrollY<40&&document.documentElement.classList.contains('intro-pending')){
  const speed=1/1.5;const compact=innerWidth<1100||matchMedia('(pointer:coarse)').matches;
  const preview=document.querySelector('#services-overview .hero-previews');const previewCards=[...(preview?.children??[])];
  const targets=[intro.querySelector('.intro-label'),intro.querySelector('#intro-title'),
@@ -56,6 +56,7 @@ if(intro&&!motion.matches&&(location.hash===''||location.hash==='#intro')&&scrol
  for(const el of targets)el.dataset.introVisible='true';document.documentElement.classList.remove('intro-pending');
  anims.forEach(animation=>{animation.playbackRate=speed});
  Promise.resolve(anims[0]?.ready).then(()=>{t0=anims[0]?.startTime??document.timeline.currentTime;if(!ended)raf=requestAnimationFrame(loop)}).catch(finish);
+ if(scrollY>12||window.__hoganIntroFinished)finish();
  if(/[?&]inspect\b/.test(location.search))window.__agentIntro={seek(ms){paused=true;for(const a of anims){try{a.pause();a.currentTime=ms*speed}catch{}}center.x=pointer.x??rest.x;center.y=pointer.y??rest.y;render(ms*speed,1e5)},pointer(x,y){pointer.x=x;pointer.y=y},end:(ORBIT_END_MS+EXIT_MS)/speed};
  }catch(error){document.documentElement.classList.remove('intro-pending');finish()}
 }
