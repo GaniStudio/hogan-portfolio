@@ -2521,3 +2521,21 @@ html.v192-sheet-gated .v192-sheet-visual:not(.is-revealed){visibility:hidden;opa
  .v195-caps{column-gap:calc(var(--v195-u)*12);margin-top:calc(var(--v195-u)*10)}.v195-caps span{font-size:calc(var(--v195-u)*12);padding:calc(var(--v195-u)*7) 0}
  .v195-compare button.v195-replay{font-size:calc(var(--v195-u)*12);margin-top:calc(var(--v195-u)*12);padding:calc(var(--v195-u)*6) 0}
 }
+
+/* v197 compact sticky backgrounds */
+.v197-step-marker{display:none}
+@media(max-width:1099px){
+ .v197-step-marker{display:block;height:1px;margin-bottom:-1px;pointer-events:none;visibility:hidden}
+ .v186-db-inline .v186-steps,.v194-inline .v186-steps{
+  background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;
+  transition:background-color .12s linear;
+ }
+ .v186-db-inline .v186-steps.is-stuck,.v194-inline .v186-steps.is-stuck{
+  background:var(--v197-header-background);
+  backdrop-filter:var(--v197-header-blur,none);
+  -webkit-backdrop-filter:var(--v197-header-webkit-blur,none);
+ }
+}
+@media(max-width:1099px) and (prefers-reduced-motion:reduce){
+ .v186-db-inline .v186-steps,.v194-inline .v186-steps{transition:none}
+}

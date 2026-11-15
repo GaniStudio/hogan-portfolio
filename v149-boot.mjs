@@ -22,3 +22,5 @@ await import('./metrics-v182.mjs');
 
 
 await import('./ai-compare-v195.mjs');
+
+await import('./sticky-steps-v197.mjs');

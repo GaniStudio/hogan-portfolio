@@ -7574,22 +7574,6 @@ input,
 }
 
 /* 2026-07-02 title font and restored landing subcopy */
-@font-face {
-  font-family: "GmarketSans";
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("/hogan-portfolio/assets/fonts/gmarket/GmarketSansTTFMedium.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "GmarketSans";
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url("/hogan-portfolio/assets/fonts/gmarket/GmarketSansTTFBold.ttf") format("truetype");
-}
-
 .premium-landing-screen .sky-copy h1 {
   font-family: "GmarketSans", Pretendard, "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
   font-weight: 500;
