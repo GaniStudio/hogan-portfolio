@@ -6,7 +6,8 @@ if(sky){
   {k:'words',from:'#static-gallery',to:'#student-db',max:.8,wash:'linear-gradient(165deg,rgba(150,78,34,.34),rgba(84,34,46,.22) 55%,rgba(40,18,30,.10))',neb:[[80,18,1100,'240,150,84',.30],[14,78,900,'220,92,120',.20]]},
   {k:'db',from:'#student-db',to:'#lms',max:.8,wash:'linear-gradient(165deg,rgba(18,78,112,.36),rgba(16,48,96,.22) 55%,rgba(10,26,56,.10))',neb:[[16,20,1100,'46,156,204',.32],[84,78,950,'64,128,214',.22]]},
   {k:'lms',from:'#lms',to:'#reading',max:.8,lead:1,wash:'linear-gradient(165deg,rgba(124,26,52,.34),rgba(70,24,80,.22) 55%,rgba(36,14,40,.10))',neb:[[82,22,1100,'236,74,104',.30],[18,80,950,'160,90,226',.20]]},
-  {k:'ch2',from:'#ai-workflow',to:null,late:1,dense:1,dim:.4,wash:'radial-gradient(120% 90% at 50% 0%,rgba(96,52,190,.42),rgba(46,22,100,.26) 45%,rgba(10,6,24,0) 80%)',neb:[[50,6,1500,'140,92,240',.36],[10,64,1000,'214,86,188',.22],[88,92,1100,'72,76,220',.26]]}
+  {k:'ch2',from:'#ai-workflow',to:'#vision',late:1,dense:1,dim:.4,wash:'radial-gradient(120% 90% at 50% 0%,rgba(96,52,190,.42),rgba(46,22,100,.26) 45%,rgba(10,6,24,0) 80%)',neb:[[50,6,1500,'140,92,240',.36],[10,64,1000,'214,86,188',.22],[88,92,1100,'72,76,220',.26]]},
+  {k:'end',from:'#vision',to:null,dim:.45,wash:'none',neb:[]}
  ];
  const css=['.zs{position:absolute;inset:0;opacity:0;pointer-events:none;will-change:opacity}',
   '.zs span{position:absolute;display:block;border-radius:50%;transform:translate(-50%,-50%)}',
